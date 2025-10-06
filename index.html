@@ -57,21 +57,12 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             transition: all 0.3s ease;
-            display: inline-block;
-            border: 2px solid #d4af37;
-            
-            /* Removido: position: relative; overflow: hidden; box-shadow: ... */
-            display: flex; /* Para centralizar o texto */
+            display: flex; 
             align-items: center;
             justify-content: center;
         }
 
-        /* Efeito de Órbita Visual REMOVIDO */
-        .btn-cinematic::before {
-            content: none;
-        }
-        
-        /* Keyframe de órbita já não é necessário */
+        /* Removido: Efeito de Órbita Visual do Título */
         
         /* Efeito de Pulsar para Aviso */
         @keyframes pulsate {
@@ -91,17 +82,15 @@
             background-color: rgba(255, 85, 85, 0.1);
         }
         
-        /* Garante que o texto do botão fique por cima da órbita (z-index já não necessário, mas mantido para limpeza) */
+        /* Garante que o texto do botão fique por cima (z-index já não necessário no span, mas mantido para limpeza) */
         .btn-cinematic span {
             position: relative;
             z-index: 10;
         }
 
-        /* Efeito hover simples RESTAURADO para o botão cinemático */
         .btn-cinematic:hover:not(:disabled) {
             background-color: transparent;
             color: #d4af37;
-            /* box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4); */ /* Removido box-shadow excessivo no hover */
         }
         .btn-cinematic:disabled {
             opacity: 0.5;
@@ -463,9 +452,10 @@
     <!-- NOVO CONTEÚDO: WHITE.AI EDITOR SIMPLIFICADO -->
     <div id="editor-content" class="hidden min-h-screen pt-12 p-4 sm:p-8 flex flex-col items-center">
         <div class="w-full max-w-xl">
+            <!-- Título Simples (Sem Órbita) -->
             <h1 class="text-3xl font-black mb-2 text-center accent-color tracking-wider">WHITE.AI</h1>
             <p class="text-center text-sm mb-8 text-gray-400">Motor de estilo cinematográfico alimentado pela IA.</p>
-
+            
             <!-- Área de Upload e Preview -->
             <div class="content-box p-6 rounded-xl shadow-lg mb-6">
                 <h2 class="text-xl font-bold mb-3 text-gray-200">1. Carregar Fotos</h2>
@@ -918,6 +908,7 @@
             generatedImage.classList.add('opacity-0');
             resultTitle.classList.add('hidden');
             generateButton.disabled = true;
+            console.log("1. Início do processo de edição."); // Log de Início
 
             // 2. Construir o Prompt de Edição
             const cinematicPrompt = `Edite a imagem com base nesta descrição: "${userPrompt}". Mantenha a composição e o assunto da imagem original. Aplique um filtro cinematográfico, color grading intenso, iluminação de filme de alto orçamento, com profundidade de campo e estilo visual 8k. Qualidade máxima.`;
@@ -943,6 +934,7 @@
             };
             
             const fetcher = async () => {
+                console.log("2. Enviando requisição para a IA."); // Log antes do fetch
                 const response = await fetch(apiUrlImage, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -955,11 +947,14 @@
                     try {
                         const errorData = JSON.parse(errorText);
                         errorMessage = errorData.error?.message || errorMessage;
+                        console.error("Erro da API:", errorData); // Log detalhado do erro da API
                     } catch (e) {
                         errorMessage = `Erro de rede ou servidor: ${response.status} ${response.statusText}.`;
+                        console.error("Erro de rede:", errorMessage, errorText); // Log detalhado de erro de rede
                     }
                     throw new Error(errorMessage);
                 }
+                console.log("3. Resposta da IA recebida."); // Log após sucesso no fetch
                 return response;
             };
 
@@ -974,6 +969,7 @@
 
                 if (generatedBase64) {
                     const originalImageUrl = `data:image/png;base64,${generatedBase64}`;
+                    console.log("4. Imagem gerada com sucesso. Aplicando marca d'água..."); // Log antes da watermark
                     
                     // 4b. Aplicar marca d'água na imagem recebida
                     statusArea.innerHTML = `<div class="text-gray-400 flex items-center justify-center space-x-2">
@@ -994,9 +990,11 @@
                     }, 50);
                     
                     statusArea.innerHTML = `<div class="text-green-500">✅ Edição aplicada com sucesso (Com Marca d'Água).</div>`;
+                    console.log("5. Processo concluído com sucesso."); // Log de sucesso final
 
                 } else {
                     displayError("A IA não conseguiu editar a imagem. Tente uma descrição ou foto diferente.");
+                    console.warn("4. Falha na geração da imagem (Base64 vazio na resposta)."); // Log de falha de IA
                 }
 
             } catch (error) {
@@ -1005,6 +1003,7 @@
                 generatedImage.style.display = 'none';
                 generatedImage.classList.remove('opacity-100');
                 generatedImage.classList.add('opacity-0');
+                console.error("ERRO CRÍTICO no processamento:", error); // Log de erro no Try/Catch
             } finally {
                 // 5. Finalizar 
                 generateButton.disabled = false;
