@@ -23,9 +23,6 @@
         .accent-color {
             color: #d4af37; /* Dourado/Ouro */
         }
-        .bg-accent {
-            background-color: #d4af37;
-        }
         .btn-primary {
             background-color: #d4af37;
             color: #121212;
@@ -38,97 +35,10 @@
             display: inline-block;
             border: 2px solid #d4af37;
         }
-        .btn-primary:hover:not(:disabled) {
+        .btn-primary:hover {
             background-color: transparent;
             color: #d4af37;
         }
-        
-        /* Estilos do Editor IA (Mesmo esquema de cores) */
-        .content-box {
-            background-color: #1a1a1a; /* Cor de fundo para secções/caixas */
-            border: 1px solid #2d2d2d; /* Borda sutil */
-        }
-        .btn-cinematic {
-            background-color: #d4af37;
-            color: #121212;
-            padding: 12px 28px;
-            border-radius: 8px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            display: flex; 
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* Removido: Efeito de Órbita Visual do Título */
-        
-        /* Efeito de Pulsar para Aviso */
-        @keyframes pulsate {
-            0% { transform: scale(1); opacity: 0.8; }
-            50% { transform: scale(1.03); opacity: 1; }
-            100% { transform: scale(1); opacity: 0.8; }
-        }
-
-        .pulsate-warning {
-            animation: pulsate 2s infinite ease-in-out;
-            display: block; 
-            color: #ff5555; 
-            font-weight: 700;
-            margin-top: 1rem;
-            padding: 0.5rem 0.75rem;
-            border-radius: 4px;
-            background-color: rgba(255, 85, 85, 0.1);
-        }
-        
-        /* Garante que o texto do botão fique por cima (z-index já não necessário no span, mas mantido para limpeza) */
-        .btn-cinematic span {
-            position: relative;
-            z-index: 10;
-        }
-
-        .btn-cinematic:hover:not(:disabled) {
-            background-color: transparent;
-            color: #d4af37;
-        }
-        .btn-cinematic:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-        .file-upload-box {
-            border: 2px dashed #4b5563;
-            transition: border-color 0.3s, background-color 0.3s;
-            cursor: pointer;
-        }
-        .file-upload-box:hover {
-            border-color: #d4af37;
-            background-color: #262626;
-        }
-        .text-input {
-            background-color: #262626;
-            color: #e0e0e0;
-            border: 1px solid #4b5563;
-        }
-        .text-input:focus {
-            border-color: #d4af37;
-            outline: none;
-            box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.5);
-        }
-        .loader {
-            border: 4px solid rgba(212, 175, 55, 0.2);
-            border-top: 4px solid #d4af37;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        /* Fim dos Estilos do Editor IA */
-
         .section-title {
             font-size: 2.5rem;
             font-weight: 900;
@@ -170,55 +80,58 @@
             transition: transform 0.3s ease-in-out;
         }
 
+        /* --- ALTERAÇÕES NOVAS/CORRIGIDAS PARA O PORTFÓLIO --- */
         .portfolio-item {
             position: relative; 
             overflow: hidden; 
             cursor: pointer; 
         }
         
+        /* Estilo da Sobreposição (Overlay) */
         .portfolio-overlay {
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
+            /* Fundo branco (esbranquiçado) com 20% de opacidade */
             background-color: rgba(255, 255, 255, 0.2); 
-            opacity: 0; 
-            transition: opacity 0.3s ease; 
+            opacity: 0; /* Começa invisível */
+            transition: opacity 0.3s ease; /* Transição suave */
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
+        /* Efeito ao Passar o Rato (Hover) */
         .portfolio-item:hover .portfolio-overlay {
-            opacity: 1;
+            opacity: 1; /* Torna-se visível ao passar o rato */
         }
         
+        /* Estilo do Título na Sobreposição */
         .portfolio-overlay-title {
-            color: #121212; 
-            font-size: 1.5rem;
+            color: #121212; /* Cor escura para contrastar com o esbranquiçado */
+            font-size: 1.5rem; /* Tamanho do texto */
             font-weight: 900;
             text-transform: uppercase;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); /* Sombra para melhorar a leitura */
         }
+        /* -------------------------------------------------------- */
     </style>
 </head>
 <body class="antialiased">
     <header class="bg-[#1a1a1a] sticky top-0 z-50 shadow-md">
         <div class="container mx-auto flex justify-between items-center p-4">
             
-            <a href="#home" class="text-2xl font-black tracking-wider accent-color nav-route">WHITEPICTURES</a>
+            <a href="#" class="text-2xl font-black tracking-wider accent-color">WHITEPICTURES</a>
 
             <nav class="hidden md:flex items-center space-x-8">
-                <!-- Links alterados para chamar a função de navegação -->
-                <a href="#home" class="nav-link nav-route">Home</a>
-                <a href="#sobre" class="nav-link nav-anchor">Sobre</a>
-                <a href="#servicos" class="nav-link nav-anchor">Serviços</a>
-                <a href="#portfolio" class="nav-link nav-anchor">Portfólio</a>
-               <a href="#apoio" class="nav-link nav-anchor">Apoio</a>
-                <a href="#contacto" class="nav-link nav-anchor">Contacto</a>
-                <!-- NOVO BOTÃO -->
-                <a href="#editor" class="btn-primary ml-4 nav-route" id="nav-editor-link">WHITE.AI</a>
+                <a href="#sobre" class="nav-link">Sobre</a>
+                <a href="#servicos" class="nav-link">Serviços</a>
+                <a href="#portfolio" class="nav-link">Portfólio</a>
+               <a href="#apoio" class="nav-link">Apoio</a>
+                <a href="#contacto" class="nav-link">Contacto</a>
+                
             </nav>
 
             <div class="md:hidden">
@@ -231,285 +144,217 @@
 
         <div id="mobile-menu" class="md:hidden bg-[#1a1a1a] absolute top-full left-0 w-full transform -translate-x-full">
             <nav class="flex flex-col items-center space-y-4 p-8">
-                <!-- Links alterados para chamar a função de navegação -->
-                <a href="#home" class="nav-link mobile-nav-link nav-route text-lg">Home</a>
-                <a href="#sobre" class="nav-link mobile-nav-link nav-anchor text-lg">Sobre</a>
-                <a href="#servicos" class="nav-link mobile-nav-link nav-anchor text-lg">Serviços</a>
-                <a href="#portfolio" class="nav-link mobile-nav-link nav-anchor text-lg">Portfólio</a>
-                <a href="#apoio" class="nav-link mobile-nav-link nav-anchor text-lg">Apoio</a>
-                <a href="#contacto" class="nav-link mobile-nav-link nav-anchor text-lg">Contacto</a>
-                <!-- NOVO BOTÃO MOBILE -->
-                <a href="#editor" class="nav-link mobile-nav-link nav-route text-lg accent-color">WHITE.AI</a>
+                <a href="#sobre" class="nav-link mobile-nav-link text-lg">Sobre</a>
+                <a href="#servicos" class="nav-link mobile-nav-link text-lg">Serviços</a>
+                <a href="#portfolio" class="nav-link mobile-nav-link text-lg">Portfólio</a>
+                <a href="#apoio" class="nav-link mobile-nav-link text-lg">Apoio</a>
+                <a href="#contacto" class="nav-link mobile-nav-link text-lg">Contacto</a>
+                
             </nav>
         </div>
     </header>
 
-    <!-- CONTAINER PRINCIPAL DO WEBSITE (Exceto o editor) -->
-    <div id="website-content">
-        <main>
-            <section class="hero-section h-screen flex items-center justify-center text-center">
-                <div class="max-w-3xl px-4">
-                    <h1 class="text-5xl md:text-7xl font-black text-white leading-tight mb-4">MOMENTOS ÚNICOS, MEMÓRIAS ETERNAS</h1>
-                    <p class="text-xl text-gray-300 mb-8">Fotografia e Videografia que contam a sua história com emoção e arte. Casamentos, eventos e projetos comerciais em Portugal inteiro.</p>
-                    <a href="#contacto" class="btn-primary nav-anchor">Peça o seu orçamento</a>
-                </div>
-            </section>
-
-            <section id="sobre" class="py-20 bg-[#1a1a1a]">
-                <div class="container mx-auto px-6 text-center">
-                    <h2 class="section-title">Quem <span class="accent-color">Sou</span></h2>
-                    <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-12">
-                            <img src="https://i.imgur.com/uVk2weW.jpeg" alt="Martim, o fotógrafo da Whitepictures" class="rounded-full w-80 h-80 object-cover border-4 border-gray-800">
-                            <div class="text-left">
-                                <p class="text-lg mb-4 text-gray-300">Olá! Sou o Martim, o criador por trás da White Pictures. Desde sempre apaixonado por contar histórias através de imagens, especializei-me em fotografia e vídeo para capturar a essência de cada momento.</p>
-                                <p class="text-lg text-gray-300">Com um olhar atento aos detalhes e uma abordagem criativa, o meu objetivo é criar recordações visuais que não só documentam, mas também transmitem a emoção do instante. Vamos criar algo memorável juntos.</p>
-                            </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="servicos" class="py-20">
-                <div class="container mx-auto px-6">
-                    <h2 class="section-title">Os Meus <span class="accent-color">Serviços</span></h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                        <div class="bg-[#1a1a1a] p-8 rounded-lg text-center border border-gray-800 transform hover:-translate-y-2 transition-transform duration-300"><h3 class="text-xl font-bold mb-3 accent-color">Casamentos</h3><p class="text-gray-400">Cobertura completa (foto e vídeo) do seu dia especial, com um estilo cinematográfico e emotivo.</p></div>
-                        <div class="bg-[#1a1a1a] p-8 rounded-lg text-center border border-gray-800 transform hover:-translate-y-2 transition-transform duration-300"><h3 class="text-xl font-bold mb-3 accent-color">Eventos Sociais</h3><p class="text-gray-400">Festas, batizados e conferências. Capturamos a energia e os momentos mais importantes.</p></div>
-                        <div class="bg-[#1a1a1a] p-8 rounded-lg text-center border border-gray-800 transform hover:-translate-y-2 transition-transform duration-300"><h3 class="text-xl font-bold mb-3 accent-color">Vídeos Promocionais</h3><p class="text-gray-400">Criamos vídeos dinâmicos para a sua marca, ideais para redes sociais e publicidade digital.</p></div>
-                        <div class="bg-[#1a1a1a] p-8 rounded-lg text-center border border-gray-800 transform hover:-translate-y-2 transition-transform duration-300"><h3 class="text-xl font-bold mb-3 accent-color">Sessões Fotográficas</h3><p class="text-gray-400">Sessões individuais, de casal ou de família, para criar retratos autênticos e memoráveis.</p></div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="portfolio" class="py-20 bg-[#1a1a1a]">
-            <div class="container mx-auto px-6">
-                <h2 class="section-title">O Meu <span class="accent-color">Trabalho</span></h2>
-                
-                <div id="portfolio-carousel" class="flex space-x-6 pb-4 overflow-x-scroll snap-x snap-mandatory scroll-smooth pl-16 pr-16 md:pl-32 md:pr-32">
-                    
-                    <div class="portfolio-item snap-center shrink-0 w-[180px] md:w-[300px] relative transition-all duration-500 transform scale-100" data-album-title="Slap">
-                        <img class="h-full w-full object-cover rounded-lg aspect-[9/16]" src="https://i.imgur.com/6czwjRe.jpeg" alt="Capa Álbum Slap">
-                        <div class="portfolio-overlay">
-                            <span class="portfolio-overlay-title">Slap</span>
-                        </div>
-                        <div class="hidden album-images">
-                            <img src="https://i.imgur.com/6ndfi5A.jpeg" alt="Foto 1 do álbum Slap">
-                            <img src="https://i.imgur.com/7Ic9Vfq.jpeg" alt="Foto 2 do álbum Slap">
-                            <img src="https://i.imgur.com/OFzO7NP.jpeg" alt="Foto 3 do álbum Slap">
-                            <img src="https://i.imgur.com/AkU7pCC.jpeg" alt="Foto 4 do álbum Slap">
-                            <img src="https://i.imgur.com/nT8gXTy.jpeg" alt="Foto 5 do álbum Slap">
-                            <img src="https://i.imgur.com/Ndr7Nwq.jpeg" alt="Foto 6 do álbum Slap">
-                            <img src="https://i.imgur.com/27urqG3.jpeg" alt="Foto 7 do álbum Slap">
-                            <img src="https://i.imgur.com/hAwKVhZ.jpeg" alt="Foto 8 do álbum Slap">
-                            <img src="https://i.imgur.com/AVeChmr.jpeg" alt="Foto 9 do álbum Slap">
-                            <img src="https://i.imgur.com/8dEipFK.jpeg" alt="Foto 10 do álbum Slap">
-                        </div>
-                    </div>
-                    
-                    <div class="portfolio-item snap-center shrink-0 w-[180px] md:w-[300px] relative transition-all duration-500 transform scale-100" data-album-title="Los Chopitos">
-                        <img class="h-full w-full object-cover rounded-lg aspect-[9/16]" src="https://i.imgur.com/3laxmjy.jpeg" alt="Los Chopitos">
-                        <div class="portfolio-overlay">
-                            <span class="portfolio-overlay-title">Los Chopitos</span>
-                        </div>
-                        <div class="hidden album-images">
-                            <img src="https://i.imgur.com/3laxmjy.jpeg" alt="Foto 1 do álbum Los Chopitos">
-                            <img src="https://i.imgur.com/vR4bFLJ.jpeg" alt="Foto 2 do álbum Los Chopitos">
-                            <img src="https://i.imgur.com/p4I1BbK.jpeg" alt="Foto 3 do álbum Los Chopitos">
-                            <img src="https://i.imgur.com/6b1S5pj.jpeg" alt="Foto 4 do álbum Los Chopitos">
-                            <img src="https://i.imgur.com/wsH2nrv.jpeg" alt="Foto 5 do álbum Los Chopitos">
-                            <img src="https://i.imgur.com/mNyaw8e.jpeg" alt="Foto 6 do álbum Los Chopitos">
-                            <img src="https://i.imgur.com/xebKcFF.jpeg" alt="Foto 7 do álbum Los Chopitos">
-                            <img src="https://i.imgur.com/PybhqMG.jpeg" alt="Foto 8 do álbum Los Chopitos">
-                            <img src="https://i.imgur.com/1TyBy8J.jpeg" alt="Foto 9 do álbum Los Chopitos">
-                            <img src="https://i.imgur.com/19fBQg6.jpeg" alt="Foto 10 do álbum Los Chopitos">
-                        </div>
-                    </div>
-                    
-                    <div class="portfolio-item snap-center shrink-0 w-[180px] md:w-[300px] relative transition-all duration-500 transform scale-100" data-album-title="Micaela">
-                        <img class="h-full w-full object-cover rounded-lg aspect-[9/16]" src="https://i.imgur.com/AM7MGW9.jpeg" alt="Micaela">
-                        <div class="portfolio-overlay">
-                            <span class="portfolio-overlay-title">Micaela</span>
-                        </div>
-                        <div class="hidden album-images">
-                            <img src="https://i.imgur.com/3Ug0OLZ.jpeg" alt="Foto 1 Micaela">
-                            <img src="https://i.imgur.com/D7R7pNv.jpeg" alt="Foto 2 Micaela">
-                            <img src="https://i.imgur.com/AM7MGW9.jpeg" alt="Foto 3 Micaela">
-                            <img src="https://i.imgur.com/8bF9uNl.jpeg" alt="Foto 4 Micaela">
-                            <img src="https://i.imgur.com/x29KETy.jpeg" alt="Foto 5 Micaela">
-                            <img src="https://i.imgur.com/XpHNrJ8.jpeg" alt="Foto 6 Micaela">
-                            <img src="https://i.imgur.com/kTRcfRz.jpeg" alt="Foto 7 Micaela">
-                            <img src="https://i.imgur.com/kr4O76X.jpeg" alt="Foto 8 Micaela">
-                            <img src="https://i.imgur.com/sRlQAr2.jpeg" alt="Foto 9 Micaela">
-                        </div>
-                    </div>
-
-                    <div class="portfolio-item snap-center shrink-0 w-[180px] md:w-[300px] relative transition-all duration-500 transform scale-100" data-album-title="Chave D´Ouro">
-                        <img class="h-full w-full object-cover rounded-lg aspect-[9/16]" src="https://i.imgur.com/OXHSzaL.jpeg" alt="Chave D´Ouro">
-                        <div class="portfolio-overlay">
-                            <span class="portfolio-overlay-title">Chave D´Ouro</span>
-                        </div>
-                        <div class="hidden album-images">
-                            <img src="https://i.imgur.com/OXHSzaL.jpeg" alt="Chave DOuro">
-                            <img src="https://i.imgur.com/VfooU2q.jpeg" alt="Chave DOuro">
-                            <img src="https://i.imgur.com/th1XfdU.jpeg" alt="Chave DOuro">
-                            <img src="https://i.imgur.com/iHeoZhv.jpeg" alt="Chave DOuro">
-                            <img src="https://i.imgur.com/OXHSzaL.jpeg" alt="Chave DOuro">
-                            <img src="https://i.imgur.com/TSw5Iww.jpeg" alt="Chave DOuro">
-                            <img src="https://i.imgur.com/Tf1y1gS.jpeg" alt="Chave DOuro">
-                        </div>
-                    </div>
-                    
-                    <div class="portfolio-item snap-center shrink-0 w-[180px] md:w-[300px] relative transition-all duration-500 transform scale-100" data-album-title="Desporto">
-                        <img class="h-full w-full object-cover rounded-lg aspect-[9/16]" src="https://i.imgur.com/g106btW.jpeg" alt="Capa Álbum 5">
-                        <div class="portfolio-overlay">
-                            <span class="portfolio-overlay-title">Desporto</span>
-                        </div>
-                        <div class="hidden album-images">
-                            <img src="https://i.imgur.com/g106btW.jpeg" alt="Desporto">
-                            <img src="https://i.imgur.com/I8ThlM0.jpeg" alt="Desporto">
-                            <img src="https://i.imgur.com/Vf092WB.jpeg" alt="Desporto">
-                            <img src="https://i.imgur.com/mKoOa4Z.jpeg" alt="Desporto">
-                            <img src="https://i.imgur.com/nMXZjz5.jpeg" alt="Desporto">
-                            <img src="https://i.imgur.com/Y8XMz7D.jpeg" alt="Desporto">
-                            <img src="https://i.imgur.com/s0exAgG.jpeg" alt="Desporto">
-                            <img src="https://i.imgur.com/gbhFN7H.jpeg" alt="Desporto">
-                            <img src="https://i.imgur.com/XhKtjeb.jpeg" alt="Desporto">
-                            <img src="https://i.imgur.com/QCpYkvS.jpeg" alt="Desporto">
-                            <img src="https://i.imgur.com/XcOMiwX.jpeg" alt="Desporto">
-                        </div>
-                    </div>
-                    
-                    <div class="portfolio-item snap-center shrink-0 w-[180px] md:w-[300px] relative transition-all duration-500 transform scale-100" data-album-title="Retratos">
-                        <img class="h-full w-full object-cover rounded-lg aspect-[9/16]" src="https://i.imgur.com/53QK77C.jpeg" alt="Capa Álbum 6">
-                        <div class="portfolio-overlay">
-                            <span class="portfolio-overlay-title">Retratos</span>
-                        </div>
-                        <div class="hidden album-images">
-                            <img src="https://i.imgur.com/53QK77C.jpeg" alt="Retratos">
-                            <img src="https://i.imgur.com/6ZBUlHW.jpeg" alt="Retratos">
-                            <img src="https://i.imgur.com/933OqSG.jpeg" alt="Retratos">
-                            <img src="https://i.imgur.com/PfF1Zen.jpeg" alt="Retratos">
-                            <img src="https://i.imgur.com/RxaV2Qv.jpeg" alt="Retratos">
-                            <img src="https://i.imgur.com/Uwja1J7.jpeg" alt="Retratos">
-                            <img src="https://i.imgur.com/fBJUjk3.jpeg" alt="Retratos">
-                            <img src="https://i.imgur.com/oCzHpJp.jpeg" alt="Retratos">
-                            <img src="https://i.imgur.com/sQigtHL.jpeg" alt="Retratos">
-                            <img src="https://i.imgur.com/zyYR6L1.jpeg" alt="Retratos">
-                            <img src="https://i.imgur.com/i2qf9p0.jpeg" alt="Retratos">
-                        </div>
-                    </div>
-
-                    
+    <main>
+        <section class="hero-section h-screen flex items-center justify-center text-center">
+            <div class="max-w-3xl px-4">
+                <h1 class="text-5xl md:text-7xl font-black text-white leading-tight mb-4">MOMENTOS ÚNICOS, MEMÓRIAS ETERNAS</h1>
+                <p class="text-xl text-gray-300 mb-8">Fotografia e Videografia que contam a sua história com emoção e arte. Casamentos, eventos e projetos comerciais em Portugal inteiro.</p>
+                <a href="#contacto" class="btn-primary">Peça o seu orçamento</a>
+            </div>
         </section>
-            
-            <section id="apoio" class="py-20 bg-[#121212]">
-                <div class="container mx-auto px-6 text-center">
-                    <h2 class="section-title">Apoia o Meu <span class="accent-color">Trabalho</span></h2>
-                    <p class="text-center text-gray-400 max-w-2xl mx-auto mb-12">
-                        O seu apoio é fundamental para evoluir e continuar a investir em equipamento de ponta. 
-                        Se gosta do que faço, considere deixar uma contribuição. Qualquer valor é significante!
-                    </p>
-                    
-                    <div class="max-w-xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-8">
-                        <a href="tel:+351928119001" 
-                        class="bg-[#1a1a1a] p-8 rounded-lg border border-gray-800 flex flex-col items-center justify-center hover:border-gray-600 transition-colors">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/1/11/MB_WAY.jpg" 
-                                alt="MB WAY" 
-                                class="h-16 w-auto mb-4 object-contain rounded-xl">
-                            <p class="text-lg font-bold text-gray-300 hover:text-white transition-colors">(+351) 928 119 001</p>
-                        </a>
 
-                        <a href="https://revolut.me/martimwhite" target="_blank" 
-                        class="bg-[#1a1a1a] p-8 rounded-lg border border-gray-800 flex flex-col items-center justify-center hover:border-gray-600 transition-colors">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLEsQthE6cRJ5xd3xFMZW7EjSqUwCE5Ox8ZjnX0M4U-Ai4QpNtW1M1gEnZBy9qni1F8-w&usqp=CAU" 
-                                alt="Revolut" 
-                                class="h-16 w-auto mb-4 object-contain rounded-xl revolut-logo-glow">
-                            <p class="text-lg font-bold text-gray-300">@martimwhite</p>
-                        </a>
+        <section id="sobre" class="py-20 bg-[#1a1a1a]">
+            <div class="container mx-auto px-6 text-center">
+                   <h2 class="section-title">Quem <span class="accent-color">Sou</span></h2>
+                   <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-12">
+                         <img src="https://i.imgur.com/uVk2weW.jpeg" alt="Martim, o fotógrafo da Whitepictures" class="rounded-full w-80 h-80 object-cover border-4 border-gray-800">
+                         <div class="text-left">
+                             <p class="text-lg mb-4 text-gray-300">Olá! Sou o Martim, o criador por trás da White Pictures. Desde sempre apaixonado por contar histórias através de imagens, especializei-me em fotografia e vídeo para capturar a essência de cada momento.</p>
+                             <p class="text-lg text-gray-300">Com um olhar atento aos detalhes e uma abordagem criativa, o meu objetivo é criar recordações visuais que não só documentam, mas também transmitem a emoção do instante. Vamos criar algo memorável juntos.</p>
+                         </div>
+                   </div>
+            </div>
+        </section>
+
+        <section id="servicos" class="py-20">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title">Os Meus <span class="accent-color">Serviços</span></h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="bg-[#1a1a1a] p-8 rounded-lg text-center border border-gray-800 transform hover:-translate-y-2 transition-transform duration-300"><h3 class="text-xl font-bold mb-3 accent-color">Casamentos</h3><p class="text-gray-400">Cobertura completa (foto e vídeo) do seu dia especial, com um estilo cinematográfico e emotivo.</p></div>
+                    <div class="bg-[#1a1a1a] p-8 rounded-lg text-center border border-gray-800 transform hover:-translate-y-2 transition-transform duration-300"><h3 class="text-xl font-bold mb-3 accent-color">Eventos Sociais</h3><p class="text-gray-400">Festas, batizados e conferências. Capturamos a energia e os momentos mais importantes.</p></div>
+                    <div class="bg-[#1a1a1a] p-8 rounded-lg text-center border border-gray-800 transform hover:-translate-y-2 transition-transform duration-300"><h3 class="text-xl font-bold mb-3 accent-color">Vídeos Promocionais</h3><p class="text-gray-400">Criamos vídeos dinâmicos para a sua marca, ideais para redes sociais e publicidade digital.</p></div>
+                    <div class="bg-[#1a1a1a] p-8 rounded-lg text-center border border-gray-800 transform hover:-translate-y-2 transition-transform duration-300"><h3 class="text-xl font-bold mb-3 accent-color">Sessões Fotográficas</h3><p class="text-gray-400">Sessões individuais, de casal ou de família, para criar retratos autênticos e memoráveis.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="portfolio" class="py-20 bg-[#1a1a1a]">
+        <div class="container mx-auto px-6">
+            <h2 class="section-title">O Meu <span class="accent-color">Trabalho</span></h2>
+            
+            <div id="portfolio-carousel" class="flex space-x-6 pb-4 overflow-x-scroll snap-x snap-mandatory scroll-smooth pl-16 pr-16 md:pl-32 md:pr-32">
+                
+                <div class="portfolio-item snap-center shrink-0 w-[180px] md:w-[300px] relative transition-all duration-500 transform scale-100" data-album-title="Slap">
+                    <img class="h-full w-full object-cover rounded-lg aspect-[9/16]" src="https://i.imgur.com/6czwjRe.jpeg" alt="Capa Álbum Slap">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-overlay-title">Slap</span>
+                    </div>
+                    <div class="hidden album-images">
+                        <img src="https://i.imgur.com/6ndfi5A.jpeg" alt="Foto 1 do álbum Slap">
+                        <img src="https://i.imgur.com/7Ic9Vfq.jpeg" alt="Foto 2 do álbum Slap">
+                        <img src="https://i.imgur.com/OFzO7NP.jpeg" alt="Foto 3 do álbum Slap">
+                        <img src="https://i.imgur.com/AkU7pCC.jpeg" alt="Foto 4 do álbum Slap">
+                        <img src="https://i.imgur.com/nT8gXTy.jpeg" alt="Foto 5 do álbum Slap">
+                        <img src="https://i.imgur.com/Ndr7Nwq.jpeg" alt="Foto 6 do álbum Slap">
+                        <img src="https://i.imgur.com/27urqG3.jpeg" alt="Foto 7 do álbum Slap">
+                        <img src="https://i.imgur.com/hAwKVhZ.jpeg" alt="Foto 8 do álbum Slap">
+                        <img src="https://i.imgur.com/AVeChmr.jpeg" alt="Foto 9 do álbum Slap">
+                        <img src="https://i.imgur.com/8dEipFK.jpeg" alt="Foto 10 do álbum Slap">
                     </div>
                 </div>
-            </section>
+                
+                <div class="portfolio-item snap-center shrink-0 w-[180px] md:w-[300px] relative transition-all duration-500 transform scale-100" data-album-title="Los Chopitos">
+                    <img class="h-full w-full object-cover rounded-lg aspect-[9/16]" src="https://i.imgur.com/3laxmjy.jpeg" alt="Los Chopitos">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-overlay-title">Los Chopitos</span>
+                    </div>
+                    <div class="hidden album-images">
+                        <img src="https://i.imgur.com/3laxmjy.jpeg" alt="Foto 1 do álbum Los Chopitos">
+                        <img src="https://i.imgur.com/vR4bFLJ.jpeg" alt="Foto 2 do álbum Los Chopitos">
+                        <img src="https://i.imgur.com/p4I1BbK.jpeg" alt="Foto 3 do álbum Los Chopitos">
+                        <img src="https://i.imgur.com/6b1S5pj.jpeg" alt="Foto 4 do álbum Los Chopitos">
+                        <img src="https://i.imgur.com/wsH2nrv.jpeg" alt="Foto 5 do álbum Los Chopitos">
+                        <img src="https://i.imgur.com/mNyaw8e.jpeg" alt="Foto 6 do álbum Los Chopitos">
+                        <img src="https://i.imgur.com/xebKcFF.jpeg" alt="Foto 7 do álbum Los Chopitos">
+                        <img src="https://i.imgur.com/PybhqMG.jpeg" alt="Foto 8 do álbum Los Chopitos">
+                        <img src="https://i.imgur.com/1TyBy8J.jpeg" alt="Foto 9 do álbum Los Chopitos">
+                        <img src="https://i.imgur.com/19fBQg6.jpeg" alt="Foto 10 do álbum Los Chopitos">
+                    </div>
+                </div>
+                
+                <div class="portfolio-item snap-center shrink-0 w-[180px] md:w-[300px] relative transition-all duration-500 transform scale-100" data-album-title="Micaela">
+                    <img class="h-full w-full object-cover rounded-lg aspect-[9/16]" src="https://i.imgur.com/AM7MGW9.jpeg" alt="Micaela">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-overlay-title">Micaela</span>
+                    </div>
+                    <div class="hidden album-images">
+                        <img src="https://i.imgur.com/3Ug0OLZ.jpeg" alt="Foto 1 Micaela">
+                        <img src="https://i.imgur.com/D7R7pNv.jpeg" alt="Foto 2 Micaela">
+                        <img src="https://i.imgur.com/AM7MGW9.jpeg" alt="Foto 3 Micaela">
+                        <img src="https://i.imgur.com/8bF9uNl.jpeg" alt="Foto 4 Micaela">
+                        <img src="https://i.imgur.com/x29KETy.jpeg" alt="Foto 5 Micaela">
+                        <img src="https://i.imgur.com/XpHNrJ8.jpeg" alt="Foto 6 Micaela">
+                        <img src="https://i.imgur.com/kTRcfRz.jpeg" alt="Foto 7 Micaela">
+                        <img src="https://i.imgur.com/kr4O76X.jpeg" alt="Foto 8 Micaela">
+                        <img src="https://i.imgur.com/sRlQAr2.jpeg" alt="Foto 9 Micaela">
+                    </div>
+                </div>
 
-            <section id="contacto" class="py-20"><div class="container mx-auto px-6"><h2 class="section-title">Vamos Eternizar O <span class="accent-color">Teu Momento</span></h2><div class="max-w-3xl mx-auto grid md:grid-cols-2 gap-12 bg-[#1a1a1a] p-8 rounded-lg border border-gray-800"><div><h3 class="text-2xl font-bold mb-4">Contacte-me</h3><p class="text-gray-300 mb-4">Tem um projeto em mente? Fale-me da sua ideia. Estou disponível para criar um orçamento personalizado para si.</p><div class="space-y-3"><p class="flex items-center"><svg class="w-5 h-5 mr-3 accent-color" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg> (+351) 928 119 001</p><p class="flex items-center"><svg class="w-5 h-5 mr-3 accent-color" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg> martim.whitepictures@gmail.com</p>
-                                <p class="flex items-center"><svg class="w-5 h-5 mr-3 accent-color" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg> Portugal inteiro</p>
-                            </div></div><form action="https://formspree.io/f/mrbykevn" method="POST"><div class="mb-4"><label for="name" class="block mb-2">Nome</label><input type="text" id="name" name="name" required class="w-full p-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-[#d4af37]"></div><div class="mb-4"><label for="email" class="block mb-2">Email</label><input type="email" id="email" name="email" required class="w-full p-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-[#d4af37]"></div><div class="mb-4"><label for="service" class="block mb-2">Tipo de Serviço</label><select id="service" name="service" class="w-full p-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-[#d4af37]"><option value="">Selecione um serviço...</option><option value="Eventos Sociais">Eventos Sociais</option><option value="Vídeo Promocional">Vídeo Promocional</option><option value="Sessão Fotográfica">Sessão Fotográfica</option><option value="Outro">Outro</option></select></div><div id="social-event-options" class="mb-4 hidden"><label for="social-event-type" class="block mb-2">Tipo de Evento Social</label><select id="social-event-type" name="social_event_type" class="w-full p-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-[#d4af37]"><option>Casamento</option><option>Batizado</option><option>Divórcio</option><option>Festa de Aniversário</option></select></div><div id="other-service-input" class="mb-4 hidden"><label for="other-service-text" class="block mb-2">Especifique o tipo de evento</label><input type="text" id="other-service-text" name="other_service_text" class="w-full p-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-[#d4af37]"></div><div class="mb-4"><label for="message" class="block mb-2">Mensagem</label><textarea id="message" name="message" rows="4" required class="w-full p-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-[#d4af37]"></textarea></div><button type="submit" class="btn-primary w-full">Enviar Pedido</button></form></div></div></section>
-        </main>
+                <div class="portfolio-item snap-center shrink-0 w-[180px] md:w-[300px] relative transition-all duration-500 transform scale-100" data-album-title="Chave D´Ouro">
+                    <img class="h-full w-full object-cover rounded-lg aspect-[9/16]" src="https://i.imgur.com/OXHSzaL.jpeg" alt="Chave D´Ouro">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-overlay-title">Chave D´Ouro</span>
+                    </div>
+                    <div class="hidden album-images">
+                        <img src="https://i.imgur.com/OXHSzaL.jpeg" alt="Chave DOuro">
+                        <img src="https://i.imgur.com/VfooU2q.jpeg" alt="Chave DOuro">
+                        <img src="https://i.imgur.com/th1XfdU.jpeg" alt="Chave DOuro">
+                        <img src="https://i.imgur.com/iHeoZhv.jpeg" alt="Chave DOuro">
+                        <img src="https://i.imgur.com/OXHSzaL.jpeg" alt="Chave DOuro">
+                        <img src="https://i.imgur.com/TSw5Iww.jpeg" alt="Chave DOuro">
+                        <img src="https://i.imgur.com/Tf1y1gS.jpeg" alt="Chave DOuro">
+                    </div>
+                </div>
+                
+                <div class="portfolio-item snap-center shrink-0 w-[180px] md:w-[300px] relative transition-all duration-500 transform scale-100" data-album-title="Desporto">
+                    <img class="h-full w-full object-cover rounded-lg aspect-[9/16]" src="https://i.imgur.com/g106btW.jpeg" alt="Capa Álbum 5">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-overlay-title">Desporto</span>
+                    </div>
+                    <div class="hidden album-images">
+                        <img src="https://i.imgur.com/g106btW.jpeg" alt="Desporto">
+                        <img src="https://i.imgur.com/I8ThlM0.jpeg" alt="Desporto">
+                        <img src="https://i.imgur.com/Vf092WB.jpeg" alt="Desporto">
+                        <img src="https://i.imgur.com/mKoOa4Z.jpeg" alt="Desporto">
+                        <img src="https://i.imgur.com/nMXZjz5.jpeg" alt="Desporto">
+                        <img src="https://i.imgur.com/Y8XMz7D.jpeg" alt="Desporto">
+                        <img src="https://i.imgur.com/s0exAgG.jpeg" alt="Desporto">
+                        <img src="https://i.imgur.com/gbhFN7H.jpeg" alt="Desporto">
+                        <img src="https://i.imgur.com/XhKtjeb.jpeg" alt="Desporto">
+                        <img src="https://i.imgur.com/QCpYkvS.jpeg" alt="Desporto">
+                        <img src="https://i.imgur.com/XcOMiwX.jpeg" alt="Desporto">
+                    </div>
+                </div>
+                
+                <div class="portfolio-item snap-center shrink-0 w-[180px] md:w-[300px] relative transition-all duration-500 transform scale-100" data-album-title="Retratos">
+                    <img class="h-full w-full object-cover rounded-lg aspect-[9/16]" src="https://i.imgur.com/53QK77C.jpeg" alt="Capa Álbum 6">
+                    <div class="portfolio-overlay">
+                        <span class="portfolio-overlay-title">Retratos</span>
+                    </div>
+                    <div class="hidden album-images">
+                        <img src="https://i.imgur.com/53QK77C.jpeg" alt="Retratos">
+                        <img src="https://i.imgur.com/6ZBUlHW.jpeg" alt="Retratos">
+                        <img src="https://i.imgur.com/933OqSG.jpeg" alt="Retratos">
+                        <img src="https://i.imgur.com/PfF1Zen.jpeg" alt="Retratos">
+                        <img src="https://i.imgur.com/RxaV2Qv.jpeg" alt="Retratos">
+                        <img src="https://i.imgur.com/Uwja1J7.jpeg" alt="Retratos">
+                        <img src="https://i.imgur.com/fBJUjk3.jpeg" alt="Retratos">
+                        <img src="https://i.imgur.com/oCzHpJp.jpeg" alt="Retratos">
+                        <img src="https://i.imgur.com/sQigtHL.jpeg" alt="Retratos">
+                        <img src="https://i.imgur.com/zyYR6L1.jpeg" alt="Retratos">
+                        <img src="https://i.imgur.com/i2qf9p0.jpeg" alt="Retratos">
+                    </div>
+                </div>
+
+                
+    </section>
         
-        <footer class="bg-[#1a1a1a] border-t border-gray-800">
-            <div class="container mx-auto text-center p-6">
-                <div class="flex justify-center space-x-6 mb-4">
-                    <a href="https://www.instagram.com/whitepicturesoficial?igsh=NDJtNmZxNTZod2Ro" target="_blank" class="text-gray-400 hover:opacity-80 transition-opacity">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/1200px-Instagram_icon.png" alt="Instagram" class="w-7 h-7">
+        <section id="apoio" class="py-20 bg-[#121212]">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="section-title">Apoia o Meu <span class="accent-color">Trabalho</span></h2>
+                <p class="text-center text-gray-400 max-w-2xl mx-auto mb-12">
+                    O seu apoio é fundamental para evoluir e continuar a investir em equipamento de ponta. 
+                    Se gosta do que faço, considere deixar uma contribuição. Qualquer valor é significante!
+                </p>
+                
+                <div class="max-w-xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-8">
+                    <a href="tel:+351928119001" 
+                       class="bg-[#1a1a1a] p-8 rounded-lg border border-gray-800 flex flex-col items-center justify-center hover:border-gray-600 transition-colors">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/1/11/MB_WAY.jpg" 
+                              alt="MB WAY" 
+                              class="h-16 w-auto mb-4 object-contain rounded-xl">
+                        <p class="text-lg font-bold text-gray-300 hover:text-white transition-colors">(+351) 928 119 001</p>
                     </a>
-                    <a href="https://wa.link/su3o2p" target="_blank" class="text-gray-400 hover:opacity-80 transition-opacity">
-                        <img src="https://png.pngtree.com/png-vector/20221018/ourmid/pngtree-whatsapp-mobile-software-icon-png-image_6315991.png" alt="WhatsApp" class="w-7 h-7">
+
+                    <a href="https://revolut.me/martimwhite" target="_blank" 
+                       class="bg-[#1a1a1a] p-8 rounded-lg border border-gray-800 flex flex-col items-center justify-center hover:border-gray-600 transition-colors">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLEsQthE6cRJ5xd3xFMZW7EjSqUwCE5Ox8ZjnX0M4U-Ai4QpNtW1M1gEnZBy9qni1F8-w&usqp=CAU" 
+                              alt="Revolut" 
+                              class="h-16 w-auto mb-4 object-contain rounded-xl revolut-logo-glow">
+                        <p class="text-lg font-bold text-gray-300">@martimwhite</p>
                     </a>
                 </div>
-                <p class="text-gray-400">&copy; <span id="year-footer"></span> White Pictures. Todos os direitos reservados.</p>
             </div>
-        </footer>
-    </div>
+        </section>
+
+        <section id="contacto" class="py-20"><div class="container mx-auto px-6"><h2 class="section-title">Vamos Eternizar O <span class="accent-color">Teu Momento</span></h2><div class="max-w-3xl mx-auto grid md:grid-cols-2 gap-12 bg-[#1a1a1a] p-8 rounded-lg border border-gray-800"><div><h3 class="text-2xl font-bold mb-4">Contacte-me</h3><p class="text-gray-300 mb-4">Tem um projeto em mente? Fale-me da sua ideia. Estou disponível para criar um orçamento personalizado para si.</p><div class="space-y-3"><p class="flex items-center"><svg class="w-5 h-5 mr-3 accent-color" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg> (+351) 928 119 001</p><p class="flex items-center"><svg class="w-5 h-5 mr-3 accent-color" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg> martim.whitepictures@gmail.com</p>
+                            <p class="flex items-center"><svg class="w-5 h-5 mr-3 accent-color" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg> Portugal inteiro</p>
+                        </div></div><form action="https://formspree.io/f/mrbykevn" method="POST"><div class="mb-4"><label for="name" class="block mb-2">Nome</label><input type="text" id="name" name="name" required class="w-full p-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-[#d4af37]"></div><div class="mb-4"><label for="email" class="block mb-2">Email</label><input type="email" id="email" name="email" required class="w-full p-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-[#d4af37]"></div><div class="mb-4"><label for="service" class="block mb-2">Tipo de Serviço</label><select id="service" name="service" class="w-full p-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-[#d4af37]"><option value="">Selecione um serviço...</option><option value="Eventos Sociais">Eventos Sociais</option><option value="Vídeo Promocional">Vídeo Promocional</option><option value="Sessão Fotográfica">Sessão Fotográfica</option><option value="Outro">Outro</option></select></div><div id="social-event-options" class="mb-4 hidden"><label for="social-event-type" class="block mb-2">Tipo de Evento Social</label><select id="social-event-type" name="social_event_type" class="w-full p-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-[#d4af37]"><option>Casamento</option><option>Batizado</option><option>Divórcio</option><option>Festa de Aniversário</option></select></div><div id="other-service-input" class="mb-4 hidden"><label for="other-service-text" class="block mb-2">Especifique o tipo de evento</label><input type="text" id="other-service-text" name="other_service_text" class="w-full p-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-[#d4af37]"></div><div class="mb-4"><label for="message" class="block mb-2">Mensagem</label><textarea id="message" name="message" rows="4" required class="w-full p-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-[#d4af37]"></textarea></div><button type="submit" class="btn-primary w-full">Enviar Pedido</button></form></div></div></section>
+    </main>
     
-    <!-- NOVO CONTEÚDO: WHITE.AI EDITOR SIMPLIFICADO -->
-    <div id="editor-content" class="hidden min-h-screen pt-12 p-4 sm:p-8 flex flex-col items-center">
-        <div class="w-full max-w-xl">
-            <!-- Título Simples (Sem Órbita) -->
-            <h1 class="text-3xl font-black mb-2 text-center accent-color tracking-wider">WHITE.AI</h1>
-            <p class="text-center text-sm mb-8 text-gray-400">Motor de estilo cinematográfico alimentado pela IA.</p>
-            
-            <!-- Área de Upload e Preview -->
-            <div class="content-box p-6 rounded-xl shadow-lg mb-6">
-                <h2 class="text-xl font-bold mb-3 text-gray-200">1. Carregar Fotos</h2>
-                
-                <label for="imageUpload" class="file-upload-box flex flex-col items-center justify-center p-6 rounded-lg text-gray-400">
-                    <input type="file" id="imageUpload" accept="image/*" multiple class="hidden" onchange="handleImageUpload(event)">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mb-2 accent-color" viewBox="0 0 20 24" fill="currentColor">
-                        <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd" />
-                    </svg>
-                    <span id="uploadText" class="text-sm">Clique para carregar (até 50 MB)</span>
-                </label>
-                
-                <!-- Pré-visualização da imagem -->
-                <img id="imagePreview" src="" alt="Pré-visualização da Imagem Carregada" class="w-full h-auto mt-4 rounded-lg hidden border-2 border-gray-700">
+    <footer class="bg-[#1a1a1a] border-t border-gray-800">
+        <div class="container mx-auto text-center p-6">
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="https://www.instagram.com/whitepicturesoficial?igsh=NDJtNmZxNTZod2Ro" target="_blank" class="text-gray-400 hover:opacity-80 transition-opacity">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/1200px-Instagram_icon.png" alt="Instagram" class="w-7 h-7">
+                </a>
+                <a href="https://wa.link/su3o2p" target="_blank" class="text-gray-400 hover:opacity-80 transition-opacity">
+                      <img src="https://png.pngtree.com/png-vector/20221018/ourmid/pngtree-whatsapp-mobile-software-icon-png-image_6315991.png" alt="WhatsApp" class="w-7 h-7">
+                </a>
             </div>
-
-            <!-- Área de Prompt -->
-            <div class="content-box p-6 rounded-xl shadow-lg mb-6">
-                <h2 class="text-xl font-bold mb-3 text-gray-200">2. Estilo Cinematográfico</h2>
-                <label for="promptInput" class="block text-sm font-medium mb-2 text-gray-400">
-                    Descreva o estilo (Ex: "Iluminação dramática azul e roxa, alto contraste, estilo Blade Runner")
-                </label>
-                <textarea id="promptInput" rows="3" class="text-input w-full p-3 rounded-lg focus:ring-2 transition resize-none" placeholder="Digite seu estilo aqui..."></textarea>
-                
-                <!-- NOVO AVISO COM EFEITO PULSAR -->
-                <div class="pulsate-warning text-sm text-center">
-                     ATENÇÃO: A Inteligência Artificial pode deformar alguns detalhes da foto! 
-                </div>
-            </div>
-
-            <!-- Botão de Geração -->
-            <button id="generateButton" onclick="editCinematicImage()" class="btn-cinematic w-full">
-                <span>Aplicar Efeito Cinematográfico</span>
-            </button>
-
-            <!-- Área de Status/Carregamento -->
-            <div id="statusArea" class="mt-6 flex flex-col items-center justify-center min-h-[50px]">
-                <!-- Mensagens e Spinner de Carregamento aqui -->
-            </div>
-
-            <!-- Área de Saída da Imagem e Download -->
-            <div id="imageOutputContainer" class="mt-8">
-                <h2 class="text-2xl font-bold mb-4 text-gray-200 hidden text-center" id="resultTitle">Resultado da Edição</h2>
-                <img id="generatedImage" src="" alt="Imagem Cinematográfica Gerada pela IA" class="w-full h-auto rounded-xl shadow-2xl transition duration-500 opacity-0 mb-4" onerror="this.style.display='none'; document.getElementById('resultTitle').classList.add('hidden');">
-                
-                <!-- Botão ÚNICO de Download (Watermarked) -->
-                <button id="downloadWatermarkedButton" onclick="downloadImage()" class="btn-primary w-full hidden">
-                    Exportar para a Galeria (Com Marca d'Água)
-                </button>
-            </div>
-            
+            <p class="text-gray-400">&copy; <span id="year"></span> White Pictures. Todos os direitos reservados.</p>
         </div>
-    </div>
-    <!-- FIM DO NOVO CONTEÚDO -->
+    </footer>
 
     <a href="#" id="back-to-top-btn" class="fixed bottom-5 right-5 bg-[#d4af37] text-[#121212] p-3 rounded-full shadow-lg opacity-0 pointer-events-none z-50"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path></svg></a>
     
@@ -525,120 +370,14 @@
     </div>
 </div>
     <script>
-        // -----------------------------------------------------
-        // 1. DECLARAÇÃO DE ELEMENTOS (TUDO NO TOPO)
-        // -----------------------------------------------------
-        
-        // Elementos do Website Principal
-        const websiteContent = document.getElementById('website-content');
-        const backToTopBtn = document.getElementById('back-to-top-btn');
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Lógica da galeria Lightbox
         const portfolioItems = document.querySelectorAll('.portfolio-item');
         const lightbox = document.getElementById('lightbox');
         const lightboxGrid = document.getElementById('lightbox-grid');
         const lightboxTitle = document.getElementById('lightbox-title');
         const closeLightbox = document.getElementById('close-lightbox');
-        const serviceSelect = document.getElementById('service');
-        const socialEventOptions = document.getElementById('social-event-options');
-        const otherServiceInput = document.getElementById('other-service-input');
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
-
-        // Elementos do Editor IA
-        const editorContent = document.getElementById('editor-content');
-        const imageUpload = document.getElementById('imageUpload');
-        const imagePreview = document.getElementById('imagePreview');
-        const promptInput = document.getElementById('promptInput');
-        const generateButton = document.getElementById('generateButton');
-        const statusArea = document.getElementById('statusArea');
-        const generatedImage = document.getElementById('generatedImage');
-        const resultTitle = document.getElementById('resultTitle');
-        const uploadText = document.getElementById('uploadText');
-        const downloadWatermarkedButton = document.getElementById('downloadWatermarkedButton');
-        
-        // Variáveis de Estado do Editor IA
-        let base64Image = null; 
-        let imageMimeType = null; 
-        const MAX_FILE_SIZE_BYTES = 50 * 1024 * 1024; 
-        const MAX_IMAGE_DIMENSION = 1536; 
-        const JPEG_QUALITY = 0.95; 
-
-        // Configuração da API para Edição de Imagem
-        const apiKey = "";
-        const API_MODEL_IMAGE = "gemini-2.5-flash-image-preview";
-        const apiUrlImage = `https://generativelanguage.googleapis.com/v1beta/models/${API_MODEL_IMAGE}:generateContent?key=${apiKey}`;
-
-        // -----------------------------------------------------
-        // 2. FUNÇÕES PRINCIPAIS E INICIALIZAÇÃO
-        // -----------------------------------------------------
-
-        document.getElementById('year-footer').textContent = new Date().getFullYear();
-
-        /**
-         * Função principal para gerir a rota com base na hash da URL.
-         */
-        function handleRouting() {
-            const hash = window.location.hash || '#home';
-            
-            const isEditor = hash === '#editor';
-            backToTopBtn.classList.toggle('hidden', isEditor);
-
-            if (isEditor) {
-                websiteContent.classList.add('hidden');
-                editorContent.classList.remove('hidden');
-                document.title = 'Whitepictures | WHITE.AI';
-                window.scrollTo(0, 0); 
-            } else {
-                editorContent.classList.add('hidden');
-                websiteContent.classList.remove('hidden');
-                document.title = 'Whitepictures | Fotografia e Vídeo Profissional';
-                
-                if (hash !== '#home' && hash.startsWith('#')) {
-                    const targetElement = document.querySelector(hash);
-                    if (targetElement) {
-                        setTimeout(() => {
-                            targetElement.scrollIntoView({ behavior: 'smooth' });
-                        }, 50); 
-                    }
-                } else if (hash === '#home' || hash === '') {
-                    window.scrollTo(0, 0); 
-                }
-            }
-        }
-
-        window.addEventListener('hashchange', handleRouting);
-        window.addEventListener('load', () => {
-            handleRouting();
-        });
-        
-        // -----------------------------------------------------
-        // 3. LISTENERS DO WEBSITE PRINCIPAL E UTILIDADES
-        // -----------------------------------------------------
-        
-        document.querySelectorAll('.nav-anchor').forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const hash = link.getAttribute('href');
-                if (!editorContent.classList.contains('hidden')) {
-                    window.location.hash = hash; 
-                } else {
-                    const targetElement = document.querySelector(hash);
-                    if (targetElement) {
-                        targetElement.scrollIntoView({ behavior: 'smooth' });
-                    }
-                }
-            });
-        });
-
-        document.querySelectorAll('.nav-route').forEach(link => {
-             link.addEventListener('click', (e) => {
-                const hash = link.getAttribute('href');
-                if (hash === window.location.hash) {
-                    e.preventDefault();
-                    window.scrollTo(0, 0); 
-                }
-            });
-        });
 
         function openLightbox(albumElement) {
             const title = albumElement.dataset.albumTitle;
@@ -660,7 +399,7 @@
             setTimeout(() => lightbox.classList.add('opacity-100'), 20);
         }
 
-        function closeLightboxHandler() {
+        function close() {
             lightbox.classList.remove('opacity-100');
             setTimeout(() => {
                 lightbox.classList.add('hidden');
@@ -669,10 +408,14 @@
         }
 
         portfolioItems.forEach(item => { item.addEventListener('click', () => openLightbox(item)); });
-        closeLightbox.addEventListener('click', closeLightboxHandler);
-        lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightboxHandler(); });
-        document.addEventListener('keydown', (e) => { if (!lightbox.classList.contains('hidden') && e.key === 'Escape') closeLightboxHandler(); });
+        closeLightbox.addEventListener('click', close);
+        lightbox.addEventListener('click', (e) => { if (e.target === lightbox) close(); });
+        document.addEventListener('keydown', (e) => { if (!lightbox.classList.contains('hidden') && e.key === 'Escape') close(); });
 
+        const serviceSelect = document.getElementById('service');
+        const socialEventOptions = document.getElementById('social-event-options');
+        const otherServiceInput = document.getElementById('other-service-input');
+        
         if(serviceSelect) {
             serviceSelect.addEventListener('change', function() {
                 if (this.value === 'Eventos Sociais') {
@@ -688,346 +431,14 @@
             });
         }
 
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
         mobileMenuButton.addEventListener('click', () => { mobileMenu.classList.toggle('-translate-x-full'); });
-        mobileNavLinks.forEach(link => { 
-            link.addEventListener('click', () => { 
-                mobileMenu.classList.add('-translate-x-full');
-            }); 
-        });
+        mobileNavLinks.forEach(link => { link.addEventListener('click', () => { mobileMenu.classList.add('-translate-x-full'); }); });
 
-        window.addEventListener('scroll', () => { 
-             if (window.scrollY > 300 && editorContent.classList.contains('hidden')) { 
-                 backToTopBtn.classList.remove('opacity-0', 'pointer-events-none'); 
-             } else { 
-                 backToTopBtn.classList.add('opacity-0', 'pointer-events-none'); 
-             } 
-        });
-
-        // -----------------------------------------------------
-        // 4. LÓGICA DO EDITOR IA
-        // -----------------------------------------------------
-
-        function displayError(message) {
-            statusArea.innerHTML = `<div class="bg-red-900/50 text-red-300 p-3 rounded-lg w-full text-center border border-red-700">❌ Erro: ${message}</div>`;
-        }
-
-        function processImageAndConvertBase64(file) {
-            return new Promise((resolve, reject) => {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const img = new Image();
-                    img.onload = function() {
-                        const canvas = document.createElement('canvas');
-                        let width = img.width;
-                        let height = img.height;
-
-                        if (width > MAX_IMAGE_DIMENSION || height > MAX_IMAGE_DIMENSION) {
-                            if (width > height) {
-                                height *= MAX_IMAGE_DIMENSION / width;
-                                width = MAX_IMAGE_DIMENSION;
-                            } else {
-                                width *= MAX_IMAGE_DIMENSION / height;
-                                height = MAX_IMAGE_DIMENSION;
-                            }
-                        }
-
-                        canvas.width = width;
-                        canvas.height = height;
-
-                        const ctx = canvas.getContext('2d');
-                        ctx.drawImage(img, 0, 0, width, height);
-
-                        const optimizedDataUrl = canvas.toDataURL('image/jpeg', JPEG_QUALITY);
-                        
-                        imageMimeType = 'image/jpeg'; 
-                        base64Image = optimizedDataUrl.split(',')[1];
-                        
-                        imagePreview.src = optimizedDataUrl;
-                        imagePreview.classList.remove('hidden');
-
-                        resolve();
-                    };
-                    img.onerror = () => reject(new Error("Erro ao carregar a imagem (ficheiro corrompido?)."));
-                    img.src = e.target.result;
-                };
-                reader.onerror = () => reject(new Error("Erro ao ler o ficheiro."));
-                reader.readAsDataURL(file);
-            });
-        }
-        
-        async function handleImageUpload(event) {
-            const file = event.target.files[0];
-            
-            base64Image = null;
-            imageMimeType = null;
-            
-            imagePreview.classList.add('hidden');
-            imagePreview.src = "";
-            statusArea.innerHTML = '';
-            uploadText.textContent = 'Clique para carregar (até 50 MB)';
-            downloadWatermarkedButton.classList.add('hidden');
-
-            if (!file) return;
-
-            if (file.size > MAX_FILE_SIZE_BYTES) {
-                displayError(`O ficheiro é demasiado grande (${(file.size / 1024 / 1024).toFixed(1)} MB). Limite local: 50 MB.`);
-                imageUpload.value = ''; 
-                return;
-            }
-
-            uploadText.textContent = `A carregar: ${file.name} (${(file.size / 1024 / 1024).toFixed(1)} MB)`;
-
-            try {
-                statusArea.innerHTML = `<div class="text-gray-400 flex items-center justify-center space-x-2">
-                    <div class="loader w-5 h-5 !border-top-color:[#d4af37]"></div>
-                    <span>Otimizando imagem localmente (Alta Qualidade)...</span>
-                </div>`;
-                generateButton.disabled = true;
-
-                await processImageAndConvertBase64(file);
-                
-                statusArea.innerHTML = `<div class="text-green-500">✅ Imagem otimizada e pronta. Dimensão: ${imagePreview.naturalWidth}x${imagePreview.naturalHeight}.</div>`;
-                uploadText.textContent = `Ficheiro otimizado: ${file.name}`;
-
-
-            } catch (error) {
-                displayError(error.message);
-                imageUpload.value = ''; 
-                imagePreview.classList.add('hidden');
-            } finally {
-                generateButton.disabled = false;
-            }
-        }
-
-        async function fetchWithBackoff(fetcher, retries = 3, delay = 1000) {
-            try {
-                return await fetcher();
-            } catch (error) {
-                if (retries === 0) {
-                    console.error("Tentativas de API esgotadas.", error);
-                    throw new Error("O servidor demorou muito para responder ou encontrou um erro.");
-                }
-                await new Promise(resolve => setTimeout(resolve, delay));
-                return fetchWithBackoff(fetcher, retries - 1, delay * 2);
-            }
-        }
-
-        /**
-         * Aplica marcas d'água separadas e legíveis.
-         */
-        function applyWatermark(base64DataUrl) {
-            return new Promise((resolve, reject) => {
-                const img = new Image();
-                img.onload = function() {
-                    const canvas = document.createElement('canvas');
-                    const ctx = canvas.getContext('2d');
-
-                    canvas.width = img.width;
-                    canvas.height = img.height;
-
-                    ctx.drawImage(img, 0, 0);
-
-                    // --- INÍCIO DA MARCA D'ÁGUA ---
-                    const texts = [
-                        { text: 'WHITE.AI', fontSizeFactor: 20, opacity: 0.15, angle: -30, color: 'rgba(255, 255, 255, 0.15)' }, 
-                        { text: '@whitepicturesoficial', fontSizeFactor: 30, opacity: 0.10, angle: 30, color: 'rgba(212, 175, 55, 0.1)' } 
-                    ];
-
-                    const densityFactor = 1.0; 
-                    const step = canvas.width / densityFactor; 
-
-                    texts.forEach((wm, index) => {
-                        const fontSize = Math.max(30, canvas.width / wm.fontSizeFactor); 
-                        const rotationAngle = wm.angle * Math.PI / 180;
-                        
-                        ctx.font = `900 ${fontSize}px Inter, sans-serif`; 
-                        ctx.fillStyle = wm.color; 
-                        ctx.textAlign = 'center';
-                        ctx.textBaseline = 'middle';
-
-                        ctx.save();
-                        
-                        // Move e roda o grid de água
-                        ctx.translate(canvas.width / 2, canvas.height / 2); 
-                        ctx.rotate(rotationAngle); 
-                        ctx.translate(-canvas.width / 2, -canvas.height / 2); 
-
-                        const startX = -canvas.width * 0.5; 
-                        const startY = -canvas.height * 0.5;
-                        const stepX = step * 1.5; 
-                        const stepY = step * 1.5;
-
-                        // Adiciona um offset para criar um padrão intercalado e evitar sobreposição direta no mesmo ponto
-                        // O fator 0.75 aqui assegura um bom espaçamento entre os dois padrões
-                        const offset = index === 1 ? stepX * 0.75 : 0; 
-
-                        for (let x = startX; x < canvas.width * 1.5; x += stepX) {
-                            for (let y = startY; y < canvas.height * 1.5; y += stepY) {
-                                ctx.fillText(wm.text, x + offset, y);
-                            }
-                        }
-                        ctx.restore(); 
-                    });
-                    // --- FIM DA MARCA D'ÁGUA ---
-
-                    resolve(canvas.toDataURL('image/png'));
-                };
-
-                img.onerror = (e) => reject(new Error("Falha ao carregar imagem para aplicar marca d'água."));
-                img.src = base64DataUrl;
-            });
-        }
-        
-        /**
-         * Inicia o processo de edição da imagem cinematográfica.
-         */
-        async function editCinematicImage() {
-            const userPrompt = promptInput.value.trim();
-
-            if (!base64Image || !imageMimeType) {
-                displayError("Por favor, carregue e otimize uma imagem primeiro.");
-                return;
-            }
-
-            if (!userPrompt) {
-                displayError("Por favor, descreva o estilo cinematográfico que deseja aplicar.");
-                return;
-            }
-            
-            // Limpeza de estado
-            downloadWatermarkedButton.classList.add('hidden');
-
-            // 1. Mostrar estado de carregamento
-            statusArea.innerHTML = `
-                <div class="flex items-center space-x-3 accent-color">
-                    <div class="loader"></div>
-                    <span>Aplicando edição cinematográfica... (Pode demorar até 20 segundos)</span>
-                </div>
-            `;
-            generatedImage.classList.remove('opacity-100');
-            generatedImage.classList.add('opacity-0');
-            resultTitle.classList.add('hidden');
-            generateButton.disabled = true;
-            console.log("1. Início do processo de edição."); // Log de Início
-
-            // 2. Construir o Prompt de Edição
-            const cinematicPrompt = `Edite a imagem com base nesta descrição: "${userPrompt}". Mantenha a composição e o assunto da imagem original. Aplique um filtro cinematográfico, color grading intenso, iluminação de filme de alto orçamento, com profundidade de campo e estilo visual 8k. Qualidade máxima.`;
-
-            const payload = {
-                contents: [
-                    {
-                        role: "user",
-                        parts: [
-                            { text: cinematicPrompt },
-                            {
-                                inlineData: {
-                                    mimeType: imageMimeType,
-                                    data: base64Image
-                                }
-                            }
-                        ]
-                    }
-                ],
-                generationConfig: {
-                    responseModalities: ["IMAGE"],
-                },
-            };
-            
-            const fetcher = async () => {
-                console.log("2. Enviando requisição para a IA."); // Log antes do fetch
-                const response = await fetch(apiUrlImage, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-
-                if (!response.ok) {
-                    const errorText = await response.text();
-                    let errorMessage = 'Falha na comunicação com o modelo de IA.';
-                    try {
-                        const errorData = JSON.parse(errorText);
-                        errorMessage = errorData.error?.message || errorMessage;
-                        console.error("Erro da API:", errorData); // Log detalhado do erro da API
-                    } catch (e) {
-                        errorMessage = `Erro de rede ou servidor: ${response.status} ${response.statusText}.`;
-                        console.error("Erro de rede:", errorMessage, errorText); // Log detalhado de erro de rede
-                    }
-                    throw new Error(errorMessage);
-                }
-                console.log("3. Resposta da IA recebida."); // Log após sucesso no fetch
-                return response;
-            };
-
-            try {
-                // 3. Chamar a API de imagem com backoff
-                const response = await fetchWithBackoff(fetcher);
-                const result = await response.json();
-
-                // 4. Processar o resultado da imagem
-                const part = result?.candidates?.[0]?.content?.parts?.find(p => p.inlineData);
-                const generatedBase64 = part?.inlineData?.data;
-
-                if (generatedBase64) {
-                    const originalImageUrl = `data:image/png;base64,${generatedBase64}`;
-                    console.log("4. Imagem gerada com sucesso. Aplicando marca d'água..."); // Log antes da watermark
-                    
-                    // 4b. Aplicar marca d'água na imagem recebida
-                    statusArea.innerHTML = `<div class="text-gray-400 flex items-center justify-center space-x-2">
-                            <div class="loader w-5 h-5 !border-top-color:[#d4af37]"></div>
-                            <span>Aplicando marca d'água...</span>
-                        </div>`;
-                        
-                    const watermarkedImageUrl = await applyWatermark(originalImageUrl);
-                    
-                    generatedImage.src = watermarkedImageUrl;
-                    generatedImage.style.display = 'block';
-                    
-                    setTimeout(() => {
-                        generatedImage.classList.remove('opacity-0');
-                        generatedImage.classList.add('opacity-100');
-                        resultTitle.classList.remove('hidden');
-                        downloadWatermarkedButton.classList.remove('hidden'); 
-                    }, 50);
-                    
-                    statusArea.innerHTML = `<div class="text-green-500">✅ Edição aplicada com sucesso (Com Marca d'Água).</div>`;
-                    console.log("5. Processo concluído com sucesso."); // Log de sucesso final
-
-                } else {
-                    displayError("A IA não conseguiu editar a imagem. Tente uma descrição ou foto diferente.");
-                    console.warn("4. Falha na geração da imagem (Base64 vazio na resposta)."); // Log de falha de IA
-                }
-
-            } catch (error) {
-                displayError(error.message);
-                generatedImage.src = "";
-                generatedImage.style.display = 'none';
-                generatedImage.classList.remove('opacity-100');
-                generatedImage.classList.add('opacity-0');
-                console.error("ERRO CRÍTICO no processamento:", error); // Log de erro no Try/Catch
-            } finally {
-                // 5. Finalizar 
-                generateButton.disabled = false;
-            }
-        }
-        
-        /**
-         * Permite ao utilizador descarregar a imagem gerada (sempre com Marca d'Água).
-         */
-        function downloadImage() {
-            const imageURL = generatedImage.src;
-
-            if (!imageURL || generatedImage.classList.contains('opacity-0')) {
-                displayError("Nenhuma imagem gerada para descarregar.");
-                return;
-            }
-
-            const link = document.createElement('a');
-            link.href = imageURL;
-            link.download = 'whiteai_preview_watermarked.png'; 
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        }
+        const backToTopBtn = document.getElementById('back-to-top-btn');
+        window.addEventListener('scroll', () => { if (window.scrollY > 300) { backToTopBtn.classList.remove('opacity-0', 'pointer-events-none'); } else { backToTopBtn.classList.add('opacity-0', 'pointer-events-none'); } });
     </script>
 </body>
 </html>
