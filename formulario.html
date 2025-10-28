@@ -136,6 +136,18 @@
         <input type="text" id="pacote" name="pacote" readonly class="bg-[#2a2a2a]">
       </div>
 
+      <!-- NOVO CAMPO: Data e hora do evento -->
+      <div class="mb-4">
+        <label for="data">Data e hora do evento</label>
+        <input type="datetime-local" id="data" name="data" required>
+      </div>
+
+      <!-- NOVO CAMPO: Localização -->
+      <div class="mb-4">
+        <label for="localizacao">Localização do evento</label>
+        <input type="text" id="localizacao" name="localizacao" required placeholder="Ex: Pavilhão Municipal de Lisboa">
+      </div>
+
       <div class="mb-4">
         <label for="observacoes">Observações</label>
         <textarea id="observacoes" name="observacoes" rows="4" placeholder="Adiciona aqui algum detalhe ou pedido especial"></textarea>
@@ -156,14 +168,14 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Captura o parâmetro "pacote" da URL e preenche o campo automaticamente
+    // Preenche automaticamente o nome do pacote com base na query da URL (?pacote=...)
     const params = new URLSearchParams(window.location.search);
     const pacote = params.get("pacote");
     if (pacote) {
       document.getElementById("pacote").value = pacote;
     }
 
-    // Submissão assíncrona com Formspree + redirecionamento automático
+    // Submissão assíncrona (Formspree)
     const form = document.getElementById("pedidoForm");
     const successMessage = document.getElementById("successMessage");
 
@@ -181,7 +193,6 @@
         form.reset();
         successMessage.style.display = "block";
 
-        // Redireciona de volta à página de pacotes após 3 segundos
         setTimeout(() => {
           window.location.href = "tabela-precos-eventos-desportivos.html?sucesso=true";
         }, 3000);
