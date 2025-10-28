@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noindex, nofollow">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
   <title>Tabela de Preços de Eventos Desportivos | White Pictures</title>
   <link rel="icon" type="image/png" href="https://i.imgur.com/RkQdNsn.png" />
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet" />
 
   <style>
     body {
@@ -113,13 +113,28 @@
   </style>
 </head>
 
-<body class="min-h-screen flex flex-col justify-center items-center py-20">
-  <main class="w-full max-w-6xl px-6 text-center">
+<body class="antialiased">
+  <!-- Cabeçalho igual ao site principal -->
+  <header class="bg-[#1a1a1a] sticky top-0 z-50 shadow-md">
+    <div class="container mx-auto flex justify-between items-center p-4">
+      <a href="index.html" class="text-2xl font-black tracking-wider gradient-text">WHITEPICTURES</a>
+      <nav class="hidden md:flex items-center space-x-8">
+        <a href="index.html#sobre" class="nav-link">Sobre</a>
+        <a href="index.html#servicos" class="nav-link">Serviços</a>
+        <a href="index.html#portfolio" class="nav-link">Portfólio</a>
+        <a href="index.html#apoio" class="nav-link">Apoio</a>
+        <a href="index.html#contacto" class="nav-link">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Conteúdo da tabela -->
+  <main class="w-full max-w-6xl mx-auto px-6 text-center py-20">
     <h1 class="text-4xl md:text-5xl font-bold gradient-text mb-4">Tabela de Preços</h1>
     <p class="text-lg text-gray-300 mb-12">Cobertura fotográfica e vídeo para eventos desportivos</p>
 
     <div class="grid md:grid-cols-3 gap-8">
-      <!-- Pacote BASE -->
+      <!-- BASE -->
       <div class="pricing-card p-8 flex flex-col items-center">
         <h3 class="text-2xl font-bold mb-3 gradient-text">Pacote BASE</h3>
         <p class="text-5xl font-bold mb-6">80€</p>
@@ -132,7 +147,7 @@
         <a href="formulario.html?pacote=BASE" class="btn-primary">Escolher Pacote</a>
       </div>
 
-      <!-- Pacote PREMIUM (Mais Popular) -->
+      <!-- PREMIUM -->
       <div class="pricing-card p-8 flex flex-col items-center border-2 border-[#8b5cf6] relative">
         <div class="popular-badge">Mais Popular</div>
         <h3 class="text-2xl font-bold mb-3 gradient-text mt-2">Pacote PREMIUM</h3>
@@ -147,13 +162,13 @@
         <a href="formulario.html?pacote=PREMIUM" class="btn-primary btn-glow">Escolher Pacote</a>
       </div>
 
-      <!-- Pacote ELITE -->
+      <!-- ELITE -->
       <div class="pricing-card p-8 flex flex-col items-center">
         <h3 class="text-2xl font-bold mb-3 gradient-text">Pacote ELITE</h3>
         <p class="text-5xl font-bold mb-6">120€</p>
         <ul class="text-left text-gray-400 mb-8 space-y-3">
           <li>✅ Cobertura total do evento</li>
-          <li>✅ fotos editadas em alta resolução</li>
+          <li>✅ Fotos editadas em alta resolução</li>
           <li>✅ Galeria online (36–48h)</li>
           <li>✅ 1 foto de equipa 10×15 cm grátis</li>
           <li>✅ Restantes fotos a 2€</li>
@@ -163,14 +178,30 @@
     </div>
   </main>
 
-  <footer class="mt-16 text-gray-500 text-sm">
-    &copy; <span id="year"></span> White Pictures. Todos os direitos reservados.
+  <!-- Rodapé idêntico ao do site -->
+  <footer class="bg-[#1a1a1a] border-t border-gray-800">
+    <div class="container mx-auto text-center p-6">
+      <div class="flex justify-center space-x-6 mb-4">
+        <a href="https://www.instagram.com/whitepicturesoficial" target="_blank" class="text-gray-400 hover:opacity-80 transition-opacity">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/1200px-Instagram_icon.png" alt="Instagram" class="w-7 h-7" />
+        </a>
+        <a href="https://wa.link/su3o2p" target="_blank" class="text-gray-400 hover:opacity-80 transition-opacity">
+          <img src="https://png.pngtree.com/png-vector/20221018/ourmid/pngtree-whatsapp-mobile-software-icon-png-image_6315991.png" alt="WhatsApp" class="w-7 h-7" />
+        </a>
+      </div>
+      <p class="text-gray-400">&copy; <span id="year"></span> White Pictures. Todos os direitos reservados.</p>
+    </div>
   </footer>
+
+  <!-- Botão “Voltar ao topo” -->
+  <a href="#" id="back-to-top-btn" class="fixed bottom-5 right-5 bg-[#d4af37] text-[#121212] p-3 rounded-full shadow-lg opacity-0 pointer-events-none z-50">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+    </svg>
+  </a>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Animação de entrada dos cartões
     const cards = document.querySelectorAll('.pricing-card');
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -178,6 +209,15 @@
       });
     }, { threshold: 0.3 });
     cards.forEach(card => observer.observe(card));
+
+    const backToTopBtn = document.getElementById('back-to-top-btn');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTopBtn.classList.remove('opacity-0', 'pointer-events-none');
+      } else {
+        backToTopBtn.classList.add('opacity-0', 'pointer-events-none');
+      }
+    });
   </script>
 </body>
 </html>
