@@ -3,18 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Formulário de Pedido | White Pictures</title>
+  <title>Pedido de Orçamento | White Pictures</title>
   <link rel="icon" type="image/png" href="https://i.imgur.com/RkQdNsn.png" />
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+
   <style>
-    body { font-family: 'Inter', sans-serif; background-color: #121212; color: #e0e0e0; }
-    .btn-primary { background-color: #d4af37; color: #121212; padding: 10px 20px; border-radius: 8px; font-weight: 700; transition: all 0.3s ease; border: 2px solid #d4af37; text-transform: uppercase; }
-    .btn-primary:hover { background-color: transparent; color: #d4af37; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #121212;
+      color: #e0e0e0;
+      overflow-x: hidden;
+    }
+
     @keyframes gradient-shift {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
+
     .gradient-text {
       background: linear-gradient(90deg, #8b5cf6, #ec4899, #d4af37, #8b5cf6);
       -webkit-background-clip: text;
@@ -23,39 +32,104 @@
       background-size: 300% 100%;
       animation: gradient-shift 6s ease infinite;
     }
+
+    .btn-primary {
+      background-color: #d4af37;
+      color: #121212;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 700;
+      transition: all 0.3s ease;
+      border: 2px solid #d4af37;
+      text-transform: uppercase;
+    }
+
+    .btn-primary:hover {
+      background-color: transparent;
+      color: #d4af37;
+    }
+
+    .success-message {
+      background-color: #1a1a1a;
+      border: 1px solid #333;
+      border-radius: 12px;
+      padding: 2rem;
+      text-align: center;
+      color: #d4af37;
+      font-weight: 700;
+      display: none;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    }
   </style>
 </head>
 
 <body class="flex items-center justify-center min-h-screen p-4">
-  <form action="https://formspree.io/f/mrbykevn" method="POST" class="bg-[#1a1a1a] p-8 rounded-lg shadow-lg w-full max-w-md border border-gray-800">
-    <h1 class="text-3xl font-bold mb-6 text-center gradient-text">Pedido de Orçamento</h1>
+  <main class="w-full max-w-md">
+    <form id="pedidoForm" action="https://formspree.io/f/mrbykevn" method="POST" class="bg-[#1a1a1a] p-8 rounded-lg shadow-lg border border-gray-800">
+      <h1 id="formTitle" class="text-3xl font-bold mb-6 text-center gradient-text">Pedido de Orçamento</h1>
 
-    <input type="hidden" id="assunto" name="service" value="">
-    <div class="mb-4">
-      <label class="block mb-2">Nome</label>
-      <input type="text" name="name" required class="w-full p-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-[#d4af37]">
+      <input type="hidden" id="assunto" name="service" value="">
+
+      <div class="mb-4">
+        <label class="block mb-2">Nome</label>
+        <input type="text" name="name" required class="w-full p-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-[#d4af37]">
+      </div>
+
+      <div class="mb-4">
+        <label class="block mb-2">Email</label>
+        <input type="email" name="email" required class="w-full p-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-[#d4af37]">
+      </div>
+
+      <div class="mb-4">
+        <label class="block mb-2">Observações</label>
+        <textarea name="message" rows="4" class="w-full p-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-[#d4af37]" placeholder="Descreve o que pretendes, horários, local, etc."></textarea>
+      </div>
+
+      <button type="submit" class="btn-primary w-full">Enviar Pedido</button>
+    </form>
+
+    <div id="successMsg" class="success-message mt-6">
+      ✅ Pedido enviado com sucesso! <br>
+      Obrigado pelo teu contacto — vou responder-te em breve 👋
     </div>
-
-    <div class="mb-4">
-      <label class="block mb-2">Email</label>
-      <input type="email" name="email" required class="w-full p-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-[#d4af37]">
-    </div>
-
-    <div class="mb-4">
-      <label class="block mb-2">Observações</label>
-      <textarea name="message" rows="4" class="w-full p-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-[#d4af37]" placeholder="Descreve o que pretendes, horários, local, etc."></textarea>
-    </div>
-
-    <button type="submit" class="btn-primary w-full">Enviar Pedido</button>
-  </form>
+  </main>
 
   <script>
+    // Captura o pacote do URL
     const params = new URLSearchParams(window.location.search);
     const pacote = params.get("pacote");
+
+    const assuntoInput = document.getElementById("assunto");
+    const formTitle = document.getElementById("formTitle");
+
     if (pacote) {
-      document.getElementById("assunto").value = `Pacote ${pacote}`;
+      assuntoInput.value = `Pacote ${pacote}`;
+      formTitle.innerHTML = `Pedido - <span class="gradient-text">Pacote ${pacote}</span>`;
       document.title = `Pedido - Pacote ${pacote} | White Pictures`;
     }
+
+    // Envio do formulário com mensagem de sucesso
+    const form = document.getElementById("pedidoForm");
+    const successMsg = document.getElementById("successMsg");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const data = new FormData(form);
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        form.reset();
+        form.style.display = "none";
+        successMsg.style.display = "block";
+      } else {
+        alert("Ocorreu um erro ao enviar o formulário. Tenta novamente.");
+      }
+    });
   </script>
 </body>
 </html>
