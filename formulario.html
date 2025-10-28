@@ -1,194 +1,103 @@
-<!DOCTYPE html>
-<html lang="pt">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Formulário de Pedido | White Pictures</title>
-  <link rel="icon" type="image/png" href="https://i.imgur.com/RkQdNsn.png" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+<section id="contacto" class="py-20">
+  <div class="container mx-auto px-6">
+    <h2 class="section-title">
+      Vamos Eternizar O <span class="gradient-text">Teu Momento</span>
+    </h2>
 
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #121212;
-      color: #e0e0e0;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
-    }
+    <div class="max-w-3xl mx-auto grid md:grid-cols-2 gap-12 bg-[#1a1a1a] p-8 rounded-lg border border-gray-800">
+      
+      <!-- Lado esquerdo: informações -->
+      <div>
+        <h3 class="text-2xl font-bold mb-4">Contacte-me</h3>
+        <p class="text-gray-300 mb-4">
+          Tem um projeto em mente? Fale-me da sua ideia. Estou disponível para criar um orçamento personalizado para si.
+        </p>
 
-    @keyframes gradient-shift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
+        <div class="space-y-3">
+          <p class="flex items-center">
+            <svg class="w-5 h-5 mr-3 accent-color" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+            </svg>
+            (+351) 928 119 001
+          </p>
 
-    .gradient-text {
-      background: linear-gradient(90deg, #8b5cf6, #ec4899, #d4af37, #8b5cf6);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      background-size: 300% 100%;
-      animation: gradient-shift 6s ease infinite;
-    }
+          <p class="flex items-center">
+            <svg class="w-5 h-5 mr-3 accent-color" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+            </svg>
+            martim.whitepictures@gmail.com
+          </p>
 
-    .btn-primary {
-      background-color: #d4af37;
-      color: #121212;
-      padding: 12px 28px;
-      border-radius: 8px;
-      font-weight: 700;
-      text-transform: uppercase;
-      transition: all 0.3s ease;
-      display: inline-block;
-      border: 2px solid #d4af37;
-    }
-
-    .btn-primary:hover {
-      background-color: transparent;
-      color: #d4af37;
-    }
-
-    .form-container {
-      background-color: #1a1a1a;
-      border: 1px solid #333;
-      border-radius: 16px;
-      padding: 2.5rem;
-      max-width: 500px;
-      width: 100%;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-      animation: fadeIn 0.6s ease forwards;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    input, textarea {
-      width: 100%;
-      padding: 10px;
-      border-radius: 6px;
-      background-color: #2a2a2a;
-      border: 1px solid #444;
-      color: #e0e0e0;
-      outline: none;
-      transition: all 0.2s ease;
-    }
-
-    input:focus, textarea:focus {
-      border-color: #d4af37;
-      box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.3);
-    }
-
-    label {
-      font-weight: 600;
-      color: #ccc;
-      margin-bottom: 6px;
-      display: block;
-    }
-
-    .success-message {
-      display: none;
-      background-color: #d4af37;
-      color: #121212;
-      padding: 15px;
-      border-radius: 8px;
-      text-align: center;
-      font-weight: 600;
-      margin-top: 15px;
-      animation: fadeIn 0.6s ease;
-    }
-
-    footer {
-      position: fixed;
-      bottom: 15px;
-      width: 100%;
-      text-align: center;
-      color: #666;
-      font-size: 0.85rem;
-    }
-  </style>
-</head>
-<body>
-  <main class="form-container">
-    <h1 class="text-3xl font-black text-center mb-6 gradient-text">Pedido de Orçamento</h1>
-    <p class="text-center text-gray-400 mb-8">Preenche o formulário abaixo e entrarei em contacto contigo o mais breve possível.</p>
-
-    <form id="pedidoForm" action="https://formspree.io/f/mrbykevn" method="POST">
-      <div class="mb-4">
-        <label for="nome">Nome</label>
-        <input type="text" id="nome" name="nome" required placeholder="O teu nome completo">
+          <p class="flex items-center">
+            <svg class="w-5 h-5 mr-3 accent-color" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+            </svg>
+            Portugal inteiro
+          </p>
+        </div>
       </div>
 
-      <div class="mb-4">
-        <label for="email">Email</label>
-        <input type="email" id="email" name="_replyto" required placeholder="exemplo@email.com">
-      </div>
+      <!-- Lado direito: formulário -->
+      <form action="https://formspree.io/f/mrbykevn" method="POST">
+        <div class="mb-4">
+          <label for="name" class="block mb-2">Nome</label>
+          <input type="text" id="name" name="name" required
+                 class="w-full p-2 bg-gray-800 border border-gray-700 rounded-md 
+                        focus:outline-none focus:ring-2 focus:ring-[#d4af37]">
+        </div>
 
-      <div class="mb-4">
-        <label for="pacote">Pacote selecionado</label>
-        <input type="text" id="pacote" name="pacote" readonly class="bg-[#2a2a2a]">
-      </div>
+        <div class="mb-4">
+          <label for="email" class="block mb-2">Email</label>
+          <input type="email" id="email" name="email" required
+                 class="w-full p-2 bg-gray-800 border border-gray-700 rounded-md 
+                        focus:outline-none focus:ring-2 focus:ring-[#d4af37]">
+        </div>
 
-      <div class="mb-4">
-        <label for="observacoes">Observações</label>
-        <textarea id="observacoes" name="observacoes" rows="4" placeholder="Adiciona aqui algum detalhe ou pedido especial"></textarea>
-      </div>
+        <div class="mb-4">
+          <label for="service" class="block mb-2">Tipo de Serviço</label>
+          <select id="service" name="service"
+                  class="w-full p-2 bg-gray-800 border border-gray-700 rounded-md 
+                         focus:outline-none focus:ring-2 focus:ring-[#d4af37]">
+            <option value="">Selecione um serviço...</option>
+            <option value="Eventos Musicais">Eventos Musicais</option>
+            <option value="Eventos Desportivos">Eventos Desportivos</option>
+            <option value="Casamentos">Casamentos</option>
+            <option value="Sessões Fotográficas">Sessões Fotográficas</option>
+            <option value="Outro">Outro</option>
+          </select>
+        </div>
 
-      <button type="submit" class="btn-primary w-full">Enviar Pedido</button>
+        <!-- NOVO CAMPO: Data e hora do evento -->
+        <div class="mb-4">
+          <label for="data" class="block mb-2">Data e Hora do Evento</label>
+          <input type="datetime-local" id="data" name="data" required
+                 class="w-full p-2 bg-gray-800 border border-gray-700 rounded-md 
+                        text-gray-200 focus:outline-none focus:ring-2 focus:ring-[#d4af37]">
+        </div>
 
-      <div class="success-message" id="successMessage">
-        Pedido enviado com sucesso! 👋<br>Obrigado pelo teu contacto.
-      </div>
-    </form>
-  </main>
+        <!-- NOVO CAMPO: Localização -->
+        <div class="mb-4">
+          <label for="localizacao" class="block mb-2">Localização do Evento</label>
+          <input type="text" id="localizacao" name="localizacao" required
+                 placeholder="Ex: Pavilhão Municipal de Lisboa"
+                 class="w-full p-2 bg-gray-800 border border-gray-700 rounded-md 
+                        focus:outline-none focus:ring-2 focus:ring-[#d4af37]">
+        </div>
 
-  <footer>
-    &copy; <span id="year"></span> White Pictures — Todos os direitos reservados.
-  </footer>
+        <div class="mb-4">
+          <label for="message" class="block mb-2">Mensagem</label>
+          <textarea id="message" name="message" rows="4" required
+                    class="w-full p-2 bg-gray-800 border border-gray-700 rounded-md 
+                           focus:outline-none focus:ring-2 focus:ring-[#d4af37]"></textarea>
+        </div>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Captura o parâmetro "pacote" da URL e preenche o campo automaticamente
-    const params = new URLSearchParams(window.location.search);
-    const pacote = params.get("pacote");
-    if (pacote) {
-      document.getElementById("pacote").value = pacote;
-    }
-
-    // Submissão assíncrona com Formspree + redirecionamento automático
-    const form = document.getElementById("pedidoForm");
-    const successMessage = document.getElementById("successMessage");
-
-    form.addEventListener("submit", async (event) => {
-      event.preventDefault();
-      const formData = new FormData(form);
-
-      const response = await fetch(form.action, {
-        method: form.method,
-        body: formData,
-        headers: { 'Accept': 'application/json' }
-      });
-
-      if (response.ok) {
-        form.reset();
-        successMessage.style.display = "block";
-
-        // Redireciona de volta à página de pacotes após 3 segundos
-        setTimeout(() => {
-          window.location.href = "tabela-precos-eventos-desportivos.html?sucesso=true";
-        }, 3000);
-      } else {
-        alert("Ocorreu um erro ao enviar o formulário. Tenta novamente mais tarde.");
-      }
-    });
-  </script>
-</body>
-</html>
+        <button type="submit" class="btn-primary w-full">Enviar Pedido</button>
+      </form>
+    </div>
+  </div>
+</section>
