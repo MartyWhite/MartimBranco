@@ -76,7 +76,7 @@
       background: linear-gradient(90deg, #8b5cf6, #ec4899, #d4af37, #8b5cf6);
       background-size: 300% 100%;
       animation: gradient-shift 6s ease infinite;
-      color: #fff; /* texto branco */
+      color: #fff;
       font-weight: 700;
       font-size: 0.875rem;
       padding: 6px 18px;
@@ -89,6 +89,27 @@
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
+
+    /* ✨ Brilho e fade para o preço e botão do PREMIUM ✨ */
+    @keyframes glow-fade {
+      0% { opacity: 0.7; text-shadow: 0 0 5px #d4af37, 0 0 10px #d4af37; }
+      50% { opacity: 1; text-shadow: 0 0 20px #ffd700, 0 0 30px #d4af37; }
+      100% { opacity: 0.7; text-shadow: 0 0 5px #d4af37, 0 0 10px #d4af37; }
+    }
+
+    .glow-effect {
+      animation: glow-fade 2.5s ease-in-out infinite;
+    }
+
+    @keyframes button-glow {
+      0% { box-shadow: 0 0 5px #d4af37, inset 0 0 10px #d4af37; opacity: 0.8; }
+      50% { box-shadow: 0 0 20px #ffd700, inset 0 0 15px #d4af37; opacity: 1; }
+      100% { box-shadow: 0 0 5px #d4af37, inset 0 0 10px #d4af37; opacity: 0.8; }
+    }
+
+    .btn-glow {
+      animation: button-glow 2.5s ease-in-out infinite;
+    }
   </style>
 </head>
 
@@ -98,7 +119,7 @@
     <p class="text-lg text-gray-300 mb-12">Cobertura fotográfica e vídeo para eventos desportivos</p>
 
     <div class="grid md:grid-cols-3 gap-8">
-      <!-- Pacote Starter -->
+      <!-- Pacote BASE -->
       <div class="pricing-card p-8 flex flex-col items-center">
         <h3 class="text-2xl font-bold mb-3 gradient-text">Pacote BASE</h3>
         <p class="text-5xl font-bold mb-6">80€</p>
@@ -108,14 +129,14 @@
           <li>✅ Entrega até 72h</li>
           <li>✅ Impressões 10×15 cm a 4€</li>
         </ul>
-        <a href="formulario.html?pacote=Starter" class="btn-primary">Escolher Pacote</a>
+        <a href="formulario.html?pacote=BASE" class="btn-primary">Escolher Pacote</a>
       </div>
 
-      <!-- Pacote Clube (Mais Popular) -->
+      <!-- Pacote PREMIUM (Mais Popular) -->
       <div class="pricing-card p-8 flex flex-col items-center border-2 border-[#8b5cf6] relative">
         <div class="popular-badge">Mais Popular</div>
         <h3 class="text-2xl font-bold mb-3 gradient-text mt-2">Pacote PREMIUM</h3>
-        <p class="text-5xl font-bold mb-6 text-[#d4af37]">100€</p>
+        <p class="text-5xl font-bold mb-6 text-[#d4af37] glow-effect">100€</p>
         <ul class="text-left text-gray-400 mb-8 space-y-3">
           <li>✅ Cobertura total do jogo</li>
           <li>✅ Fotos em alta resolução com ajustes básicos</li>
@@ -123,10 +144,10 @@
           <li>✅ Entrega até 48h</li>
           <li>✅ Impressões 10×15 cm a 3,5€</li>
         </ul>
-        <a href="formulario.html?pacote=Clube" class="btn-primary">Escolher Pacote</a>
+        <a href="formulario.html?pacote=PREMIUM" class="btn-primary btn-glow">Escolher Pacote</a>
       </div>
 
-      <!-- Pacote Pro -->
+      <!-- Pacote ELITE -->
       <div class="pricing-card p-8 flex flex-col items-center">
         <h3 class="text-2xl font-bold mb-3 gradient-text">Pacote ELITE</h3>
         <p class="text-5xl font-bold mb-6">120€</p>
@@ -137,7 +158,7 @@
           <li>✅ 1 foto de equipa 10×15 cm grátis</li>
           <li>✅ Restantes fotos a 2€</li>
         </ul>
-        <a href="formulario.html?pacote=Pro" class="btn-primary">Escolher Pacote</a>
+        <a href="formulario.html?pacote=ELITE" class="btn-primary">Escolher Pacote</a>
       </div>
     </div>
   </main>
