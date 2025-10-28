@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pedido de Orçamento | White Pictures</title>
+  <meta name="robots" content="noindex, nofollow">
+  <title>Tabela de Preços de Eventos Desportivos | White Pictures</title>
   <link rel="icon" type="image/png" href="https://i.imgur.com/RkQdNsn.png" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,15 +34,22 @@
       animation: gradient-shift 6s ease infinite;
     }
 
+    .gradient-bg {
+      background: linear-gradient(90deg, #8b5cf6, #ec4899, #d4af37, #8b5cf6);
+      background-size: 300% 100%;
+      animation: gradient-shift 6s ease infinite;
+    }
+
     .btn-primary {
       background-color: #d4af37;
       color: #121212;
-      padding: 10px 20px;
+      padding: 12px 24px;
       border-radius: 8px;
       font-weight: 700;
-      transition: all 0.3s ease;
-      border: 2px solid #d4af37;
       text-transform: uppercase;
+      transition: all 0.3s ease;
+      display: inline-block;
+      border: 2px solid #d4af37;
     }
 
     .btn-primary:hover {
@@ -49,87 +57,114 @@
       color: #d4af37;
     }
 
-    .success-message {
+    .pricing-card {
       background-color: #1a1a1a;
       border: 1px solid #333;
-      border-radius: 12px;
-      padding: 2rem;
-      text-align: center;
-      color: #d4af37;
+      border-radius: 16px;
+      transition: transform 0.5s ease, opacity 0.5s ease, box-shadow 0.3s ease;
+      opacity: 0;
+      transform: translateY(40px);
+      position: relative;
+    }
+
+    .pricing-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    }
+
+    /* Balão “Mais Popular” */
+    .popular-badge {
+      background: linear-gradient(90deg, #8b5cf6, #ec4899, #d4af37, #8b5cf6);
+      background-size: 300% 100%;
+      animation: gradient-shift 6s ease infinite;
+      color: white;
       font-weight: 700;
-      display: none;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+      font-size: 0.875rem;
+      padding: 6px 18px;
+      border-radius: 9999px;
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
   </style>
 </head>
 
-<body class="flex items-center justify-center min-h-screen p-4">
-  <main class="w-full max-w-md">
-    <form id="pedidoForm" action="https://formspree.io/f/mrbykevn" method="POST" class="bg-[#1a1a1a] p-8 rounded-lg shadow-lg border border-gray-800">
-      <h1 id="formTitle" class="text-3xl font-bold mb-6 text-center gradient-text">Pedido de Orçamento</h1>
+<body class="min-h-screen flex flex-col justify-center items-center py-20">
+  <main class="w-full max-w-6xl px-6 text-center">
+    <h1 class="text-4xl md:text-5xl font-bold gradient-text mb-4">Tabela de Preços</h1>
+    <p class="text-lg text-gray-300 mb-12">Cobertura fotográfica e vídeo para eventos desportivos</p>
 
-      <input type="hidden" id="assunto" name="service" value="">
-
-      <div class="mb-4">
-        <label class="block mb-2">Nome</label>
-        <input type="text" name="name" required class="w-full p-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-[#d4af37]">
+    <div class="grid md:grid-cols-3 gap-8">
+      <!-- Pacote Starter -->
+      <div class="pricing-card p-8 flex flex-col items-center">
+        <h3 class="text-2xl font-bold mb-3 gradient-text">Pacote Starter</h3>
+        <p class="text-5xl font-bold mb-6">80€</p>
+        <ul class="text-left text-gray-400 mb-8 space-y-3">
+          <li>✅ Cobertura total do jogo</li>
+          <li>✅ Galeria completa (sem edição)</li>
+          <li>✅ Entrega até 72h</li>
+          <li>✅ Impressões 10×15 cm a 4€</li>
+        </ul>
+        <a href="https://formspree.io/f/mrbykevn?pacote=Starter" class="btn-primary">Escolher Pacote</a>
       </div>
 
-      <div class="mb-4">
-        <label class="block mb-2">Email</label>
-        <input type="email" name="email" required class="w-full p-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-[#d4af37]">
+      <!-- Pacote Clube (Mais Popular) -->
+      <div class="pricing-card p-8 flex flex-col items-center border-2 border-[#8b5cf6] relative">
+        <!-- Balão com gradiente -->
+        <div class="popular-badge">Mais Popular</div>
+
+        <h3 class="text-2xl font-bold mb-3 gradient-text mt-2">Pacote Clube</h3>
+        <p class="text-5xl font-bold mb-6 text-[#8b5cf6]">100€</p>
+        <ul class="text-left text-gray-400 mb-8 space-y-3">
+          <li>✅ Cobertura total do jogo</li>
+          <li>✅ Fotos em alta resolução com ajustes básicos</li>
+          <li>✅ Galeria online para download</li>
+          <li>✅ Entrega até 48h</li>
+          <li>✅ Impressões 10×15 cm a 3,5€</li>
+        </ul>
+        <a href="https://formspree.io/f/mrbykevn?pacote=Clube" class="btn-primary">Escolher Pacote</a>
       </div>
 
-      <div class="mb-4">
-        <label class="block mb-2">Observações</label>
-        <textarea name="message" rows="4" class="w-full p-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-[#d4af37]" placeholder="Descreve o que pretendes, horários, local, etc."></textarea>
+      <!-- Pacote Pro -->
+      <div class="pricing-card p-8 flex flex-col items-center">
+        <h3 class="text-2xl font-bold mb-3 gradient-text">Pacote Pro</h3>
+        <p class="text-5xl font-bold mb-6">120€</p>
+        <ul class="text-left text-gray-400 mb-8 space-y-3">
+          <li>✅ Cobertura total do evento</li>
+          <li>✅ 25 fotos editadas em alta resolução</li>
+          <li>✅ Galeria online (36–48h)</li>
+          <li>✅ 1 foto de equipa 10×15 cm grátis</li>
+          <li>✅ Restantes fotos a 2€</li>
+        </ul>
+        <a href="https://formspree.io/f/mrbykevn?pacote=Pro" class="btn-primary">Escolher Pacote</a>
       </div>
-
-      <button type="submit" class="btn-primary w-full">Enviar Pedido</button>
-    </form>
-
-    <div id="successMsg" class="success-message mt-6">
-      ✅ Pedido enviado com sucesso! <br>
-      Obrigado pelo teu contacto — vou responder-te em breve 👋
     </div>
   </main>
 
+  <footer class="mt-16 text-gray-500 text-sm">
+    &copy; <span id="year"></span> White Pictures. Todos os direitos reservados.
+  </footer>
+
   <script>
-    // Captura o pacote do URL
-    const params = new URLSearchParams(window.location.search);
-    const pacote = params.get("pacote");
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-    const assuntoInput = document.getElementById("assunto");
-    const formTitle = document.getElementById("formTitle");
-
-    if (pacote) {
-      assuntoInput.value = `Pacote ${pacote}`;
-      formTitle.innerHTML = `Pedido - <span class="gradient-text">Pacote ${pacote}</span>`;
-      document.title = `Pedido - Pacote ${pacote} | White Pictures`;
-    }
-
-    // Envio do formulário com mensagem de sucesso
-    const form = document.getElementById("pedidoForm");
-    const successMsg = document.getElementById("successMsg");
-
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-
-      const data = new FormData(form);
-      const response = await fetch(form.action, {
-        method: form.method,
-        body: data,
-        headers: { 'Accept': 'application/json' }
+    // Animação de entrada dos cartões
+    const cards = document.querySelectorAll('.pricing-card');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
       });
-
-      if (response.ok) {
-        form.reset();
-        form.style.display = "none";
-        successMsg.style.display = "block";
-      } else {
-        alert("Ocorreu um erro ao enviar o formulário. Tenta novamente.");
-      }
-    });
+    }, { threshold: 0.3 });
+    cards.forEach(card => observer.observe(card));
   </script>
 </body>
 </html>
