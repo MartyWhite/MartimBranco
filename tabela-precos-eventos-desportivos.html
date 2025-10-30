@@ -1,200 +1,447 @@
 <!DOCTYPE html>
+
 <html lang="pt" class="scroll-smooth">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="robots" content="noindex, nofollow" />
-  <title>Tabela de Preços de Eventos Desportivos | White Pictures</title>
-  <link rel="icon" type="image/png" href="https://i.imgur.com/RkQdNsn.png" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet" />
 
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #121212;
-      color: #e0e0e0;
-      overflow-x: hidden;
-    }
+  <meta charset="UTF-8" />
 
-    @keyframes gradient-shift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    .gradient-text {
-      background: linear-gradient(90deg, #8b5cf6, #ec4899, #d4af37, #8b5cf6);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      background-size: 300% 100%;
-      animation: gradient-shift 6s ease infinite;
-    }
+  <meta name="robots" content="noindex, nofollow" />
 
-    .btn-primary {
-      background-color: #d4af37;
-      color: #121212;
-      padding: 12px 24px;
-      border-radius: 8px;
-      font-weight: 700;
-      text-transform: uppercase;
-      transition: all 0.3s ease;
-      display: inline-block;
-      border: 2px solid #d4af37;
-    }
+  <title>Tabela de Preços de Eventos Desportivos | White Pictures</title>
 
-    .btn-primary:hover {
-      background-color: transparent;
-      color: #d4af37;
-    }
+  <link rel="icon" type="image/png" href="https://i.imgur.com/RkQdNsn.png" />
 
-    .pricing-card {
-      background-color: #1a1a1a;
-      border: 1px solid #333;
-      border-radius: 16px;
-      transition: transform 0.5s ease, opacity 0.5s ease, box-shadow 0.3s ease;
-      opacity: 0;
-      transform: translateY(40px);
-      position: relative;
-    }
+  <script src="https://cdn.tailwindcss.com"></script>
 
-    .pricing-card.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
 
-    .pricing-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-    }
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    /* Balão “Mais Popular” */
-    .popular-badge {
-      background: linear-gradient(90deg, #8b5cf6, #ec4899, #d4af37, #8b5cf6);
-      background-size: 300% 100%;
-      animation: gradient-shift 6s ease infinite;
-      color: #fff;
-      font-weight: 700;
-      font-size: 0.875rem;
-      padding: 6px 18px;
-      border-radius: 9999px;
-      position: absolute;
-      top: -14px;
-      left: 50%;
-      transform: translateX(-50%);
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet" />
 
-    /* ✨ Brilho e fade para o preço e botão do PREMIUM ✨ */
-    @keyframes glow-fade {
-      0% { opacity: 0.7; text-shadow: 0 0 5px #d4af37, 0 0 10px #d4af37; }
-      50% { opacity: 1; text-shadow: 0 0 20px #ffd700, 0 0 30px #d4af37; }
-      100% { opacity: 0.7; text-shadow: 0 0 5px #d4af37, 0 0 10px #d4af37; }
-    }
 
-    .glow-effect {
-      animation: glow-fade 2.5s ease-in-out infinite;
-    }
 
-    @keyframes button-glow {
-      0% { box-shadow: 0 0 5px #d4af37, inset 0 0 10px #d4af37; opacity: 0.8; }
-      50% { box-shadow: 0 0 20px #ffd700, inset 0 0 15px #d4af37; opacity: 1; }
-      100% { box-shadow: 0 0 5px #d4af37, inset 0 0 10px #d4af37; opacity: 0.8; }
-    }
+  <style>
 
-    .btn-glow {
-      animation: button-glow 2.5s ease-in-out infinite;
-    }
-  </style>
+    body {
+
+      font-family: 'Inter', sans-serif;
+
+      background-color: #121212;
+
+      color: #e0e0e0;
+
+      overflow-x: hidden;
+
+    }
+
+
+
+    @keyframes gradient-shift {
+
+      0% { background-position: 0% 50%; }
+
+      50% { background-position: 100% 50%; }
+
+      100% { background-position: 0% 50%; }
+
+    }
+
+
+
+    .gradient-text {
+
+      background: linear-gradient(90deg, #8b5cf6, #ec4899, #d4af37, #8b5cf6);
+
+      -webkit-background-clip: text;
+
+      background-clip: text;
+
+      color: transparent;
+
+      background-size: 300% 100%;
+
+      animation: gradient-shift 6s ease infinite;
+
+    }
+
+
+
+    .btn-primary {
+
+      background-color: #d4af37;
+
+      color: #121212;
+
+      padding: 12px 24px;
+
+      border-radius: 8px;
+
+      font-weight: 700;
+
+      text-transform: uppercase;
+
+      transition: all 0.3s ease;
+
+      display: inline-block;
+
+      border: 2px solid #d4af37;
+
+    }
+
+
+
+    .btn-primary:hover {
+
+      background-color: transparent;
+
+      color: #d4af37;
+
+    }
+
+
+
+    .pricing-card {
+
+      background-color: #1a1a1a;
+
+      border: 1px solid #333;
+
+      border-radius: 16px;
+
+      transition: transform 0.5s ease, opacity 0.5s ease, box-shadow 0.3s ease;
+
+      opacity: 0;
+
+      transform: translateY(40px);
+
+      position: relative;
+
+    }
+
+
+
+    .pricing-card.visible {
+
+      opacity: 1;
+
+      transform: translateY(0);
+
+    }
+
+
+
+    .pricing-card:hover {
+
+      transform: translateY(-8px);
+
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+
+    }
+
+
+
+    /* Balão “Mais Popular” */
+
+    .popular-badge {
+
+      background: linear-gradient(90deg, #8b5cf6, #ec4899, #d4af37, #8b5cf6);
+
+      background-size: 300% 100%;
+
+      animation: gradient-shift 6s ease infinite;
+
+      color: #fff;
+
+      font-weight: 700;
+
+      font-size: 0.875rem;
+
+      padding: 6px 18px;
+
+      border-radius: 9999px;
+
+      position: absolute;
+
+      top: -14px;
+
+      left: 50%;
+
+      transform: translateX(-50%);
+
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+
+      text-transform: uppercase;
+
+      letter-spacing: 0.5px;
+
+    }
+
+
+
+    /* ✨ Brilho e fade para o preço e botão do PREMIUM ✨ */
+
+    @keyframes glow-fade {
+
+      0% { opacity: 0.7; text-shadow: 0 0 5px #d4af37, 0 0 10px #d4af37; }
+
+      50% { opacity: 1; text-shadow: 0 0 20px #ffd700, 0 0 30px #d4af37; }
+
+      100% { opacity: 0.7; text-shadow: 0 0 5px #d4af37, 0 0 10px #d4af37; }
+
+    }
+
+
+
+    .glow-effect {
+
+      animation: glow-fade 2.5s ease-in-out infinite;
+
+    }
+
+
+
+    @keyframes button-glow {
+
+      0% { box-shadow: 0 0 5px #d4af37, inset 0 0 10px #d4af37; opacity: 0.8; }
+
+      50% { box-shadow: 0 0 20px #ffd700, inset 0 0 15px #d4af37; opacity: 1; }
+
+      100% { box-shadow: 0 0 5px #d4af37, inset 0 0 10px #d4af37; opacity: 0.8; }
+
+    }
+
+
+
+    .btn-glow {
+
+      animation: button-glow 2.5s ease-in-out infinite;
+
+    }
+
+  </style>
+
 </head>
 
+
+
 <body class="antialiased">
-    <header class="bg-[#1a1a1a] sticky top-0 z-50 shadow-md">
-    <div class="container mx-auto flex justify-between items-center p-4">
-      <a href="index.html" class="text-2xl font-black tracking-wider gradient-text">WHITEPICTURES</a>
-      <nav class="hidden md:flex items-center space-x-8">
-        <a href="index.html#sobre" class="nav-link">Sobre</a>
-        <a href="index.html#servicos" class="nav-link">Serviços</a>
-        <a href="index.html#portfolio" class="nav-link">Portfólio</a>
-        <a href="index.html#apoio" class="nav-link">Apoio</a>
-        <a href="index.html#contacto" class="nav-link">Contacto</a>
-      </nav>
-    </div>
-  </header>
 
-    <main class="w-full max-w-6xl mx-auto px-6 text-center py-20">
-    <h1 class="text-4xl md:text-5xl font-bold gradient-text mb-4">Tabela de Preços</h1>
-    <p class="text-lg text-gray-300 mb-12">Cobertura fotográfica e vídeo para eventos desportivos</p>
+  <!-- Cabeçalho igual ao site principal -->
 
-    <div class="grid md:grid-cols-3 gap-8">
-            <div class="pricing-card p-8 flex flex-col items-center">
-        <h3 class="text-2xl font-bold mb-3 gradient-text">Pacote BASE</h3>
-        <p class="text-5xl font-bold mb-6">80€</p>
-        <ul class="text-left text-gray-400 mb-8 space-y-3">
-          <li>✅ Cobertura total do jogo</li>
-          <li>✅ Galeria completa (sem edição)</li>
-          <li>✅ Entrega até 72h</li>
-          <li>✅ Impressões 10×15 cm a 4€</li>
-        </ul>
-        <a href="formulario.html?pacote=BASE" class="btn-primary">Escolher Pacote</a>
-      </div>
+  <header class="bg-[#1a1a1a] sticky top-0 z-50 shadow-md">
 
-            <div class="pricing-card p-8 flex flex-col items-center border-2 border-[#8b5cf6] relative">
-        <div class="popular-badge">Mais Popular</div>
-        <h3 class="text-2xl font-bold mb-3 gradient-text mt-2">Pacote PREMIUM</h3>
-        <p class="text-5xl font-bold mb-6 text-[#d4af37] glow-effect">100€</p>
-        <ul class="text-left text-gray-400 mb-8 space-y-3">
-          <li>✅ Cobertura total do jogo</li>
-          <li>✅ Fotos em alta resolução com ajustes básicos</li>
-          <li>✅ Galeria online para download</li>
-          <li>✅ 1 foto de equipa 10×15 cm grátis</li>
-          <li>✅ Entrega até 48h</li>
-          <li>✅ Impressões 10×15 cm a 3,5€</li>
-        </ul>
-        <a href="formulario.html?pacote=PREMIUM" class="btn-primary btn-glow">Escolher Pacote</a>
-      </div>
+    <div class="container mx-auto flex justify-between items-center p-4">
 
-            <div class="pricing-card p-8 flex flex-col items-center">
-        <h3 class="text-2xl font-bold mb-3 gradient-text">Pacote ELITE</h3>
-        <p class="text-5xl font-bold mb-6">120€</p>
-        <ul class="text-left text-gray-400 mb-8 space-y-3">
-          <li>✅ Cobertura total do evento</li>
-          <li>✅ Fotos editadas em alta resolução</li>
-          <li>✅ Galeria online para download</li>
-          <li>✅ 3 fotos de equipa 10×15 cm grátis</li>
-          <li>✅ Restantes fotos a 2€</li>
-        </ul>
-        <a href="formulario.html?pacote=ELITE" class="btn-primary">Escolher Pacote</a>
-      </div>
-    </div>         <div class="mt-12 max-w-3xl mx-auto px-4">
-      <p class="text-sm text-gray-400 italic">
-                <svg class="w-5 h-5 text-gray-400 inline-block align-middle mr-1" style="margin-top: -2px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-          <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
-        </svg>
-                <span class="align-middle">
-          Nota: Os valores apresentados são válidos para eventos com uma duração máxima de 2 horas. Para coberturas que excedam este período, será aplicado um acréscimo proporcional ao tempo adicional.
-        </span>
-      </p>
-    </div>
-      </main>
+      <a href="index.html" class="text-2xl font-black tracking-wider gradient-text">WHITEPICTURES</a>
 
-    <footer class="bg-[#1a1a1a] border-t border-gray-800">
-    <div class="container mx-auto text-center p-6">
-      <div class="flex justify-center space-x-6 mb-4">
-        <a href="https://www.instagram.com/whitepicturesoficial" target="_blank" class="text-gray-400 hover:opacity-80 transition-opacity">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/1200px-Instagram_icon.png" alt="Instagram" class="w-7 h-7" />
-        </a>
-        <a href="https://wa.link/su3o2p" target="_blank" class="text-gray-400 hover:opacity-80 transition-opacity">
-          <img src="httpsa://png.pngtree.com/png-vector/20221018/ourmid/pngtree-whatsapp-mobile-software-icon-png-image_6315991.png" alt="WhatsApp" class="w-7 h-7" />
-        </a>
-      </div>
-      <p class="text-gray-400">&copy; <span id="year"></span> White Pictures. Todos os direitos reservados.</p>
-    </div>
-  </footer>
+      <nav class="hidden md:flex items-center space-x-8">
 
-    <a href="#" id="back-to-top-btn" class="fixed bottom-5 right-5 bg-[#d4af37] text-[#121212] p-3 rounded-full shadow-lg opacity-0 pointer-events-none
+        <a href="index.html#sobre" class="nav-link">Sobre</a>
+
+        <a href="index.html#servicos" class="nav-link">Serviços</a>
+
+        <a href="index.html#portfolio" class="nav-link">Portfólio</a>
+
+        <a href="index.html#apoio" class="nav-link">Apoio</a>
+
+        <a href="index.html#contacto" class="nav-link">Contacto</a>
+
+      </nav>
+
+    </div>
+
+  </header>
+
+
+
+  <!-- Conteúdo da tabela -->
+
+  <main class="w-full max-w-6xl mx-auto px-6 text-center py-20">
+
+    <h1 class="text-4xl md:text-5xl font-bold gradient-text mb-4">Tabela de Preços</h1>
+
+    <p class="text-lg text-gray-300 mb-12">Cobertura fotográfica e vídeo para eventos desportivos</p>
+
+
+
+    <div class="grid md:grid-cols-3 gap-8">
+
+      <!-- BASE -->
+
+      <div class="pricing-card p-8 flex flex-col items-center">
+
+        <h3 class="text-2xl font-bold mb-3 gradient-text">Pacote BASE</h3>
+
+        <p class="text-5xl font-bold mb-6">80€</p>
+
+        <ul class="text-left text-gray-400 mb-8 space-y-3">
+
+          <li>✅ Cobertura total do jogo</li>
+
+          <li>✅ Galeria completa (sem edição)</li>
+
+          <li>✅ Entrega até 72h</li>
+
+          <li>✅ Impressões 10×15 cm a 4€</li>
+
+        </ul>
+
+        <a href="formulario.html?pacote=BASE" class="btn-primary">Escolher Pacote</a>
+
+      </div>
+
+
+
+      <!-- PREMIUM -->
+
+      <div class="pricing-card p-8 flex flex-col items-center border-2 border-[#8b5cf6] relative">
+
+        <div class="popular-badge">Mais Popular</div>
+
+        <h3 class="text-2xl font-bold mb-3 gradient-text mt-2">Pacote PREMIUM</h3>
+
+        <p class="text-5xl font-bold mb-6 text-[#d4af37] glow-effect">100€</p>
+
+        <ul class="text-left text-gray-400 mb-8 space-y-3">
+
+          <li>✅ Cobertura total do jogo</li>
+
+          <li>✅ Fotos em alta resolução com ajustes básicos</li>
+
+          <li>✅ Galeria online para download</li>
+
+          <li>✅ 1 foto de equipa 10×15 cm grátis</li>
+
+          <li>✅ Entrega até 48h</li>
+
+          <li>✅ Impressões 10×15 cm a 3,5€</li>
+
+        </ul>
+
+        <a href="formulario.html?pacote=PREMIUM" class="btn-primary btn-glow">Escolher Pacote</a>
+
+      </div>
+
+
+
+      <!-- ELITE -->
+
+      <div class="pricing-card p-8 flex flex-col items-center">
+
+        <h3 class="text-2xl font-bold mb-3 gradient-text">Pacote ELITE</h3>
+
+        <p class="text-5xl font-bold mb-6">120€</p>
+
+        <ul class="text-left text-gray-400 mb-8 space-y-3">
+
+          <li>✅ Cobertura total do evento</li>
+
+          <li>✅ Fotos editadas em alta resolução</li>
+
+          <li>✅ Galeria online para download</li>
+
+          <li>✅ 3 fotos de equipa 10×15 cm grátis</li>
+
+          <li>✅ Restantes fotos a 2€</li>
+
+        </ul>
+
+        <a href="formulario.html?pacote=ELITE" class="btn-primary">Escolher Pacote</a>
+
+      </div>
+
+    </div>
+
+  </main>
+
+
+
+  <!-- Rodapé idêntico ao do site -->
+
+  <footer class="bg-[#1a1a1a] border-t border-gray-800">
+
+    <div class="container mx-auto text-center p-6">
+
+      <div class="flex justify-center space-x-6 mb-4">
+
+        <a href="https://www.instagram.com/whitepicturesoficial" target="_blank" class="text-gray-400 hover:opacity-80 transition-opacity">
+
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/1200px-Instagram_icon.png" alt="Instagram" class="w-7 h-7" />
+
+        </a>
+
+        <a href="https://wa.link/su3o2p" target="_blank" class="text-gray-400 hover:opacity-80 transition-opacity">
+
+          <img src="https://png.pngtree.com/png-vector/20221018/ourmid/pngtree-whatsapp-mobile-software-icon-png-image_6315991.png" alt="WhatsApp" class="w-7 h-7" />
+
+        </a>
+
+      </div>
+
+      <p class="text-gray-400">&copy; <span id="year"></span> White Pictures. Todos os direitos reservados.</p>
+
+    </div>
+
+  </footer>
+
+
+
+  <!-- Botão “Voltar ao topo” -->
+
+  <a href="#" id="back-to-top-btn" class="fixed bottom-5 right-5 bg-[#d4af37] text-[#121212] p-3 rounded-full shadow-lg opacity-0 pointer-events-none z-50">
+
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+
+    </svg>
+
+  </a>
+
+
+
+  <script>
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const cards = document.querySelectorAll('.pricing-card');
+
+    const observer = new IntersectionObserver(entries => {
+
+      entries.forEach(entry => {
+
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+
+      });
+
+    }, { threshold: 0.3 });
+
+    cards.forEach(card => observer.observe(card));
+
+
+
+    const backToTopBtn = document.getElementById('back-to-top-btn');
+
+    window.addEventListener('scroll', () => {
+
+      if (window.scrollY > 300) {
+
+        backToTopBtn.classList.remove('opacity-0', 'pointer-events-none');
+
+      } else {
+
+        backToTopBtn.classList.add('opacity-0', 'pointer-events-none');
+
+      }
+
+    });
+
+  </script>
+
+</body>
+
+</html>
