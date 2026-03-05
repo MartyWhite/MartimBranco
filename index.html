@@ -314,7 +314,8 @@
             <div class="container mx-auto px-6">
                 <h2 class="section-title">O Meu <span class="gradient-text">Trabalho</span></h2>
                 
-                <div id="portfolio-carousel" class="portfolio-carousel flex space-x-6 pb-4 overflow-x-scroll snap-x snap-mandatory scroll-smooth pl-16 pr-16 md:pl-32 md:pr-32">
+                <!-- AQUI REMOVEU-SE O PADDING GIGANTE (pl-16 md:pl-32) PARA ALINHAR À ESQUERDA -->
+                <div id="portfolio-carousel" class="portfolio-carousel flex space-x-6 pb-8 pt-4 overflow-x-scroll snap-x snap-mandatory scroll-smooth">
                     
                     <div class="portfolio-item group rounded-lg snap-center shrink-0 w-[180px] md:w-[300px] relative transition-all duration-500 transform scale-100" data-album-title="Slap">
                         <div class="album-button">VISUALIZAR ÁLBUM</div>
@@ -875,6 +876,23 @@
                 <button id="checkout-sidebar-button" onclick="window.location.hash = '#checkout';" class="btn-primary w-full" disabled>Finalizar Compra</button>
             </div>
         </div>
+
+        <!-- MODAL DE IMAGEM ÚNICA (NOVO) -->
+        <div id="single-image-modal" class="fixed inset-0 bg-black bg-opacity-95 hidden z-[60] p-4 opacity-0 transition-opacity duration-300 items-center justify-center">
+            <button id="close-single-image" class="absolute top-6 right-6 text-white text-5xl font-bold hover:text-gray-400 transition-colors z-50">&times;</button>
+            
+            <!-- Setas de navegação -->
+            <button id="prev-single-image" class="absolute left-2 md:left-8 text-white/70 hover:text-[#d4af37] text-4xl md:text-6xl font-bold transition-colors z-50 focus:outline-none p-4 hidden">
+                &#10094;
+            </button>
+            
+            <img id="single-image-display" src="" class="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl select-none pointer-events-none">
+            
+            <button id="next-single-image" class="absolute right-2 md:right-8 text-white/70 hover:text-[#d4af37] text-4xl md:text-6xl font-bold transition-colors z-50 focus:outline-none p-4 hidden">
+                &#10095;
+            </button>
+        </div>
+
     </div>
 
     <!-- Scripts JavaScript do Website -->
@@ -901,6 +919,17 @@
         const productLightboxDetails = document.getElementById('product-lightbox-details');
         const portfolioGrid = document.getElementById('lightbox-grid');
         
+        // Elementos do novo Modal de Imagem Única
+        const singleImageModal = document.getElementById('single-image-modal');
+        const singleImageDisplay = document.getElementById('single-image-display');
+        const closeSingleImageBtn = document.getElementById('close-single-image');
+        const prevSingleImageBtn = document.getElementById('prev-single-image');
+        const nextSingleImageBtn = document.getElementById('next-single-image');
+        
+        // Variáveis para gerir a navegação de imagens
+        let currentAlbumImagesArr = [];
+        let currentImageIdx = 0;
+
         const portfolioItems = document.querySelectorAll('.portfolio-item');
 
         const products = [
@@ -1071,13 +1100,25 @@
             
             lightboxTitle.textContent = title;
             lightboxGrid.innerHTML = '';
-            Array.from(imageElements).forEach(img => {
+            
+            // Criar uma lista com todos os URLs do álbum atual para o Slider
+            const imageUrls = Array.from(imageElements).map(img => img.src);
+            
+            Array.from(imageElements).forEach((img, index) => {
                 const wrapper = document.createElement('div');
-                wrapper.className = 'aspect-[9/16] rounded-lg overflow-hidden';
+                // ADICIONADOS EFEITOS DE CURSOR E ZOOM NO HOVER PARA CLICAR NA FOTO
+                wrapper.className = 'rounded-lg overflow-hidden flex items-start cursor-pointer transition-transform duration-300 hover:scale-[1.02] hover:shadow-xl';
                 const newImg = document.createElement('img');
                 newImg.src = img.src;
                 newImg.alt = img.alt;
-                newImg.className = 'w-full h-full object-contain bg-black';
+                newImg.className = 'w-full h-auto block rounded-lg shadow-md';
+                
+                // EVENTO PARA ABRIR A FOTO COM O ARRAY COMPLETO E A POSIÇÃO
+                wrapper.onclick = (e) => {
+                    e.stopPropagation();
+                    openSingleImage(imageUrls, index);
+                };
+
                 wrapper.appendChild(newImg);
                 lightboxGrid.appendChild(wrapper);
             });
@@ -1099,9 +1140,93 @@
             }, 300);
         }
 
+        // LÓGICA DO MODAL DE IMAGEM ÚNICA COM SLIDER
+        function openSingleImage(imagesArr, index) {
+            currentAlbumImagesArr = imagesArr;
+            currentImageIdx = index;
+            updateSingleImageDisplay();
+            
+            singleImageModal.classList.remove('hidden');
+            singleImageModal.classList.add('flex');
+            setTimeout(() => singleImageModal.classList.add('opacity-100'), 20);
+            
+            // Mostrar ou ocultar setas caso o álbum tenha mais de 1 foto
+            if (currentAlbumImagesArr.length > 1) {
+                prevSingleImageBtn.classList.remove('hidden');
+                nextSingleImageBtn.classList.remove('hidden');
+            } else {
+                prevSingleImageBtn.classList.add('hidden');
+                nextSingleImageBtn.classList.add('hidden');
+            }
+        }
+        
+        function updateSingleImageDisplay() {
+            singleImageDisplay.src = currentAlbumImagesArr[currentImageIdx];
+        }
+        
+        function prevSingleImage(e) {
+            if(e) e.stopPropagation();
+            if (currentAlbumImagesArr.length <= 1) return;
+            currentImageIdx = (currentImageIdx - 1 + currentAlbumImagesArr.length) % currentAlbumImagesArr.length;
+            updateSingleImageDisplay();
+        }
+
+        function nextSingleImage(e) {
+            if(e) e.stopPropagation();
+            if (currentAlbumImagesArr.length <= 1) return;
+            currentImageIdx = (currentImageIdx + 1) % currentAlbumImagesArr.length;
+            updateSingleImageDisplay();
+        }
+
+        function closeSingleImage() {
+            singleImageModal.classList.remove('opacity-100');
+            setTimeout(() => {
+                singleImageModal.classList.add('hidden');
+                singleImageModal.classList.remove('flex');
+                singleImageDisplay.src = '';
+            }, 300);
+        }
+
+        closeSingleImageBtn.addEventListener('click', closeSingleImage);
+        prevSingleImageBtn.addEventListener('click', prevSingleImage);
+        nextSingleImageBtn.addEventListener('click', nextSingleImage);
+        
+        // Fechar ao clicar no fundo escuro
+        singleImageModal.addEventListener('click', (e) => { 
+            if (e.target === singleImageModal) closeSingleImage(); 
+        });
+
         closeLightbox.addEventListener('click', closeLightboxModal);
         lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightboxModal(); });
-        document.addEventListener('keydown', (e) => { if (!lightbox.classList.contains('hidden') && e.key === 'Escape') closeLightboxModal(); });
+        
+        // NAVEGAÇÃO POR TECLADO
+        document.addEventListener('keydown', (e) => { 
+            if (e.key === 'Escape') {
+                if (!singleImageModal.classList.contains('hidden')) {
+                    closeSingleImage();
+                } else if (!lightbox.classList.contains('hidden')) {
+                    closeLightboxModal();
+                }
+            } else if (e.key === 'ArrowLeft' && !singleImageModal.classList.contains('hidden')) {
+                prevSingleImage();
+            } else if (e.key === 'ArrowRight' && !singleImageModal.classList.contains('hidden')) {
+                nextSingleImage();
+            }
+        });
+        
+        // SUPORTE PARA SWIPE (DESLIZAR NO TELEMÓVEL)
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        singleImageModal.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, {passive: true});
+
+        singleImageModal.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            if (touchEndX < touchStartX - 40) nextSingleImage(); // Deslizar p/ esquerda -> Próxima
+            if (touchEndX > touchStartX + 40) prevSingleImage(); // Deslizar p/ direita -> Anterior
+        }, {passive: true});
 
         function startCheckout() {
             if (cart.length === 0) { window.location.hash = '#loja'; return; }
