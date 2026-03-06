@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="https://i.imgur.com/RkQdNsn.png" />  
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4294435915847754" crossorigin="anonymous"></script>
-    <meta name="description" content="Apaixonado por captar a sua história! Especialista em fotografia e vídeo para a intensidade de eventos musicais, a emoção de casamentos e a profundidade de retratos em Portugal. Fale com a White Pictures.">
+    <meta name="description" content="Apaixonado por captar a sua história! Especialista em fotografia e vídeo para a intensidade de eventos musicais, a emoção de casamentos e a profundidade de retratos em Portugal. Fale com o Martim da White Pictures.">
     <meta name="keywords" content="fotógrafo eventos musicais Portugal, videógrafo eventos musicais Portugal, fotografia de concertos, vídeo de concertos, fotógrafo festivais Portugal, videógrafo festivais Portugal, cobertura fotográfica de espetáculos, vídeo para bandas musicais, fotógrafo de palco, fotografia ao vivo, videografia musical, documentário musical, fotógrafo para videoclipes, bastidores eventos musicais, fotógrafo de casamento Portugal, videógrafo de casamento Portugal, fotografia de casamento Alentejo, vídeo de casamento Alentejo, fotógrafo casamentos românticos, fotógrafo de eventos Portugal, videógrafo de eventos Portugal, fotógrafo batizado Alentejo, fotógrafo festas de aniversário, fotógrafo de retratos para artistas, sessão fotográfica de banda, retratos promocionais músicos, fotografia de perfil artístico, book fotográfico para músicos, vídeos promocionais para bandas, vídeo clipes musicais, produção de vídeo para artistas, teaser musical, vídeos de tour, fotógrafo Lisboa, fotógrafo Porto, fotógrafo Alentejo, fotógrafo Évora, fotógrafo Beja, fotógrafo Portalegre, fotógrafo de concertos Lisboa, videógrafo de festivais Porto, fotografia de eventos Alentejo, videografia Alentejo, fotógrafo de eventos Alentejo, fotografia de casamentos no Alentejo, videografia de casamentos no Alentejo, fotografia profissional Alentejo, videografia profissional Alentejo, melhores fotógrafos Alentejo, fotógrafo festivais Alentejo, videógrafo festivais Alentejo, fotografia artística Portugal, videografia de eventos musicais Alentejo, fotógrafo bandas Alentejo, videoclipes Alentejo, fotografia de espetáculos Alentejo, fotógrafo eventos empresa Portugal, fotógrafo retratos Alentejo, fotógrafo Portugal, fotografia profissional, videógrafo Portugal, vídeo profissional, estúdio de fotografia Portugal, fotógrafo de casamento Portugal, videógrafo de casamento Portugal, fotografia de casamento Lisboa, fotografia de casamento Porto, fotografia de casamento Coimbra, vídeo de casamento Lisboa, vídeo de casamento Porto, fotógrafo casamentos românticos, fotógrafo para destination wedding Portugal, preços fotografia casamento, fotógrafo pré-casamento, álbuns de casamento personalizados, serviços de fotografia e vídeo casamento, fotógrafo de eventos Portugal, videógrafo de eventos Portugal, fotógrafo batizado Lisboa, fotógrafo batizado Porto, fotógrafo festas de aniversário, fotógrafo eventos empresariais, cobertura fotográfica de eventos, vídeo para eventos sociais, fotógrafo de retratos Portugal, sessão fotográfica profissional, fotógrafo de família Lisboa, fotógrafo de família Porto, sessão fotográfica de casal, retratos artísticos Portugal, fotógrafo para perfil profissional, sessão fotográfica individual, vídeos promocionais para empresas, produção de vídeo corporativo Portugal, videógrafo comercial, vídeo para redes sociais, vídeos institucionais, fotografia de produto, fotografia para e-commerce, fotógrafo Lisboa, fotógrafo Porto, fotógrafo Coimbra, fotógrafo Faro, fotógrafo Algarve, fotografia de casamento Algarve, videógrafo Lisboa, White Pictures fotografia, White Pictures vídeo, fotógrafo com estilo cinematográfico, fotografia artística Portugal, melhores fotógrafos Portugal, fotógrafo emotivo, quanto custa um fotógrafo de casamento, como escolher fotógrafo para casamento, melhores fotógrafos em Lisboa, melhores fotógrafos em Porto, o que faz um videógrafo de casamento, fotógrafo de eventos sociais, videografia de casamentos, fotografia de batizados, sessões de família, vídeos para marcas, produção audiovisual Portugal, fotógrafo profissional Lisboa, videógrafo profissional Porto, fotógrafo Portugal, fotógrafo casamento, videógrafo eventos, Whitepictures, fotografia profissional, Martim">
     
     <title>Whitepictures | Fotografia e Vídeo Profissional</title>
@@ -44,6 +44,7 @@
             color: #d4af37; 
         }
         
+        /* Botão Primário Geral */
         .btn-primary {
             background-color: #d4af37;
             color: #121212;
@@ -68,24 +69,25 @@
             cursor: not-allowed;
         }
 
-        .btn-inactive {
+        /* Estilos específicos para as abas do Guia (para encaixe perfeito) */
+        .tab-btn-active {
+            background-color: #d4af37;
+            color: #121212;
+            border-radius: 6px;
+            font-weight: 800;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+        .tab-btn-inactive {
             background-color: transparent;
             color: #888;
-            padding: 12px 28px;
-            border-radius: 8px;
-            font-weight: 700;
+            border-radius: 6px;
+            font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 1px;
             transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid transparent;
-            cursor: pointer;
         }
-        .btn-inactive:hover {
+        .tab-btn-inactive:hover {
             color: #e0e0e0;
-            background-color: #1a1a1a;
         }
 
         .fade-in {
@@ -191,30 +193,8 @@
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); 
         }
 
-        #cart-sidebar {
-            position: fixed;
-            top: 0; right: 0;
-            width: 100%; max-width: 400px; height: 100%;
-            background-color: #1a1a1a;
-            transform: translateX(100%);
-            transition: transform 0.3s ease-in-out;
-            z-index: 1000;
-            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
-            border-left: 1px solid #2d2d2d;
-        }
-        #cart-sidebar.open {
-            transform: translateX(0);
-        }
-        .loja-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-        }
-        @media (min-width: 1024px) {
-            .loja-grid {
-                grid-template-columns: 3fr 1fr; 
-            }
-        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
 <body class="antialiased selection:bg-[#d4af37]/30 selection:text-white">
@@ -239,7 +219,7 @@
                 </div>
             </div>
 
-            <div id="mobile-menu" class="md:hidden bg-[#1a1a1a] absolute top-full left-0 w-full transform -translate-x-full">
+            <div id="mobile-menu" class="md:hidden bg-[#1a1a1a] absolute top-full left-0 w-full transform -translate-x-full shadow-2xl z-[100]">
                 <nav class="flex flex-col items-center space-y-4 p-8">
                     <a href="#sobre" class="nav-link mobile-nav-link text-lg">Sobre</a>
                     <a href="#servicos" class="nav-link mobile-nav-link text-lg">Serviços</a>
@@ -254,7 +234,7 @@
         <main id="main-content">
             <section class="hero-section h-screen flex items-center justify-center text-center">
                 <div class="max-w-3xl px-4">
-                    <h1 class="text-5xl md:text-7xl font-black text-white leading-tight mb-4 uppercase tracking-tighter">MOMENTOS ÚNICOS MEMÓRIAS ETERNAS </h1>
+                    <h1 class="text-5xl md:text-7xl font-black text-white leading-tight mb-4 uppercase tracking-tighter">MOMENTOS ÚNICOS, MEMÓRIAS ETERNAS</h1>
                     <p class="text-xl text-gray-300 mb-8 text-balance">Fotografia e Videografia que contam a sua história com emoção e arte. Casamentos, eventos e projetos comerciais em Portugal inteiro.</p>
                     <a href="#contacto" class="btn-primary nav-anchor">Peça o seu orçamento</a>
                 </div>
@@ -264,7 +244,7 @@
                 <div class="container mx-auto px-6 text-center">
                     <h2 class="section-title">Quem <span class="gradient-text">Sou</span></h2>
                     <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-12 text-left">
-                        <img src="https://i.imgur.com/uVk2weW.jpeg" alt="Martim" class="rounded-full w-64 h-64 sm:w-80 sm:h-80 object-cover border-4 border-gray-800 shrink-0 mx-auto">
+                        <img src="https://i.imgur.com/uVk2weW.jpeg" alt="Martim" class="rounded-full w-64 h-64 sm:w-80 sm:h-80 object-cover border-4 border-gray-800 shrink-0 mx-auto transition-transform hover:scale-105 duration-500 shadow-2xl">
                         <div>
                             <p class="text-lg mb-4 text-gray-300 italic font-light">Olá! Sou o Martim, o criador por trás da White Pictures.</p>
                             <p class="text-lg mb-4 text-gray-300">Desde sempre apaixonado por contar histórias através de imagens, especializei-me em fotografia e vídeo para capturar a essência de cada momento.</p>
@@ -278,7 +258,7 @@
                 <div class="container mx-auto px-6">
                     <h2 class="section-title">Os Meus <span class="gradient-text">Serviços</span></h2>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                        <div class="bg-[#1a1a1a] p-8 rounded-lg text-center border border-gray-800 transform hover:-translate-y-2 transition-transform duration-300 shadow-xl"><h3 class="text-xl font-bold mb-3 gradient-text">Casamentos</h3><p class="text-gray-400">Cobertura completa (foto ou vídeo) do seu dia especial, com um estilo cinematográfico e emotivo.</p></div>
+                        <div class="bg-[#1a1a1a] p-8 rounded-lg text-center border border-gray-800 transform hover:-translate-y-2 transition-transform duration-300 shadow-xl"><h3 class="text-xl font-bold mb-3 gradient-text">Casamentos</h3><p class="text-gray-400">Cobertura completa do seu dia especial, com um estilo cinematográfico e uma narrativa emotiva.</p></div>
                         <div class="bg-[#1a1a1a] p-8 rounded-lg text-center border border-gray-800 transform hover:-translate-y-2 transition-transform duration-300 shadow-xl"><h3 class="text-xl font-bold mb-3 gradient-text">Eventos Sociais</h3><p class="text-gray-400">Festas, batizados e conferências. Capto a energia e os momentos mais importantes de cada celebração.</p></div>
                         <div class="bg-[#1a1a1a] p-8 rounded-lg text-center border border-gray-800 transform hover:-translate-y-2 transition-transform duration-300 shadow-xl"><h3 class="text-xl font-bold mb-3 gradient-text">Vídeos Promocionais</h3><p class="text-gray-400">Crio vídeos dinâmicos para a sua marca, ideais para redes sociais e publicidade digital de impacto.</p></div>
                         <div class="bg-[#1a1a1a] p-8 rounded-lg text-center border border-gray-800 transform hover:-translate-y-2 transition-transform duration-300 shadow-xl"><h3 class="text-xl font-bold mb-3 gradient-text">Sessões Fotográficas</h3><p class="text-gray-400">Sessões individuais, de casal ou de família, para criar retratos autênticos e recordações eternas.</p></div>
@@ -291,7 +271,6 @@
                     <h2 class="section-title">O Meu <span class="gradient-text">Trabalho</span></h2>
                     <div id="portfolio-carousel" class="portfolio-carousel flex space-x-6 pb-8 pt-4 overflow-x-scroll snap-x snap-mandatory scroll-smooth no-scrollbar">
                         
-                        <!-- Slap -->
                         <div class="portfolio-item group rounded-lg snap-center shrink-0 w-[240px] md:w-[300px] relative transition-all duration-500 transform scale-100" data-album-title="Slap">
                             <div class="album-button">VISUALIZAR ÁLBUM</div>
                             <img class="h-full w-full object-cover rounded-lg aspect-[9/16] transition-transform duration-700 ease-out group-hover:scale-110" src="https://i.imgur.com/6czwjRe.jpeg">
@@ -301,7 +280,6 @@
                             </div>
                         </div>
 
-                        <!-- Los Chopitos -->
                         <div class="portfolio-item group rounded-lg snap-center shrink-0 w-[240px] md:w-[300px] relative transition-all duration-500 transform scale-100" data-album-title="Los Chopitos">
                             <div class="album-button">VISUALIZAR ÁLBUM</div>
                             <img class="h-full w-full object-cover rounded-lg aspect-[9/16] transition-transform duration-700 ease-out group-hover:scale-110" src="https://i.imgur.com/3laxmjy.jpeg">
@@ -311,7 +289,6 @@
                             </div>
                         </div>
 
-                        <!-- Micaela -->
                         <div class="portfolio-item group rounded-lg snap-center shrink-0 w-[240px] md:w-[300px] relative transition-all duration-500 transform scale-100" data-album-title="Micaela">
                             <div class="album-button">VISUALIZAR ÁLBUM</div>
                             <img class="h-full w-full object-cover rounded-lg aspect-[9/16] transition-transform duration-700 ease-out group-hover:scale-110" src="https://i.imgur.com/AM7MGW9.jpeg">
@@ -321,7 +298,6 @@
                             </div>
                         </div>
 
-                        <!-- Chave D´Ouro -->
                         <div class="portfolio-item group rounded-lg snap-center shrink-0 w-[240px] md:w-[300px] relative transition-all duration-500 transform scale-100" data-album-title="Chave D´Ouro">
                             <div class="album-button">VISUALIZAR ÁLBUM</div>
                             <img class="h-full w-full object-cover rounded-lg aspect-[9/16] transition-transform duration-700 ease-out group-hover:scale-110" src="https://i.imgur.com/OXHSzaL.jpeg">
@@ -331,7 +307,6 @@
                             </div>
                         </div>
 
-                        <!-- Desporto -->
                         <div class="portfolio-item group rounded-lg snap-center shrink-0 w-[240px] md:w-[300px] relative transition-all duration-500 transform scale-100" data-album-title="Desporto">
                             <div class="album-button">VISUALIZAR ÁLBUM</div>
                             <img class="h-full w-full object-cover rounded-lg aspect-[9/16] transition-transform duration-700 ease-out group-hover:scale-110" src="https://i.imgur.com/g106btW.jpeg">
@@ -341,7 +316,6 @@
                             </div>
                         </div>
 
-                        <!-- Retratos -->
                         <div class="portfolio-item group rounded-lg snap-center shrink-0 w-[240px] md:w-[300px] relative transition-all duration-500 transform scale-100" data-album-title="Retratos">
                             <div class="album-button">VISUALIZAR ÁLBUM</div>
                             <img class="h-full w-full object-cover rounded-lg aspect-[9/16] transition-transform duration-700 ease-out group-hover:scale-110" src="https://i.imgur.com/53QK77C.jpeg">
@@ -351,7 +325,6 @@
                             </div>
                         </div>
 
-                        <!-- Carnaval -->
                         <div class="portfolio-item group rounded-lg snap-center shrink-0 w-[240px] md:w-[300px] relative transition-all duration-500 transform scale-100" data-album-title="Carnaval">
                             <div class="album-button">VISUALIZAR ÁLBUM</div>
                             <img class="h-full w-full object-cover rounded-lg aspect-[9/16] transition-transform duration-700 ease-out group-hover:scale-110" src="https://i.imgur.com/eA8xPN5.jpg">
@@ -361,7 +334,6 @@
                             </div>
                         </div>
 
-                        <!-- Festas Noturnas -->
                         <div class="portfolio-item group rounded-lg snap-center shrink-0 w-[240px] md:w-[300px] relative transition-all duration-500 transform scale-100" data-album-title="Festas Noturnas">
                             <div class="album-button">VISUALIZAR ÁLBUM</div>
                             <img class="h-full w-full object-cover rounded-lg aspect-[9/16] transition-transform duration-700 ease-out group-hover:scale-110" src="https://i.imgur.com/6TyhmFY.jpg">
@@ -378,11 +350,10 @@
             <section id="apoio" class="py-20 bg-[#121212]">
                 <div class="container mx-auto px-6 text-center">
                     <h2 class="section-title">Apoia o Meu <span class="gradient-text">Trabalho</span></h2>
-                    <p class="text-center text-gray-400 max-w-2xl mx-auto mb-12"> O teu apoio é fundamental para eu evoluir e continuar a investir em equipamento de ponta. 
-                        Se gosta do que faço, considere deixar uma contribuição. Qualquer valor é significativo!</p>
+                    <p class="text-center text-gray-400 max-w-2xl mx-auto mb-12 leading-relaxed">O teu apoio é fundamental para que eu possa evoluir e continuar a investir em equipamento de ponta. Se gostas do que faço, considera deixar uma contribuição. Qualquer valor é significativo!</p>
                     <div class="max-w-xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-8">
-                        <a href="tel:+351928119001" class="bg-[#1a1a1a] p-8 rounded-lg border border-gray-800 flex flex-col items-center justify-center hover:border-gray-600 transition-colors shadow-lg group"><img src="https://upload.wikimedia.org/wikipedia/commons/1/11/MB_WAY.jpg" class="h-16 w-auto mb-4 object-contain rounded-xl transition-transform group-hover:scale-110"><p class="text-lg font-bold text-gray-300">(+351) 928 119 001</p></a>
-                        <a href="https://revolut.me/martimwhite" target="_blank" class="bg-[#1a1a1a] p-8 rounded-lg border border-gray-800 flex flex-col items-center justify-center hover:border-gray-600 transition-colors shadow-lg group"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLEsQthE6cRJ5xd3xFMZW7EjSqUwCE5Ox8ZjnX0M4U-Ai4QpNtW1M1gEnZBy9qni1F8-w&usqp=CAU" class="h-16 w-auto mb-4 object-contain rounded-xl transition-transform group-hover:scale-110"><p class="text-lg font-bold text-gray-300">@martimwhite</p></a>
+                        <a href="tel:+351928119001" class="bg-[#1a1a1a] p-8 rounded-lg border border-gray-800 flex flex-col items-center justify-center hover:border-gray-600 transition-colors shadow-lg group"><img src="https://upload.wikimedia.org/wikipedia/commons/1/11/MB_WAY.jpg" class="h-16 w-auto mb-4 object-contain rounded-xl transition-transform group-hover:scale-110 shadow-xl"><p class="text-lg font-bold text-gray-300">(+351) 928 119 001</p></a>
+                        <a href="https://revolut.me/martimwhite" target="_blank" class="bg-[#1a1a1a] p-8 rounded-lg border border-gray-800 flex flex-col items-center justify-center hover:border-gray-600 transition-colors shadow-lg group"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLEsQthE6cRJ5xd3xFMZW7EjSqUwCE5Ox8ZjnX0M4U-Ai4QpNtW1M1gEnZBy9qni1F8-w&usqp=CAU" class="h-16 w-auto mb-4 object-contain rounded-xl transition-transform group-hover:scale-110 shadow-xl"><p class="text-lg font-bold text-gray-300">@martimwhite</p></a>
                     </div>
                 </div>
             </section>
@@ -426,29 +397,23 @@
             </div>
         </footer>
         
-        <!-- PÁGINA DA LOJA (#loja) - MANTIDA MAS HIDDEN -->
-        <section id="loja-content" class="min-h-screen pt-20 hidden">
-            <div class="container mx-auto px-6">
-                <div id="products-container"></div>
-            </div>
-        </section>
-
         <!-- APRENDER / GUIA (#aprender) -->
         <section id="aprender-content" class="min-h-screen pt-20 py-12 px-6 hidden">
             <div class="container mx-auto max-w-[1400px]">
                 <header class="text-center mb-16">
-                    <h2 class="text-5xl lg:text-7xl font-black tracking-tight mb-6 uppercase">Dominar a <span class="gradient-text">Luz</span></h2>
-                    <p class="text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">Compreenda os fundamentos técnicos que controlam a exposição e descubra as técnicas de composição que transformam uma simples imagem em arte.</p>
+                    <h2 class="text-5xl lg:text-7xl font-black tracking-tight mb-6 uppercase tracking-tighter">Dominar a <span class="gradient-text">Luz</span></h2>
+                    <p class="text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">Compreende os fundamentos técnicos que controlam a exposição e descobre as técnicas de composição que transformam uma simples imagem em arte.</p>
                 </header>
 
                 <div class="flex justify-center mb-12">
-                    <div class="inline-flex p-1 bg-[#1a1a1a] rounded-xl border border-gray-800 shadow-xl gap-2 overflow-x-auto max-w-full no-scrollbar">
-                        <button onclick="switchTab('pillars')" id="btn-pillars" class="btn-primary flex items-center gap-2 px-4 py-3 sm:px-6 whitespace-nowrap text-sm sm:text-base">
-                            <i data-lucide="book-open" class="w-5 h-5 sm:w-6 sm:h-6 shrink-0"></i>
+                    <!-- CONTENTOR DAS ABAS CORRIGIDO PARA ENCAIXE PERFEITO -->
+                    <div class="flex p-1 bg-[#1a1a1a] rounded-xl border border-gray-800 shadow-xl gap-1 w-full max-w-md h-14">
+                        <button onclick="switchTab('pillars')" id="btn-pillars" class="tab-btn-active flex-1 flex items-center justify-center gap-2 px-1 whitespace-nowrap text-xs sm:text-sm md:text-base focus:outline-none">
+                            <i data-lucide="book-open" class="w-4 h-4 sm:w-5 sm:h-5 shrink-0"></i>
                             Os 3 Pilares
                         </button>
-                        <button onclick="switchTab('techniques')" id="btn-techniques" class="btn-inactive flex items-center gap-2 px-4 py-3 sm:px-6 whitespace-nowrap text-sm sm:text-base">
-                            <i data-lucide="image" class="w-5 h-5 sm:w-6 sm:h-6 shrink-0"></i>
+                        <button onclick="switchTab('techniques')" id="btn-techniques" class="tab-btn-inactive flex-1 flex items-center justify-center gap-2 px-1 whitespace-nowrap text-xs sm:text-sm md:text-base focus:outline-none">
+                            <i data-lucide="image" class="w-4 h-4 sm:w-5 sm:h-5 shrink-0"></i>
                             Técnicas Comuns
                         </button>
                     </div>
@@ -457,63 +422,85 @@
                 <div id="pillars-content" class="fade-in">
                     <div class="text-center mb-12">
                         <h2 class="text-3xl font-black text-white mb-4 uppercase tracking-wide">O Triângulo de Exposição</h2>
-                        <p class="text-gray-400 max-w-3xl mx-auto text-lg">Para captar uma fotografia, a câmara precisa de luz. A quantidade de luz que atinge o sensor é chamada de <strong class="gradient-text">Exposição</strong>. Esta é controlada por três elementos fundamentais que trabalham sempre em conjunto. Se alterar um, terá de compensar nos outros.</p>
+                        <p class="text-gray-400 max-w-3xl mx-auto text-lg leading-relaxed">Para captar uma fotografia, a câmara precisa de luz. A quantidade de luz que atinge o sensor é chamada de <strong class="gradient-text uppercase">Exposição</strong>. Esta é controlada por três elementos fundamentais que trabalham sempre em conjunto.</p>
                     </div>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
                         <div class="p-8 rounded-2xl bg-[#1a1a1a] border border-gray-800 hover:border-[#d4af37] transition-all duration-300 shadow-xl group">
                             <div class="flex items-center gap-4 mb-6"><div class="p-4 rounded-xl bg-[#d4af37]/10 text-[#d4af37] group-hover:bg-[#d4af37] group-hover:text-[#121212] transition-colors"><i data-lucide="aperture" class="w-8 h-8"></i></div><div><h3 class="text-2xl font-bold text-white uppercase tracking-wider">Abertura</h3><p class="text-sm font-bold text-[#d4af37]">A "Pupila" da Objetiva</p></div></div>
                             <p class="text-gray-400 mb-8 leading-relaxed">Refere-se ao tamanho do orifício na objetiva que deixa a luz entrar. Mede-se em 'f-stops'.</p>
-                            <div class="bg-[#121212] rounded-xl p-5 border border-gray-800"><p class="text-xs gradient-text uppercase tracking-widest font-black mb-2 uppercase">Efeito Visual</p><p class="text-gray-300 text-sm">Controla a Profundidade de Campo. Aberturas grandes desfocam o fundo (Bokeh).</p></div>
+                            <div class="bg-[#121212] rounded-xl p-5 border border-gray-800 shadow-inner"><p class="text-xs gradient-text uppercase tracking-widest font-black mb-2 uppercase">Efeito Visual</p><p class="text-gray-300 text-sm">Controla a Profundidade de Campo. Aberturas grandes desfocam o fundo (Bokeh).</p></div>
                         </div>
                         <div class="p-8 rounded-2xl bg-[#1a1a1a] border border-gray-800 hover:border-[#d4af37] transition-all duration-300 shadow-xl group">
                             <div class="flex items-center gap-4 mb-6"><div class="p-4 rounded-xl bg-[#d4af37]/10 text-[#d4af37] group-hover:bg-[#d4af37] group-hover:text-[#121212] transition-colors"><i data-lucide="clock" class="w-8 h-8"></i></div><div><h3 class="text-2xl font-bold text-white uppercase tracking-wider">Obturador</h3><p class="text-sm font-bold text-[#d4af37]">O Tempo de Exposição</p></div></div>
                             <p class="text-gray-400 mb-8 leading-relaxed">É a 'cortina' em frente ao sensor. Dita quanto tempo a luz atinge o sensor.</p>
-                            <div class="bg-[#121212] rounded-xl p-5 border border-gray-800"><p class="text-xs gradient-text uppercase tracking-widest font-black mb-2 uppercase">Efeito Visual</p><p class="text-gray-300 text-sm">Controla o Movimento. Velocidades rápidas congelam a ação.</p></div>
+                            <div class="bg-[#121212] rounded-xl p-5 border border-gray-800 shadow-inner"><p class="text-xs gradient-text uppercase tracking-widest font-black mb-2 uppercase">Efeito Visual</p><p class="text-gray-300 text-sm">Controla o Movimento. Velocidades rápidas congelam a ação.</p></div>
                         </div>
                         <div class="p-8 rounded-2xl bg-[#1a1a1a] border border-gray-800 hover:border-[#d4af37] transition-all duration-300 shadow-xl group">
                             <div class="flex items-center gap-4 mb-6"><div class="p-4 rounded-xl bg-[#d4af37]/10 text-[#d4af37] group-hover:bg-[#d4af37] group-hover:text-[#121212] transition-colors"><i data-lucide="sun" class="w-8 h-8"></i></div><div><h3 class="text-2xl font-bold text-white uppercase tracking-wider">ISO</h3><p class="text-sm font-bold text-[#d4af37]">Sensibilidade do Sensor</p></div></div>
                             <p class="text-gray-400 mb-8 leading-relaxed">Mede a sensibilidade do sensor à luz. Valores altos são usados no escuro.</p>
-                            <div class="bg-[#121212] rounded-xl p-5 border border-gray-800"><p class="text-xs gradient-text uppercase tracking-widest font-black mb-2 uppercase">Efeito Visual</p><p class="text-gray-300 text-sm">Controla o Ruído Digital. Mais ISO introduz 'grão' na imagem.</p></div>
+                            <div class="bg-[#121212] rounded-xl p-5 border border-gray-800 shadow-inner"><p class="text-xs gradient-text uppercase tracking-widest font-black mb-2 uppercase">Efeito Visual</p><p class="text-gray-300 text-sm">Controla o Ruído Digital. Mais ISO introduz 'grão' na imagem.</p></div>
                         </div>
                     </div>
-                    <div class="mt-12 p-10 rounded-2xl bg-[#1a1a1a] border border-gray-800 text-center shadow-2xl relative overflow-hidden"><div class="absolute inset-0 bg-gradient-to-r from-[#d4af37]/5 to-transparent"></div><h3 class="text-2xl font-black gradient-text mb-4 uppercase tracking-wider">A Regra de Ouro do Equilíbrio</h3><p class="text-gray-400 text-lg max-w-3xl mx-auto">Imagine um balde a encher de água. Pode enchê-lo usando diferentes combinações de <strong class="gradient-text">Abertura</strong>, <strong class="gradient-text">Obturador</strong> e <strong class="gradient-text">ISO</strong> consoante o efeito artístico que pretende!</p></div>
+                    <div class="mt-12 p-10 rounded-2xl bg-[#1a1a1a] border border-gray-800 text-center shadow-2xl relative overflow-hidden"><div class="absolute inset-0 bg-gradient-to-r from-[#d4af37]/5 to-transparent opacity-30"></div><h3 class="text-2xl font-black gradient-text mb-4 uppercase tracking-wider uppercase">A Regra de Ouro do Equilíbrio</h3><p class="text-gray-400 text-lg max-w-3xl mx-auto leading-relaxed">Imagina um balde a encher de água. Podes enchê-lo usando diferentes combinações de <strong class="gradient-text uppercase">Abertura</strong>, <strong class="gradient-text uppercase">Obturador</strong> e <strong class="gradient-text uppercase">ISO</strong> consoante o efeito artístico que pretendes!</p></div>
                 </div>
 
                 <div id="techniques-content" class="hidden fade-in">
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pt-10">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl font-black text-white mb-4 uppercase tracking-wide">Técnicas e Composição</h2>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pt-4">
                         <div class="group relative rounded-2xl overflow-hidden bg-[#1a1a1a] border border-gray-800 hover:border-[#d4af37] transition-all duration-500 h-[450px] shadow-xl cursor-pointer">
                             <img src="https://i.imgur.com/dQ2hUXQ.jpg" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110 opacity-60 group-hover:opacity-30">
                             <div class="absolute inset-0 bg-gradient-to-t from-[#121212] via-[#121212]/80 to-transparent"></div>
-                            <div class="absolute inset-0 p-8 flex flex-col justify-end"><h3 class="text-2xl font-black text-white mb-3 uppercase tracking-wider">Regra dos Terços</h3><p class="text-gray-300 text-sm leading-relaxed">Dividir a imagem em 9 quadrados iguais. Colocar o motivo nas interseções.</p></div>
+                            <div class="absolute inset-0 p-8 flex flex-col justify-end"><h3 class="text-2xl font-black text-white mb-3 uppercase tracking-wider text-balance uppercase">Regra dos Terços</h3><p class="text-gray-300 text-sm leading-relaxed">Dividir a imagem em 9 quadrados iguais. Colocar o motivo nas interseções das linhas cria harmonia e equilíbrio.</p></div>
+                        </div>
+                        <div class="group relative rounded-2xl overflow-hidden bg-[#1a1a1a] border border-gray-800 hover:border-[#d4af37] transition-all duration-500 h-[450px] shadow-xl cursor-pointer">
+                            <img src="https://i.imgur.com/I3nGoVK.jpg" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110 opacity-60 group-hover:opacity-30">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#121212] via-[#121212]/80 to-transparent"></div>
+                            <div class="absolute inset-0 p-8 flex flex-col justify-end"><h3 class="text-2xl font-black text-white mb-3 uppercase tracking-wider text-balance uppercase">Bokeh (Desfocagem)</h3><p class="text-gray-300 text-sm leading-relaxed">Isolar o motivo mantendo-o nítido enquanto o fundo fica suavemente desfocado. Essencial para retratos artísticos.</p></div>
+                        </div>
+                        <div class="group relative rounded-2xl overflow-hidden bg-[#1a1a1a] border border-gray-800 hover:border-[#d4af37] transition-all duration-500 h-[450px] shadow-xl cursor-pointer">
+                            <img src="https://i.imgur.com/FAHVOlf.jpg" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110 opacity-60 group-hover:opacity-30">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#121212] via-[#121212]/80 to-transparent"></div>
+                            <div class="absolute inset-0 p-8 flex flex-col justify-end"><h3 class="text-2xl font-black text-white mb-3 uppercase tracking-wider text-balance uppercase">Longa Exposição</h3><p class="text-gray-300 text-sm leading-relaxed">Captar o rasto das luzes ou suavizar a água. Transforma o tempo em arte visual fluida.</p></div>
                         </div>
                         <div class="group relative rounded-2xl overflow-hidden bg-[#1a1a1a] border border-gray-800 hover:border-[#d4af37] transition-all duration-500 h-[450px] shadow-xl cursor-pointer">
                             <img src="https://i.imgur.com/rxnnefT.jpg" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110 opacity-60 group-hover:opacity-30">
                             <div class="absolute inset-0 bg-gradient-to-t from-[#121212] via-[#121212]/80 to-transparent"></div>
-                            <div class="absolute inset-0 p-8 flex flex-col justify-end"><h3 class="text-2xl font-black text-white mb-3 uppercase tracking-wider">Panning</h3><p class="text-gray-300 text-sm leading-relaxed">Acompanhar um motivo em movimento para transmitir sensação de velocidade.</p></div>
+                            <div class="absolute inset-0 p-8 flex flex-col justify-end"><h3 class="text-2xl font-black text-white mb-3 uppercase tracking-wider text-balance uppercase">Panning</h3><p class="text-gray-300 text-sm leading-relaxed">Acompanhar um motivo em movimento com a câmara para transmitir uma sensação de velocidade extrema.</p></div>
+                        </div>
+                        <div class="group relative rounded-2xl overflow-hidden bg-[#1a1a1a] border border-gray-800 hover:border-[#d4af37] transition-all duration-500 h-[450px] shadow-xl cursor-pointer">
+                            <img src="https://i.imgur.com/T8vNg0O.jpg" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110 opacity-60 group-hover:opacity-30">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#121212] via-[#121212]/80 to-transparent"></div>
+                            <div class="absolute inset-0 p-8 flex flex-col justify-end"><h3 class="text-2xl font-black text-white mb-3 uppercase tracking-wider text-balance uppercase">Linhas Guia</h3><p class="text-gray-300 text-sm leading-relaxed text-balance">Usar linhas naturais ou estruturais para guiar o olhar do espectador para o motivo principal.</p></div>
+                        </div>
+                        <div class="group relative rounded-2xl overflow-hidden bg-[#1a1a1a] border border-gray-800 hover:border-[#d4af37] transition-all duration-500 h-[450px] shadow-xl cursor-pointer">
+                            <img src="https://i.imgur.com/S0HPZw9.jpg" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110 opacity-60 group-hover:opacity-30">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#121212] via-[#121212]/80 to-transparent"></div>
+                            <div class="absolute inset-0 p-8 flex flex-col justify-end"><h3 class="text-2xl font-black text-white mb-3 uppercase tracking-wider text-balance uppercase">Espaço Negativo</h3><p class="text-gray-300 text-sm leading-relaxed text-balance">Deixar grandes áreas vazias para focar a atenção total no significado do motivo principal.</p></div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- LIGHTBOX GERAL (ALBUMS) -->
-        <div id="lightbox" class="fixed inset-0 bg-black bg-opacity-95 hidden items-start justify-center z-50 p-4 pt-20 overflow-y-auto opacity-0 transition-opacity">
+        <!-- LIGHTBOX ÁLBUNS -->
+        <div id="lightbox" class="fixed inset-0 bg-black bg-opacity-95 hidden items-start justify-center z-50 p-4 pt-20 overflow-y-auto opacity-0 transition-opacity duration-300">
             <div class="container mx-auto">
                 <div class="flex justify-between items-center mb-6 px-2">
                     <h3 id="lightbox-title" class="text-2xl md:text-3xl font-bold text-white uppercase tracking-wider"></h3>
-                    <button id="close-lightbox" class="text-white text-5xl font-bold hover:text-gray-400 transition-colors">&times;</button>
+                    <button id="close-lightbox" class="text-white text-5xl font-bold hover:text-gray-400 transition-colors focus:outline-none">&times;</button>
                 </div>
                 <div id="lightbox-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4"></div>
                 
-                <!-- PRODUTOS LIGHTBOX (LIMPO) -->
                 <div id="product-lightbox-details" class="hidden w-full max-w-[900px] mx-auto pt-10">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
                         <img id="product-modal-image" class="w-full h-auto rounded-lg border border-gray-800 shadow-2xl bg-black">
-                        <div class="flex flex-col justify-center">
+                        <div class="flex flex-col justify-center text-left">
                             <h2 id="product-modal-name" class="text-4xl font-black gradient-text mb-4"></h2>
                             <p id="product-modal-description" class="text-gray-300 mb-8 text-lg"></p>
                             <div id="product-modal-price" class="text-3xl font-black accent-color mb-8"></div>
-                            <button id="product-modal-add-to-cart" class="btn-primary w-full shadow-2xl">Adicionar ao Carrinho</button>
+                            <button class="btn-primary w-full shadow-2xl">Pedir Orçamento</button>
                         </div>
                     </div>
                 </div>
@@ -521,21 +508,19 @@
         </div>
 
         <!-- MODAL DE IMAGEM ÚNICA (FULLSCREEN) -->
-        <div id="single-image-modal" class="fixed inset-0 bg-black bg-opacity-95 hidden z-[100] p-4 opacity-0 transition-opacity duration-300 items-center justify-center">
-            <button id="close-single-image" class="absolute top-6 right-6 text-white text-5xl font-bold hover:text-gray-400 transition-colors z-50">&times;</button>
-            <button id="prev-single-image" class="absolute left-4 md:left-8 text-white/50 hover:text-[#d4af37] text-6xl transition-colors z-50 p-4 focus:outline-none hidden">&#10094;</button>
+        <div id="single-image-modal" class="fixed inset-0 bg-black bg-opacity-98 hidden z-[100] p-4 opacity-0 transition-opacity duration-300 items-center justify-center">
+            <button id="close-single-image" class="absolute top-6 right-6 text-white text-5xl font-bold hover:text-gray-400 transition-colors z-50 focus:outline-none">&times;</button>
+            <button id="prev-single-image" class="absolute left-4 md:left-8 text-white/50 hover:text-[#d4af37] text-4xl md:text-6xl transition-colors z-50 p-4 focus:outline-none hidden">&#10094;</button>
             <img id="single-image-display" src="" class="max-w-full max-h-[95vh] object-contain rounded shadow-2xl pointer-events-none select-none">
-            <button id="next-single-image" class="absolute right-4 md:right-8 text-white/50 hover:text-[#d4af37] text-6xl transition-colors z-50 p-4 focus:outline-none hidden">&#10095;</button>
+            <button id="next-single-image" class="absolute right-4 md:right-8 text-white/50 hover:text-[#d4af37] text-4xl md:text-6xl transition-colors z-50 p-4 focus:outline-none hidden">&#10095;</button>
         </div>
 
-        <!-- BOTAO VOLTAR AO TOPO -->
-        <a href="#" id="back-to-top-btn" class="fixed bottom-5 right-5 bg-[#d4af37] text-[#121212] p-3 rounded-full shadow-lg opacity-0 pointer-events-none z-50 transition-opacity"><i data-lucide="arrow-up" class="w-6 h-6"></i></a>
+        <a href="#" id="back-to-top-btn" class="fixed bottom-5 right-5 bg-[#d4af37] text-[#121212] p-3 rounded-full shadow-lg opacity-0 pointer-events-none z-50 transition-opacity duration-300"><i data-lucide="arrow-up" class="w-6 h-6"></i></a>
     </div>
 
     <script>
         const mainContent = document.getElementById('main-content');
         const footerContent = document.querySelector('footer');
-        const lojaContent = document.getElementById('loja-content');
         const aprenderContent = document.getElementById('aprender-content');
         const backToTopBtn = document.getElementById('back-to-top-btn');
         const mobileMenuButton = document.getElementById('mobile-menu-button');
@@ -564,9 +549,11 @@
             const title = albumElement.dataset.albumTitle;
             const imageElements = albumElement.querySelector('.album-images').children;
             
-            // LIMPEZA CRÍTICA: Garante que o painel de produtos não aparece
+            // LIMPEZA TOTAL ANTES DE ABRIR
             productLightboxDetails.style.display = 'none';
+            productLightboxDetails.classList.remove('active');
             lightboxGrid.style.display = 'grid';
+            lightboxGrid.classList.remove('hidden');
             
             lightboxTitle.textContent = title;
             lightboxGrid.innerHTML = '';
@@ -618,23 +605,37 @@
             if (!singleImageModal.classList.contains('hidden')) { if (e.key === 'ArrowRight') nextImage(); if (e.key === 'ArrowLeft') prevImage(); }
         });
 
+        // TABS DO GUIA CORRIGIDAS
         function switchTab(tabId) {
             const p = document.getElementById('pillars-content');
             const t = document.getElementById('techniques-content');
             const bp = document.getElementById('btn-pillars');
             const bt = document.getElementById('btn-techniques');
-            const active = "btn-primary flex items-center gap-2 px-4 py-3 sm:px-6 whitespace-nowrap text-sm sm:text-base";
-            const inactive = "btn-inactive flex items-center gap-2 px-4 py-3 sm:px-6 whitespace-nowrap text-sm sm:text-base";
-            if (tabId === 'pillars') { p.classList.remove('hidden'); t.classList.add('hidden'); bp.className = active; bt.className = inactive; }
-            else { p.classList.add('hidden'); t.classList.remove('hidden'); bt.className = active; bp.className = inactive; }
+            
+            const active = "tab-btn-active flex-1 flex items-center justify-center gap-2 px-1 whitespace-nowrap text-xs sm:text-sm md:text-base focus:outline-none";
+            const inactive = "tab-btn-inactive flex-1 flex items-center justify-center gap-2 px-1 whitespace-nowrap text-xs sm:text-sm md:text-base focus:outline-none";
+
+            if (tabId === 'pillars') {
+                p.classList.remove('hidden'); t.classList.add('hidden');
+                bp.className = active; bt.className = inactive;
+            } else {
+                p.classList.add('hidden'); t.classList.remove('hidden');
+                bt.className = active; bp.className = inactive;
+            }
         }
 
         function handleRouting() {
             const hash = window.location.hash || '#home';
             mainContent.style.display = 'block'; footerContent.style.display = 'block';
-            lojaContent.classList.add('hidden'); aprenderContent.classList.add('hidden');
-            if (hash === '#aprender') { mainContent.style.display = 'none'; footerContent.style.display = 'none'; aprenderContent.classList.remove('hidden'); window.scrollTo(0, 0); }
-            else { const target = document.getElementById(hash.substring(1)); if (target) setTimeout(() => target.scrollIntoView({ behavior: 'smooth' }), 50); }
+            aprenderContent.classList.add('hidden');
+            if (hash === '#aprender') { 
+                mainContent.style.display = 'none'; footerContent.style.display = 'none'; 
+                aprenderContent.classList.remove('hidden'); window.scrollTo(0, 0); 
+            } else { 
+                const targetId = hash.substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) setTimeout(() => targetElement.scrollIntoView({ behavior: 'smooth' }), 50); 
+            }
         }
 
         window.addEventListener('hashchange', handleRouting);
@@ -646,6 +647,14 @@
             if (window.scrollY > 300) { backToTopBtn.classList.remove('opacity-0', 'pointer-events-none'); backToTopBtn.classList.add('opacity-100'); }
             else { backToTopBtn.classList.remove('opacity-100'); backToTopBtn.classList.add('opacity-0', 'pointer-events-none'); }
         });
+
+        let ts = 0;
+        singleImageModal.addEventListener('touchstart', e => { ts = e.changedTouches[0].screenX; }, {passive: true});
+        singleImageModal.addEventListener('touchend', e => {
+            let te = e.changedTouches[0].screenX;
+            if (te < ts - 50) nextImage();
+            if (te > ts + 50) prevImage();
+        }, {passive: true});
     </script>
 </body>
 </html>
