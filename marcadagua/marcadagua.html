@@ -1,155 +1,306 @@
 <!DOCTYPE html>
-<html lang="pt-PT">
+<html lang="pt-PT" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adicionador de Marca D'água em Lote</title>
-    <!-- Tailwind CSS para estilização moderna -->
+    <link rel="icon" type="image/png" href="https://i.imgur.com/RkQdNsn.png" />  
+    <meta name="description" content="Ferramenta White Pictures para criar provas fotográficas com marca d'água para clientes.">
+    
+    <title>Whitepictures | Criador de Provas</title>
+    
+    <!-- Scripts Principais -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- JSZip para criar o arquivo .zip final -->
+    <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    
     <style>
-        .drag-over { font-weight: bold; border-color: #ef4444 !important; background-color: #fef2f2 !important; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+        
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #8b5cf6, #ec4899, #d4af37, #8b5cf6); 
+            -webkit-background-clip: text; 
+            background-clip: text; 
+            color: transparent; 
+            display: inline-block; 
+            background-size: 300% 100%; 
+            animation: gradient-shift 6s ease infinite; 
+        }
+
+        .accent-color {
+            color: #d4af37; 
+        }
+        
+        /* Botão Primário Geral */
+        .btn-primary {
+            background-color: #d4af37;
+            color: #121212;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #d4af37;
+            cursor: pointer;
+        }
+        .btn-primary:hover:not(:disabled) {
+            background-color: transparent;
+            color: #d4af37;
+        }
+        .btn-primary:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+        }
+        .nav-link {
+            transition: color 0.3s ease;
+            position: relative;
+            padding: 8px 0;
+        }
+        .nav-link:hover {
+            color: #d4af37;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background-color: #d4af37; 
+            transition: all 0.3s ease-in-out;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+            left: 0;
+        }
+        
+        /* Estilos específicos para o Drag & Drop no tema escuro */
+        .drag-over { border-color: #d4af37 !important; background-color: rgba(212, 175, 55, 0.05) !important; }
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        #mobile-menu { transition: transform 0.3s ease-in-out; }
     </style>
 </head>
-<body class="bg-gray-100 min-h-screen text-gray-800 font-sans p-4 sm:p-8">
+<body class="antialiased selection:bg-[#d4af37]/30 selection:text-white flex flex-col min-h-screen">
+    <div id="website-app" class="flex-grow flex flex-col">
+        <!-- CABEÇALHO -->
+        <header class="bg-[#1a1a1a] sticky top-0 z-50 shadow-md">
+            <div class="container mx-auto flex justify-between items-center p-4">
+                <a href="/" class="text-2xl font-black tracking-wider gradient-text nav-route">WHITEPICTURES</a>
 
-    <div class="max-w-5xl mx-auto bg-white rounded-2xl shadow-2xl overflow-hidden">
-        <!-- Cabeçalho -->
-        <div class="bg-red-600 text-white p-6">
-            <h1 class="text-2xl sm:text-3xl font-bold flex items-center gap-3">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.077-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.04 2.88a14.5 14.5 0 012.572 1.298 2.25 2.25 0 003.36-1.628c0-.621-.109-1.212-.313-1.758m-3.885 2.106a4.49 4.49 0 01-4.5 0m4.5 0a4.49 4.49 0 004.5 0m0 0a15.998 15.998 0 003.388-1.62m-5.04 2.88a14.5 14.5 0 012.572 1.298 2.25 2.25 0 003.36-1.628c0-.621-.109-1.212-.313-1.758m.313 1.758a3 3 0 005.78 1.128 2.25 2.25 0 012.4 2.245 4.5 4.5 0 00-8.4-2.245c0-.399.077-.78.22-1.128zm0 0a15.998 15.998 0 00-3.388-1.62m5.04 2.88a14.5 14.5 0 01-2.572 1.298 2.25 2.25 0 00-3.36-1.628c0-.621.109-1.212.313-1.758m.313 1.758a4.49 4.49 0 01-4.5 0m4.5 0a4.49 4.49 0 004.5 0" />
-                </svg>
-                Adicionador de Marca D'água (Provas)
-            </h1>
-            <p class="text-red-100 mt-2">Crie provas para os clientes. Destrua os detalhes das fotos para evitar roubos, mantendo a marca d'água perfeitamente nítida.</p>
-        </div>
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="/#sobre" class="nav-link nav-anchor">Sobre</a>
+                    <a href="/#servicos" class="nav-link nav-anchor">Serviços</a>
+                    <a href="/#portfolio" class="nav-link nav-anchor">Portfólio</a>
+                    <a href="/#apoio" class="nav-link nav-anchor">Apoio</a>
+                    <a href="/#contacto" class="nav-link nav-anchor">Contacto</a>
+                    <a href="/#aprender" class="nav-link nav-route">Aprender</a>
+                </nav>
 
-        <div class="p-6">
-            <!-- Configurações -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6 bg-gray-50 p-5 rounded-xl border border-gray-200 shadow-sm">
-                <div>
-                    <label class="block text-sm font-bold text-gray-700 mb-1">Texto da Marca (Prefixo)</label>
-                    <input type="text" id="prefix-input" value="img " 
-                           class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none transition text-red-600 font-medium"
-                           placeholder="Ex: Prova , Copia-">
-                    <p class="text-xs text-gray-500 mt-1">Este texto será escrito na imagem.</p>
-                </div>
-                <div>
-                    <label class="block text-sm font-bold text-gray-700 mb-1">Começar numeração em</label>
-                    <input type="number" id="start-index" value="1" min="0"
-                           class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none transition">
-                </div>
-                
-                <!-- Novas Configurações: Cor e Tamanho -->
-                <div>
-                    <label class="block text-sm font-bold text-gray-700 mb-1">Cor do Texto</label>
-                    <div class="flex items-center gap-3">
-                        <input type="color" id="text-color" value="#dc2626" 
-                               class="h-10 w-16 p-1 border border-gray-300 rounded cursor-pointer">
-                        <span class="text-sm text-gray-600">Escolha a cor da marca d'água</span>
-                    </div>
-                </div>
-                <div>
-                    <label class="block text-sm font-bold text-gray-700 mb-1">Tamanho do Texto</label>
-                    <div class="flex items-center gap-3">
-                        <input type="range" id="text-size" min="1" max="30" value="5" 
-                               class="w-full h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer accent-red-600">
-                        <span id="text-size-display" class="text-sm font-bold text-gray-700 w-10 text-right">5%</span>
-                    </div>
-                    <p class="text-xs text-gray-500 mt-1">Tamanho relativo à largura da imagem.</p>
-                </div>
-                
-                <!-- Novas Configurações: Proteção de Prova -->
-                <div class="sm:col-span-2 pt-3 border-t border-gray-200 mt-1 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div class="bg-blue-50 p-3 rounded-lg border border-blue-100">
-                        <label class="block text-sm font-bold text-blue-900 mb-1">Detalhe da Fotografia (Fundo)</label>
-                        <div class="flex items-center gap-3">
-                            <input type="range" id="image-detail" min="5" max="100" value="30" 
-                                   class="w-full h-2 bg-blue-200 rounded-lg appearance-none cursor-pointer accent-blue-600">
-                            <span id="detail-display" class="text-sm font-bold text-blue-900 w-12 text-right">30%</span>
-                        </div>
-                        <p class="text-[11px] text-blue-700 mt-1"><b>Magia aqui:</b> Reduz a qualidade apenas da foto (perde detalhe ao dar zoom), mas mantém a marca d'água 100% nítida.</p>
-                    </div>
-                    <div class="bg-gray-100 p-3 rounded-lg border border-gray-200">
-                        <label class="block text-sm font-bold text-gray-700 mb-1">Tamanho Final da Imagem</label>
-                        <div class="flex items-center gap-3">
-                            <input type="range" id="image-scale" min="10" max="100" value="100" 
-                                   class="w-full h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer accent-gray-600">
-                            <span id="scale-display" class="text-sm font-bold text-gray-700 w-12 text-right">100%</span>
-                        </div>
-                        <p class="text-[11px] text-gray-500 mt-1">Reduz a resolução total (largura e altura) do ficheiro exportado.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Área de Upload (Drag & Drop) -->
-            <div id="drop-zone" class="border-2 border-dashed border-gray-300 rounded-xl p-8 text-center cursor-pointer hover:bg-red-50 hover:border-red-300 transition duration-200 relative group">
-                <input type="file" id="file-input" multiple accept="image/*" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10">
-                <div class="group-hover:scale-105 transition-transform duration-200">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-12 h-12 mx-auto text-red-400 mb-4">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
-                    </svg>
-                    <p class="text-gray-700 font-bold text-lg">Clique ou arraste as fotos para aqui</p>
-                    <p class="text-sm text-gray-500 mt-1">Será adicionada a marca d'água vermelha em cada uma.</p>
-                </div>
-            </div>
-
-            <!-- Pré-visualização -->
-            <div id="preview-section" class="mt-8 hidden">
-                
-                <!-- Nova secção de Pré-visualização ao Vivo -->
-                <div class="mb-8 bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm">
-                    <div class="bg-gray-50 px-4 py-3 border-b border-gray-200">
-                        <h3 class="text-md font-bold text-gray-800">Pré-visualização da Marca D'água</h3>
-                        <p class="text-xs text-gray-500">Mostra como ficará a primeira imagem. Atualiza automaticamente ao mudar as opções acima.</p>
-                    </div>
-                    <!-- Fundo axadrezado para imagens transparentes -->
-                    <div class="p-4 flex justify-center bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCI+CjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0iI2ZmZiI+PC9yZWN0Pgo8cmVjdCB3aWR0aD0iMTAiIGhlaWdodD0iMTAiIGZpbGw9IiNmMmYyZjIiPjwvcmVjdD4KPHJlY3QgeD0iMTAiIHk9IjEwIiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiIGZpbGw9IiNmMmYyZjIiPjwvcmVjdD4KPC9zdmc+')]">
-                        <canvas id="live-preview-canvas" class="max-w-full max-h-[400px] object-contain shadow-md rounded bg-white"></canvas>
-                    </div>
-                </div>
-
-                <div class="flex justify-between items-end mb-4">
-                    <h2 class="text-lg font-bold text-gray-800">Imagens na Fila (<span id="file-count">0</span>)</h2>
-                    <button id="clear-btn" class="text-sm font-medium text-red-600 hover:text-red-800 bg-red-50 px-3 py-1 rounded-md transition">Limpar Tudo</button>
-                </div>
-                
-                <!-- Grid de imagens (Mostra apenas as originais como referência) -->
-                <div id="image-grid" class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3 max-h-64 overflow-y-auto no-scrollbar pb-4 p-2 bg-gray-50 rounded-lg">
-                    <!-- Imagens inseridas dinamicamente aqui -->
-                </div>
-
-                <!-- Botão de Processar e Download -->
-                <div class="mt-8 flex flex-col items-center">
-                    <button id="download-btn" class="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold py-4 px-10 rounded-full shadow-xl transform transition hover:scale-105 flex items-center gap-3 text-lg">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-7 h-7">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 9l2.846-.813a4.5 4.5 0 003.09-3.09L9 2.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 9l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
-                        </svg>
-                        <span>Processar e Baixar ZIP</span>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-white focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
                     </button>
-                    <p class="text-sm text-gray-500 mt-3">Nota: O processamento pode levar alguns segundos dependendo do tamanho das imagens.</p>
-                </div>
-            </div>
-            
-            <!-- Indicador de Processamento -->
-            <div id="loading-overlay" class="hidden fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center z-50 backdrop-blur-sm">
-                <div class="bg-white p-8 rounded-2xl shadow-2xl flex flex-col items-center max-w-sm text-center">
-                    <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-red-600 mb-6"></div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">A processar imagens...</h3>
-                    <p class="text-gray-600 font-medium" id="loading-text">A iniciar...</p>
-                    <p class="text-xs text-gray-400 mt-4">Por favor, não feche esta aba.</p>
                 </div>
             </div>
 
-        </div>
+            <div id="mobile-menu" class="md:hidden bg-[#1a1a1a] absolute top-full left-0 w-full transform -translate-x-full shadow-2xl z-[100]">
+                <nav class="flex flex-col items-center space-y-4 p-8">
+                    <a href="/#sobre" class="nav-link mobile-nav-link text-lg">Sobre</a>
+                    <a href="/#servicos" class="nav-link mobile-nav-link text-lg">Serviços</a>
+                    <a href="/#portfolio" class="nav-link mobile-nav-link text-lg">Portfólio</a>
+                    <a href="/#apoio" class="nav-link mobile-nav-link text-lg">Apoio</a>
+                    <a href="/#contacto" class="nav-link mobile-nav-link text-lg">Contacto</a>
+                    <a href="/#aprender" class="nav-link mobile-nav-link text-lg">Aprender</a>
+                </nav>
+            </div>
+        </header>
+
+        <!-- CONTEÚDO PRINCIPAL (FERRAMENTA DE MARCA D'ÁGUA) -->
+        <main class="py-12 flex-grow">
+            <div class="container mx-auto px-4 md:px-6 max-w-5xl">
+                
+                <h1 class="section-title text-white">Criador de <span class="gradient-text">Provas</span></h1>
+                <p class="text-center text-gray-400 mb-10 max-w-2xl mx-auto">Proteja o seu trabalho. Destrua os detalhes das fotos originais para enviar provas leves aos clientes, mantendo a marca d'água 100% nítida e profissional.</p>
+
+                <!-- Configurações -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-8 bg-[#1a1a1a] p-6 rounded-2xl border border-gray-800 shadow-xl">
+                    <div>
+                        <label class="block text-sm font-bold text-gray-300 mb-2">Texto da Marca (Prefixo)</label>
+                        <input type="text" id="prefix-input" value="WhitePictures " 
+                               class="w-full px-4 py-3 bg-[#121212] border border-gray-700 rounded-lg focus:ring-2 focus:ring-[#d4af37] outline-none transition text-white font-medium"
+                               placeholder="Ex: WP_Prova_">
+                        <p class="text-xs text-gray-500 mt-1">Este texto será escrito na imagem.</p>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-gray-300 mb-2">Começar numeração em</label>
+                        <input type="number" id="start-index" value="1" min="0"
+                               class="w-full px-4 py-3 bg-[#121212] border border-gray-700 rounded-lg focus:ring-2 focus:ring-[#d4af37] outline-none transition text-white">
+                    </div>
+                    
+                    <!-- Configurações: Cor e Tamanho -->
+                    <div>
+                        <label class="block text-sm font-bold text-gray-300 mb-2">Cor do Texto</label>
+                        <div class="flex items-center gap-3">
+                            <input type="color" id="text-color" value="#ffffff" 
+                                   class="h-12 w-20 p-1 bg-[#121212] border border-gray-700 rounded cursor-pointer">
+                            <span class="text-sm text-gray-400">Escolha a cor da marca</span>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-gray-300 mb-2">Tamanho do Texto</label>
+                        <div class="flex items-center gap-4 h-12">
+                            <input type="range" id="text-size" min="1" max="30" value="7" 
+                                   class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-[#d4af37]">
+                            <span id="text-size-display" class="text-sm font-bold text-[#d4af37] w-10 text-right">7%</span>
+                        </div>
+                        <p class="text-xs text-gray-500 mt-1">Tamanho relativo à largura da imagem.</p>
+                    </div>
+                    
+                    <!-- Configurações: Proteção de Prova -->
+                    <div class="sm:col-span-2 pt-4 border-t border-gray-800 mt-2 grid grid-cols-1 sm:grid-cols-2 gap-5">
+                        <div class="bg-[#121212] p-4 rounded-xl border border-gray-800">
+                            <label class="block text-sm font-bold text-[#d4af37] mb-2 flex items-center gap-2">
+                                <i data-lucide="eye-off" class="w-4 h-4"></i> Detalhe da Fotografia (Fundo)
+                            </label>
+                            <div class="flex items-center gap-4">
+                                <input type="range" id="image-detail" min="5" max="100" value="30" 
+                                       class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-[#d4af37]">
+                                <span id="detail-display" class="text-sm font-bold text-white w-12 text-right">30%</span>
+                            </div>
+                            <p class="text-[11px] text-gray-400 mt-2 leading-tight"><b>Magia aqui:</b> Reduz a qualidade visual apenas da foto original (perde detalhe ao dar zoom), mas mantém as letras da marca d'água perfeitamente nítidas.</p>
+                        </div>
+                        <div class="bg-[#121212] p-4 rounded-xl border border-gray-800">
+                            <label class="block text-sm font-bold text-gray-300 mb-2 flex items-center gap-2">
+                                <i data-lucide="minimize" class="w-4 h-4 text-gray-400"></i> Tamanho Final do Ficheiro
+                            </label>
+                            <div class="flex items-center gap-4">
+                                <input type="range" id="image-scale" min="10" max="100" value="50" 
+                                       class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-gray-400">
+                                <span id="scale-display" class="text-sm font-bold text-white w-12 text-right">50%</span>
+                            </div>
+                            <p class="text-[11px] text-gray-400 mt-2 leading-tight">Reduz a resolução total (pixels de largura e altura) do ficheiro exportado. Ideal para enviar mais rápido pelo WhatsApp.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Área de Upload (Drag & Drop) -->
+                <div id="drop-zone" class="border-2 border-dashed border-gray-700 bg-[#1a1a1a] rounded-2xl p-10 text-center cursor-pointer hover:border-[#d4af37] transition duration-300 relative group">
+                    <input type="file" id="file-input" multiple accept="image/*" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10">
+                    <div class="group-hover:scale-105 transition-transform duration-300">
+                        <i data-lucide="upload-cloud" class="w-16 h-16 mx-auto text-[#d4af37] mb-4 opacity-80 group-hover:opacity-100 transition-opacity"></i>
+                        <p class="text-white font-bold text-xl">Clique ou arraste as fotos para aqui</p>
+                        <p class="text-sm text-gray-500 mt-2">Será aplicada a proteção de prova e a marca d'água a cada uma delas.</p>
+                    </div>
+                </div>
+
+                <!-- Pré-visualização -->
+                <div id="preview-section" class="mt-12 hidden">
+                    
+                    <!-- Nova secção de Pré-visualização ao Vivo -->
+                    <div class="mb-10 bg-[#1a1a1a] border border-gray-800 rounded-2xl overflow-hidden shadow-2xl">
+                        <div class="bg-[#121212] px-5 py-4 border-b border-gray-800 flex items-center gap-3">
+                            <i data-lucide="monitor-play" class="w-5 h-5 text-[#d4af37]"></i>
+                            <div>
+                                <h3 class="text-md font-bold text-white uppercase tracking-wider">Pré-visualização Ao Vivo</h3>
+                                <p class="text-xs text-gray-400">A atualizar em tempo real com as opções selecionadas acima.</p>
+                            </div>
+                        </div>
+                        <!-- Fundo axadrezado escuro -->
+                        <div class="p-6 flex justify-center bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCI+PHJlY3Qgd2lkdGg9IjIwIiBoZWlnaHQ9IjIwIiBmaWxsPSIjMWExYTFhIj48L3JlY3Q+PHJlY3Qgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIiBmaWxsPSIjMjQyNDI0Ij48L3JlY3Q+PHJlY3QgeD0iMTAiIHk9IjEwIiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiIGZpbGw9IiMyNDI0MjQiPjwvcmVjdD48L3N2Zz4=')]">
+                            <canvas id="live-preview-canvas" class="max-w-full max-h-[500px] object-contain shadow-2xl rounded"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-4 gap-4">
+                        <h2 class="text-xl font-bold text-white">Fila de Processamento (<span id="file-count" class="text-[#d4af37]">0</span> imagens)</h2>
+                        <button id="clear-btn" class="text-sm font-bold text-red-500 hover:text-red-400 transition flex items-center gap-2 px-3 py-1 bg-red-500/10 rounded-md">
+                            <i data-lucide="trash-2" class="w-4 h-4"></i> Limpar Tudo
+                        </button>
+                    </div>
+                    
+                    <!-- Grid de imagens originais -->
+                    <div id="image-grid" class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-4 max-h-72 overflow-y-auto no-scrollbar pb-4 p-4 bg-[#1a1a1a] rounded-xl border border-gray-800 shadow-inner">
+                        <!-- Imagens dinâmicas -->
+                    </div>
+
+                    <!-- Botão de Download -->
+                    <div class="mt-12 flex flex-col items-center">
+                        <button id="download-btn" class="btn-primary py-4 px-10 text-lg shadow-[0_0_20px_rgba(212,175,55,0.3)] hover:shadow-[0_0_30px_rgba(212,175,55,0.5)] transform hover:-translate-y-1">
+                            <i data-lucide="folder-down" class="w-6 h-6 mr-3"></i>
+                            Processar e Baixar Provas (ZIP)
+                        </button>
+                        <p class="text-sm text-gray-500 mt-4">Pode demorar uns segundos dependendo da quantidade de fotografias.</p>
+                    </div>
+                </div>
+                
+                <!-- Overlay Loading -->
+                <div id="loading-overlay" class="hidden fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-[100] backdrop-blur-sm">
+                    <div class="bg-[#1a1a1a] border border-gray-800 p-10 rounded-3xl shadow-2xl flex flex-col items-center max-w-sm text-center">
+                        <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-[#d4af37] mb-6"></div>
+                        <h3 class="text-2xl font-black text-white mb-2 uppercase tracking-wide">A Renderizar...</h3>
+                        <p class="text-[#d4af37] font-medium text-lg" id="loading-text">A iniciar...</p>
+                        <p class="text-xs text-gray-500 mt-6 border-t border-gray-800 pt-4 w-full">Por favor, mantenha esta página aberta.</p>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    
+        <!-- RODAPÉ -->
+        <footer class="bg-[#1a1a1a] border-t border-gray-800 py-10 mt-auto">
+            <div class="container mx-auto text-center">
+                <div class="flex justify-center space-x-6 mb-4">
+                    <!-- Referência direta à imagem insta.png -->
+                    <a href="https://www.instagram.com/whitepicturesoficial?igsh=NDJtNmZxNTZod2Ro" target="_blank" class="hover:scale-110 transition-transform">
+                        <img src="insta.png" alt="Instagram" class="w-8 h-8 object-contain">
+                    </a>
+                    <!-- Referência direta à imagem wpp.png -->
+                    <a href="https://wa.link/su3o2p" target="_blank" class="hover:scale-110 transition-transform">
+                        <img src="wpp.png" alt="WhatsApp" class="w-8 h-8 object-contain">
+                    </a>
+                </div>
+                <p class="text-gray-400">&copy; <span id="year"></span> White Pictures. Todos os direitos reservados.</p>
+            </div>
+        </footer>
     </div>
 
     <script>
-        // --- Elementos do DOM ---
+        // Inicializar ícones e data do rodapé
+        lucide.createIcons();
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Lógica do Menu Mobile
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => { mobileMenu.classList.toggle('-translate-x-full'); });
+
+        // --- Variáveis da Ferramenta de Marca d'Água ---
         const dropZone = document.getElementById('drop-zone');
         const fileInput = document.getElementById('file-input');
         const prefixInput = document.getElementById('prefix-input');
@@ -162,23 +313,19 @@
         const loadingOverlay = document.getElementById('loading-overlay');
         const loadingText = document.getElementById('loading-text');
         
-        // --- Novas Variáveis de Configuração ---
         const colorInput = document.getElementById('text-color');
         const sizeInput = document.getElementById('text-size');
         const sizeDisplay = document.getElementById('text-size-display');
-        
         const detailInput = document.getElementById('image-detail');
         const detailDisplay = document.getElementById('detail-display');
         const scaleInput = document.getElementById('image-scale');
         const scaleDisplay = document.getElementById('scale-display');
 
-        // Elementos da Pré-visualização ao Vivo
         const livePreviewCanvas = document.getElementById('live-preview-canvas');
         let previewUpdateTimeout; 
-
         let selectedFiles = [];
 
-        // --- Eventos de Drag & Drop Standard ---
+        // --- Eventos ---
         ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
             dropZone.addEventListener(eventName, e => { e.preventDefault(); e.stopPropagation(); }, false);
         });
@@ -190,34 +337,21 @@
         clearBtn.addEventListener('click', clearAll);
         downloadBtn.addEventListener('click', processAndCreateZip);
         
-        // Atualizar o valor visual do slider de tamanho do texto e a pré-visualização
-        sizeInput.addEventListener('input', (e) => {
-            sizeDisplay.textContent = e.target.value + '%';
-            debouncedLivePreview();
-        });
+        // Atualizações em tempo real
+        sizeInput.addEventListener('input', (e) => { sizeDisplay.textContent = e.target.value + '%'; debouncedLivePreview(); });
+        detailInput.addEventListener('input', (e) => { detailDisplay.textContent = e.target.value + '%'; debouncedLivePreview(); });
+        scaleInput.addEventListener('input', (e) => { scaleDisplay.textContent = e.target.value + '%'; debouncedLivePreview(); });
 
-        detailInput.addEventListener('input', (e) => {
-            detailDisplay.textContent = e.target.value + '%';
-            debouncedLivePreview();
-        });
-
-        scaleInput.addEventListener('input', (e) => {
-            scaleDisplay.textContent = e.target.value + '%';
-            debouncedLivePreview();
-        });
-
-        // Eventos para atualizar a pré-visualização quando mudar as configurações
         prefixInput.addEventListener('input', debouncedLivePreview);
         startIndexInput.addEventListener('input', debouncedLivePreview);
         colorInput.addEventListener('input', debouncedLivePreview);
 
-        // Função para atrasar ligeiramente a atualização e evitar travamentos na UI
         function debouncedLivePreview() {
             clearTimeout(previewUpdateTimeout);
             previewUpdateTimeout = setTimeout(updateLivePreview, 100);
         }
 
-        // --- Funções de UI ---
+        // --- Funções Principais ---
         function processFiles(files) {
             const imageFiles = Array.from(files).filter(file => file.type.startsWith('image/'));
             if (imageFiles.length === 0) return;
@@ -235,26 +369,23 @@
             fileCountSpan.textContent = selectedFiles.length;
             imageGrid.innerHTML = '';
 
-            // Atualiza a imagem de pré-visualização principal
             updateLivePreview();
 
             selectedFiles.forEach((file, index) => {
                 const objectURL = URL.createObjectURL(file);
                 const card = document.createElement('div');
-                card.className = 'relative group rounded-lg overflow-hidden shadow-sm bg-gray-200 aspect-square';
+                card.className = 'relative group rounded-lg overflow-hidden shadow-lg bg-[#121212] border border-gray-700 aspect-square';
                 card.innerHTML = `
-                    <img src="${objectURL}" class="w-full h-full object-cover opacity-75 group-hover:opacity-100 transition-opacity" alt="Preview">
-                    <button onclick="removeFile(${index})" class="absolute top-1 right-1 bg-red-600 text-white rounded-full p-1 shadow-sm opacity-0 group-hover:opacity-100 transition-all hover:bg-red-700" title="Remover">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
-                          <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
-                        </svg>
+                    <img src="${objectURL}" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity" alt="Preview">
+                    <button onclick="removeFile(${index})" class="absolute top-2 right-2 bg-red-600/90 text-white rounded-md p-1.5 shadow-lg opacity-0 group-hover:opacity-100 transition-all hover:bg-red-500" title="Remover">
+                        <i data-lucide="x" class="w-4 h-4"></i>
                     </button>
                 `;
                 imageGrid.appendChild(card);
             });
+            lucide.createIcons(); // Recriar ícones inseridos dinamicamente
         }
 
-        // Função para desenhar a pré-visualização grande com as configurações atuais
         function updateLivePreview() {
             if (selectedFiles.length === 0) return;
 
@@ -271,51 +402,41 @@
 
             img.onload = () => {
                 URL.revokeObjectURL(url);
-                
                 const ctx = livePreviewCanvas.getContext('2d');
                 
-                // 1. Configura o tamanho FINAL da imagem no canvas principal
+                // Configura tamanho FINAL
                 const finalScale = scalePercent / 100;
                 livePreviewCanvas.width = Math.floor(img.width * finalScale);
                 livePreviewCanvas.height = Math.floor(img.height * finalScale);
                 
-                // 2. Destruição do Detalhe da Foto (O Truque)
+                // Efeito Destruição de Detalhe
                 if (detailPercent < 100) {
-                    // Cria um canvas invisível pequenino
                     const tempCanvas = document.createElement('canvas');
                     const detailScale = detailPercent / 100;
-                    
-                    // Desenha a foto nesse canvas minúsculo (destrói toda a resolução real)
                     tempCanvas.width = Math.max(1, Math.floor(livePreviewCanvas.width * detailScale));
                     tempCanvas.height = Math.max(1, Math.floor(livePreviewCanvas.height * detailScale));
                     const tempCtx = tempCanvas.getContext('2d');
                     tempCtx.drawImage(img, 0, 0, tempCanvas.width, tempCanvas.height);
-                    
-                    // Agora, pega nessa imagem minúscula e estica-a para o tamanho final da tela principal
-                    // Isto vai criar um efeito desfocado/sem qualidade na fotografia
                     ctx.drawImage(tempCanvas, 0, 0, livePreviewCanvas.width, livePreviewCanvas.height);
                 } else {
-                    // Se estiver a 100%, desenha com toda a qualidade
                     ctx.drawImage(img, 0, 0, livePreviewCanvas.width, livePreviewCanvas.height);
                 }
                 
-                // 3. --- Lógica da Marca D'água Nítida ---
+                // Texto Nítido
                 const fontSize = Math.max(10, Math.floor(livePreviewCanvas.width * (sizePercent / 100))); 
-                
                 ctx.font = `bold ${fontSize}px Arial, sans-serif`;
                 ctx.fillStyle = colorHex;
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
 
-                ctx.shadowColor = 'rgba(255,255,255,0.7)';
-                ctx.shadowBlur = fontSize / 4;
+                // Sombra para contraste adaptada ao tema
+                ctx.shadowColor = 'rgba(0,0,0,0.8)';
+                ctx.shadowBlur = fontSize / 3;
                 ctx.shadowOffsetX = fontSize / 15;
                 ctx.shadowOffsetY = fontSize / 15;
 
                 const posX = livePreviewCanvas.width / 2;
                 const posY = livePreviewCanvas.height * 0.6; 
-                
-                // Desenha o texto NÍTIDO por cima da imagem desfocada
                 ctx.fillText(watermarkText, posX, posY);
             };
             img.src = url;
@@ -331,15 +452,12 @@
             updatePreviews();
         }
 
-        // --- Funções Principais de Processamento (Marca D'água) ---
-
         function generateNameStr(index) {
             const prefix = prefixInput.value;
             const startIndex = parseInt(startIndexInput.value) || 1;
             return `${prefix}${startIndex + index}`;
         }
 
-        // Função CORE: Exportação final idêntica ao Preview
         async function addWatermarkToImage(file, watermarkText) {
             return new Promise((resolve, reject) => {
                 const img = new Image();
@@ -352,7 +470,6 @@
                 
                 img.onload = () => {
                     URL.revokeObjectURL(url);
-                    
                     const canvas = document.createElement('canvas');
                     const ctx = canvas.getContext('2d');
                     
@@ -360,7 +477,6 @@
                     canvas.width = Math.floor(img.width * finalScale);
                     canvas.height = Math.floor(img.height * finalScale);
                     
-                    // Destruição do detalhe da foto
                     if (detailPercent < 100) {
                         const tempCanvas = document.createElement('canvas');
                         const detailScale = detailPercent / 100;
@@ -368,50 +484,33 @@
                         tempCanvas.height = Math.max(1, Math.floor(canvas.height * detailScale));
                         const tempCtx = tempCanvas.getContext('2d');
                         tempCtx.drawImage(img, 0, 0, tempCanvas.width, tempCanvas.height);
-                        
                         ctx.drawImage(tempCanvas, 0, 0, canvas.width, canvas.height);
                     } else {
                         ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
                     }
                     
-                    // Escreve Marca d'água perfeitamente nítida
                     const fontSize = Math.max(10, Math.floor(canvas.width * (sizePercent / 100))); 
-                    
                     ctx.font = `bold ${fontSize}px Arial, sans-serif`;
                     ctx.fillStyle = colorHex; 
                     ctx.textAlign = 'center';
                     ctx.textBaseline = 'middle';
-
-                    ctx.shadowColor = 'rgba(255,255,255,0.7)';
-                    ctx.shadowBlur = fontSize / 4;
+                    ctx.shadowColor = 'rgba(0,0,0,0.8)';
+                    ctx.shadowBlur = fontSize / 3;
                     ctx.shadowOffsetX = fontSize / 15;
                     ctx.shadowOffsetY = fontSize / 15;
 
-                    const posX = canvas.width / 2;
-                    const posY = canvas.height * 0.6; 
+                    ctx.fillText(watermarkText, canvas.width / 2, canvas.height * 0.6);
                     
-                    ctx.fillText(watermarkText, posX, posY);
-                    
-                    // Como a foto já foi estragada propositadamente em cima, podemos guardar
-                    // o ficheiro com qualidade JPEG alta (0.92) para que as LETRAS não fiquem
-                    // com artefactos feios. O ficheiro final vai ser super leve na mesma!
-                    const mimeType = 'image/jpeg';
-                    const exportQuality = 0.92; 
-
                     canvas.toBlob(blob => {
-                        if (blob) {
-                            resolve(blob);
-                        } else {
-                            reject(new Error('Falha ao converter canvas para blob'));
-                        }
-                    }, mimeType, exportQuality);
+                        if (blob) resolve(blob);
+                        else reject(new Error('Falha ao converter canvas'));
+                    }, 'image/jpeg', 0.92); // Qualidade JPEG mantida alta porque a imagem já foi reduzida
                 };
                 
-                img.onerror = (e) => {
+                img.onerror = () => {
                     URL.revokeObjectURL(url);
-                    reject(new Error(`Erro ao carregar imagem: ${file.name}`));
+                    reject(new Error(`Erro na imagem: ${file.name}`));
                 };
-                
                 img.src = url;
             });
         }
@@ -429,19 +528,18 @@
                     const nameBase = generateNameStr(i);
                     const finalFileName = `${nameBase}.jpg`;
 
-                    loadingText.textContent = `A aplicar marca d'água na imagem ${i + 1} de ${selectedFiles.length}...`;
-                    
+                    loadingText.textContent = `A processar a imagem ${i + 1} de ${selectedFiles.length}...`;
                     const processedBlob = await addWatermarkToImage(file, nameBase);
                     zip.file(finalFileName, processedBlob);
                 }
 
-                loadingText.textContent = "A compactar ficheiro ZIP final...";
+                loadingText.textContent = "A compactar o ficheiro ZIP...";
                 const content = await zip.generateAsync({ type: "blob" });
                 
                 const link = document.createElement('a');
                 link.href = URL.createObjectURL(content);
                 const timestamp = new Date().toISOString().slice(0,19).replace(/[:T]/g,'-');
-                link.download = `Provas_Clientes_${timestamp}.zip`;
+                link.download = `WP_Provas_${timestamp}.zip`;
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
@@ -449,7 +547,7 @@
 
             } catch (error) {
                 console.error("Erro no processamento:", error);
-                alert("Ocorreu um erro ao processar as imagens.\nVerifique se são formatos de imagem válidos.");
+                alert("Ocorreu um erro ao processar as imagens. Verifique os formatos.");
             } finally {
                 loadingOverlay.classList.add('hidden');
                 loadingText.textContent = "...";
