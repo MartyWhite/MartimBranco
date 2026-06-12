@@ -542,7 +542,10 @@
     <script>
         const supabaseUrl = 'https://asuenngvcduoqjhvgfrc.supabase.co';
         const supabaseKey = 'sb_publishable_b_U6HnKRwrEncIGSZXuHNw__CaZG9dt';
-        const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+
+        // ✅ FIX: Usar 'supabaseClient' em vez de 'supabase' para evitar
+        // conflito com o global 'supabase' já criado pelo CDN acima.
+        const supabaseClient = window.supabase.createClient(supabaseUrl, supabaseKey);
 
         async function handleAuthSubmit(e) {
             e.preventDefault();
@@ -550,7 +553,8 @@
             const btn = document.getElementById('authBtn');
             btn.innerHTML = "A procurar...";
             
-            const { data, error } = await supabase
+            // ✅ FIX: Atualizado para usar 'supabaseClient'
+            const { data, error } = await supabaseClient
                 .from('reparacoes')
                 .select('*')
                 .eq('email_cliente', emailInserido)
