@@ -60,12 +60,32 @@
                 </div>
             </div>
 
-            <nav class="hidden md:flex gap-8 text-sm uppercase tracking-widest font-bold opacity-70">
+            <nav class="hidden md:flex gap-8 text-sm uppercase tracking-widest font-bold opacity-70 items-center">
                 <a href="#servicos" class="hover:text-[#00d4ff] transition">Serviços</a>
                 <a href="#porque" class="hover:text-[#00d4ff] transition">Vantagens</a>
                 <a href="#cobertura" class="hover:text-[#00d4ff] transition">Cobertura</a>
             </nav>
-            <a href="#contato" class="hidden md:block px-6 py-2 border border-[#00d4ff]/30 rounded-full text-xs font-bold hover:bg-[#00d4ff] hover:text-black transition">ORÇAMENTO</a>
+            
+            <div class="flex items-center gap-4">
+                <!-- Seção de Autenticação na Navbar -->
+                <div id="auth-section" class="hidden md:flex items-center gap-4">
+                    <button onclick="openAuthModal()" class="text-sm font-bold text-gray-300 hover:text-[#00d4ff] transition flex items-center gap-1.5 border border-white/10 px-4 py-2 rounded-full bg-[#0c122e]">
+                        <i class="ri-user-line"></i> <span>Acompanhar Reparação</span>
+                    </button>
+                </div>
+                
+                <!-- Seção Logged In na Navbar (A Minha Reparação) -->
+                <div id="logged-in-section" class="hidden items-center gap-4">
+                    <button onclick="openRepairModal()" class="text-sm font-bold text-[#00d4ff] hover:text-white transition flex items-center gap-2 border border-[#00d4ff]/30 px-4 py-2 rounded-full bg-[#00d4ff]/10 shadow-[0_0_15px_rgba(0,212,255,0.2)] animate-pulse">
+                        <i class="ri-tools-fill"></i> <span>A Minha Reparação</span>
+                    </button>
+                    <button onclick="logout()" class="text-xs font-medium text-gray-500 hover:text-red-400 transition" title="Sair">
+                        <i class="ri-logout-box-r-line text-lg"></i>
+                    </button>
+                </div>
+
+                <a href="#contato" class="hidden md:block px-6 py-2 border border-[#00d4ff]/30 rounded-full text-xs font-bold hover:bg-[#00d4ff] hover:text-black transition">ORÇAMENTO</a>
+            </div>
         </div>
     </header>
 
@@ -78,6 +98,11 @@
                 <div class="flex flex-wrap gap-4 justify-center md:justify-start">
                     <a href="#contato" class="bg-[#00d4ff] text-black px-8 py-4 rounded-2xl font-bold hover:scale-105 transition">PEDIR ORÇAMENTO</a>
                     <a href="https://wa.me/351928119001" class="border border-white/10 px-8 py-4 rounded-2xl font-bold hover:bg-white/5 transition">WHATSAPP</a>
+                    
+                    <!-- Botão Mobile para Acompanhar Reparação -->
+                    <button onclick="openAuthModal()" class="md:hidden border border-[#00d4ff]/50 text-[#00d4ff] px-8 py-4 rounded-2xl font-bold hover:bg-[#00d4ff]/10 transition flex items-center gap-2 w-full justify-center">
+                        <i class="ri-user-line"></i> ACOMPANHAR REPARAÇÃO
+                    </button>
                 </div>
             </div>
             
@@ -399,6 +424,73 @@
         <p class="font-bold text-gray-400 mb-1">&copy; 2026 WHITE REPAIRS. Todos os direitos reservados.</p>
     </footer>
 
+    <!-- MODAL DE AUTENTICAÇÃO -->
+    <div id="authModal" class="fixed inset-0 z-[100] bg-black/80 backdrop-blur-sm hidden flex items-center justify-center opacity-0 transition-opacity duration-300">
+        <div class="card-bg border border-white/10 rounded-[2rem] p-8 max-w-md w-full mx-4 shadow-[0_0_40px_rgba(0,212,255,0.1)] relative transform scale-95 transition-transform duration-300" id="authContent">
+            <button onclick="closeAuthModal()" class="absolute top-5 right-5 text-gray-500 hover:text-white transition"><i class="ri-close-line text-2xl"></i></button>
+            <h3 class="text-2xl font-bold mb-6 text-center">Acompanhar <span class="text-[#00d4ff]">Reparação</span></h3>
+            <form onsubmit="handleAuthSubmit(event)" class="space-y-4">
+                <div>
+                    <input type="email" id="authEmail" placeholder="O teu Email de registo" required class="w-full bg-[#050714] p-4 rounded-xl border border-white/10 focus:border-[#008cff] outline-none transition text-sm" />
+                </div>
+                <button type="submit" id="authBtn" class="w-full bg-[#00b3ff] text-white font-bold p-4 rounded-xl hover:bg-[#0099e6] transition shadow-[0_0_15px_rgba(0,179,255,0.2)] mt-2">
+                    Ver Estado
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL DO PROCESSO DE REPARAÇÃO -->
+    <div id="repairModal" class="fixed inset-0 z-[100] bg-black/80 backdrop-blur-sm hidden flex items-center justify-center opacity-0 transition-opacity duration-300">
+        <div class="card-bg border border-white/10 rounded-[2rem] p-8 md:p-10 max-w-lg w-full mx-4 shadow-[0_0_40px_rgba(0,212,255,0.15)] relative transform scale-95 transition-transform duration-300" id="repairContent">
+            <button onclick="closeRepairModal()" class="absolute top-6 right-6 text-gray-500 hover:text-white transition"><i class="ri-close-line text-2xl"></i></button>
+            
+            <div class="mb-8">
+                <h3 class="text-2xl font-black mb-1">A Minha <span class="text-[#00d4ff]">Reparação</span></h3>
+                <p class="text-gray-400 text-sm">Acompanha o estado do teu equipamento em tempo real.</p>
+            </div>
+
+            <div class="bg-[#050714] border border-white/5 rounded-xl p-4 mb-8 flex items-center justify-between">
+                <div>
+                    <p class="text-xs text-gray-500 font-bold uppercase tracking-widest mb-1">Equipamento</p>
+                    <p class="text-white font-bold" id="db_equipamento">A carregar...</p>
+                </div>
+                <div class="text-right">
+                    <p class="text-xs text-gray-500 font-bold uppercase tracking-widest mb-1">Serviço</p>
+                    <p class="text-white text-sm" id="db_servico">A carregar...</p>
+                </div>
+            </div>
+            
+            <div class="relative pl-6 border-l-2 border-[#00d4ff]/30 space-y-8 ml-2" id="timeline-container">
+                <div class="relative opacity-40">
+                    <div class="bolinha-estado absolute -left-[33px] top-1 w-4 h-4 rounded-full bg-gray-600"></div>
+                    <h4 class="text-white font-bold text-base" id="step-1-title">Equipamento Recebido</h4>
+                    <p class="text-gray-400 text-xs mt-1" id="step-1-desc">O teu iPhone chegou em segurança às nossas mãos.</p>
+                </div>
+                <div class="relative opacity-40">
+                    <div class="bolinha-estado absolute -left-[33px] top-1 w-4 h-4 rounded-full bg-gray-600"></div>
+                    <h4 class="text-white font-bold text-base">Diagnóstico Concluído</h4>
+                    <p class="text-gray-400 text-xs mt-1">Identificámos os problemas e preparamos o material.</p>
+                </div>
+                <div class="relative opacity-40">
+                    <div class="bolinha-estado absolute -left-[33px] top-1 w-4 h-4 rounded-full bg-gray-600"></div>
+                    <h4 class="text-white font-bold text-base">Em Reparação</h4>
+                    <p class="text-gray-400 text-xs mt-1">O nosso técnico está a trabalhar no equipamento.</p>
+                </div>
+                <div class="relative opacity-40">
+                    <div class="bolinha-estado absolute -left-[33px] top-1 w-4 h-4 rounded-full bg-gray-600"></div>
+                    <h4 class="text-white font-bold text-base">Testes de Qualidade</h4>
+                    <p class="text-gray-400 text-xs mt-1">A verificar se ficou tudo 100% funcional.</p>
+                </div>
+                <div class="relative opacity-40">
+                    <div class="bolinha-estado absolute -left-[33px] top-1 w-4 h-4 rounded-full bg-gray-600"></div>
+                    <h4 class="text-white font-bold text-base">Pronto para Entrega</h4>
+                    <p class="text-gray-400 text-xs mt-1">Equipamento finalizado e pronto a enviar/levantar.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Script Geral e Animação do Contador -->
     <script>
         // Função para os botões de Serviço interagirem com o Formulário
@@ -414,7 +506,7 @@
         // Animação do Contador de Reparações
         document.addEventListener("DOMContentLoaded", () => {
             const counterElement = document.getElementById("repair-counter");
-            const finalValue = 134;
+            const finalValue = 135;
             const duration = 2500; // tempo da animação em milissegundos
             let startTimestamp = null;
 
@@ -442,5 +534,130 @@
         formspree('initForm', { formElement: '#contato-form', formId: 'xaqzpobv' });
     </script>
     <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
+    
+    <!-- SDK DO SUPABASE -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
+    <!-- SCRIPT DE LIGAÇÃO E GESTÃO DA ÁREA DE CLIENTE -->
+    <script>
+        const supabaseUrl = 'https://asuenngvcduoqjhvgfrc.supabase.co';
+        const supabaseKey = 'sb_publishable_b_U6HnKRwrEncIGSZXuHNw__CaZG9dt';
+        const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+
+        async function handleAuthSubmit(e) {
+            e.preventDefault();
+            const emailInserido = document.getElementById('authEmail').value;
+            const btn = document.getElementById('authBtn');
+            btn.innerHTML = "A procurar...";
+            
+            const { data, error } = await supabase
+                .from('reparacoes')
+                .select('*')
+                .eq('email_cliente', emailInserido)
+                .single();
+
+            btn.innerHTML = "Ver Estado";
+
+            if (data) {
+                document.getElementById('db_equipamento').innerText = data.equipamento;
+                document.getElementById('db_servico').innerText = data.servico;
+                
+                // Lógica de Recolha vs Envio
+                const step1Title = document.getElementById('step-1-title');
+                const step1Desc = document.getElementById('step-1-desc');
+                
+                if (step1Title && step1Desc) {
+                    if (data.metodo_entrega === 'recolha') {
+                        step1Title.innerText = "Dispositivo Recolhido";
+                        step1Desc.innerText = "O nosso técnico já recolheu e transportou o teu equipamento em segurança.";
+                    } else if (data.metodo_entrega === 'envio') {
+                        step1Title.innerText = "Dispositivo Enviado pelo Cliente";
+                        step1Desc.innerText = "A tua encomenda foi recebida com sucesso nas nossas instalações.";
+                    } else {
+                        step1Title.innerText = "Equipamento Recebido";
+                        step1Desc.innerText = "O teu iPhone chegou em segurança às nossas mãos.";
+                    }
+                }
+
+                atualizarTimeline(data.passo_atual);
+
+                document.getElementById('auth-section').classList.add('hidden');
+                document.getElementById('logged-in-section').classList.remove('hidden');
+                document.getElementById('logged-in-section').classList.add('flex');
+                
+                closeAuthModal();
+                setTimeout(() => openRepairModal(), 400);
+            } else {
+                alert('Não encontrámos nenhuma reparação para o email: ' + emailInserido);
+            }
+        }
+
+        function atualizarTimeline(passoAtual) {
+            const passosHTML = document.getElementById('timeline-container').children;
+            for(let i = 0; i < passosHTML.length; i++) {
+                const passoNum = i + 1;
+                const elemento = passosHTML[i];
+                const bolinha = elemento.querySelector('.bolinha-estado');
+                const titulo = elemento.querySelector('h4');
+                
+                elemento.classList.remove('opacity-40');
+                bolinha.className = 'bolinha-estado absolute top-1 w-4 h-4 rounded-full';
+                titulo.classList.remove('text-[#00d4ff]', 'text-xl');
+                titulo.classList.add('text-white', 'text-base');
+                
+                if (passoNum < passoAtual) {
+                    bolinha.classList.add('bg-[#00d4ff]', 'shadow-[0_0_10px_#00d4ff]');
+                    bolinha.style.left = '-33px';
+                } else if (passoNum === passoAtual) {
+                    bolinha.classList.add('bg-[#050714]', 'border-[4px]', 'border-[#00d4ff]', 'shadow-[0_0_15px_#00d4ff]', 'animate-pulse');
+                    bolinha.style.left = '-37px';
+                    bolinha.style.width = '24px';
+                    bolinha.style.height = '24px';
+                    bolinha.style.top = '0px';
+                    titulo.classList.remove('text-white', 'text-base');
+                    titulo.classList.add('text-[#00d4ff]', 'text-xl');
+                } else {
+                    elemento.classList.add('opacity-40');
+                    bolinha.classList.add('bg-gray-600');
+                    bolinha.style.left = '-33px';
+                }
+            }
+        }
+
+        function logout() {
+            document.getElementById('auth-section').classList.remove('hidden');
+            document.getElementById('logged-in-section').classList.add('hidden');
+            document.getElementById('logged-in-section').classList.remove('flex');
+            closeRepairModal();
+        }
+
+        function openAuthModal() {
+            const modal = document.getElementById('authModal');
+            const content = document.getElementById('authContent');
+            modal.classList.remove('hidden');
+            setTimeout(() => { modal.classList.remove('opacity-0'); content.classList.remove('scale-95'); }, 10);
+        }
+
+        function closeAuthModal() {
+            const modal = document.getElementById('authModal');
+            const content = document.getElementById('authContent');
+            modal.classList.add('opacity-0'); content.classList.add('scale-95');
+            setTimeout(() => { modal.classList.add('hidden'); }, 300);
+        }
+
+        function openRepairModal() {
+            const modal = document.getElementById('repairModal');
+            const content = document.getElementById('repairContent');
+            modal.classList.remove('hidden');
+            setTimeout(() => { modal.classList.remove('opacity-0'); content.classList.remove('scale-95'); }, 10);
+        }
+
+        function closeRepairModal() {
+            const modal = document.getElementById('repairModal');
+            const content = document.getElementById('repairContent');
+            modal.classList.add('opacity-0'); content.classList.add('scale-95');
+            setTimeout(() => { modal.classList.add('hidden'); }, 300);
+        }
+    </script>
 </body>
 </html>
