@@ -540,128 +540,296 @@
     
     <!-- SCRIPT DE LIGAÇÃO E GESTÃO DA ÁREA DE CLIENTE -->
     <script>
-        const supabaseUrl = 'https://asuenngvcduoqjhvgfrc.supabase.co';
-        const supabaseKey = 'sb_publishable_b_U6HnKRwrEncIGSZXuHNw__CaZG9dt';
 
-        // ✅ FIX: Usar 'supabaseClient' em vez de 'supabase' para evitar
-        // conflito com o global 'supabase' já criado pelo CDN acima.
-        const supabaseClient = window.supabase.createClient(supabaseUrl, supabaseKey);
+const supabaseUrl =
+'https://asuenngvcduoqjhvgfrc.supabase.co';
 
-        async function handleAuthSubmit(e) {
-            e.preventDefault();
-            const emailInserido = document.getElementById('authEmail').value;
-            const btn = document.getElementById('authBtn');
-            btn.innerHTML = "A procurar...";
-            
-            // ✅ FIX: Atualizado para usar 'supabaseClient'
-            const { data, error } = await supabaseClient
-                .from('reparacoes')
-                .select('*')
-                .eq('email_cliente', emailInserido)
-                .single();
+const supabaseKey =
+'sb_publishable_b_U6HnKRwrEncIGSZXuHNw__CaZG9dt';
 
-            btn.innerHTML = "Ver Estado";
+const supabaseClient =
+window.supabase.createClient(
+supabaseUrl,
+supabaseKey
+);
 
-            if (data) {
-                document.getElementById('db_equipamento').innerText = data.equipamento;
-                document.getElementById('db_servico').innerText = data.servico;
-                
-                // Lógica de Recolha vs Envio
-                const step1Title = document.getElementById('step-1-title');
-                const step1Desc = document.getElementById('step-1-desc');
-                
-                if (step1Title && step1Desc) {
-                    if (data.metodo_entrega === 'recolha') {
-                        step1Title.innerText = "Dispositivo Recolhido";
-                        step1Desc.innerText = "O nosso técnico já recolheu e transportou o teu equipamento em segurança.";
-                    } else if (data.metodo_entrega === 'envio') {
-                        step1Title.innerText = "Dispositivo Enviado pelo Cliente";
-                        step1Desc.innerText = "A tua encomenda foi recebida com sucesso nas nossas instalações.";
-                    } else {
-                        step1Title.innerText = "Equipamento Recebido";
-                        step1Desc.innerText = "O teu iPhone chegou em segurança às nossas mãos.";
-                    }
-                }
+async function handleAuthSubmit(e){
 
-                atualizarTimeline(data.passo_atual);
+e.preventDefault();
 
-                document.getElementById('auth-section').classList.add('hidden');
-                document.getElementById('logged-in-section').classList.remove('hidden');
-                document.getElementById('logged-in-section').classList.add('flex');
-                
-                closeAuthModal();
-                setTimeout(() => openRepairModal(), 400);
-            } else {
-                alert('Não encontrámos nenhuma reparação para o email: ' + emailInserido);
-            }
-        }
+const email =
+document
+.getElementById("authEmail")
+.value
+.trim()
+.toLowerCase();
 
-        function atualizarTimeline(passoAtual) {
-            const passosHTML = document.getElementById('timeline-container').children;
-            for(let i = 0; i < passosHTML.length; i++) {
-                const passoNum = i + 1;
-                const elemento = passosHTML[i];
-                const bolinha = elemento.querySelector('.bolinha-estado');
-                const titulo = elemento.querySelector('h4');
-                
-                elemento.classList.remove('opacity-40');
-                bolinha.className = 'bolinha-estado absolute top-1 w-4 h-4 rounded-full';
-                titulo.classList.remove('text-[#00d4ff]', 'text-xl');
-                titulo.classList.add('text-white', 'text-base');
-                
-                if (passoNum < passoAtual) {
-                    bolinha.classList.add('bg-[#00d4ff]', 'shadow-[0_0_10px_#00d4ff]');
-                    bolinha.style.left = '-33px';
-                } else if (passoNum === passoAtual) {
-                    bolinha.classList.add('bg-[#050714]', 'border-[4px]', 'border-[#00d4ff]', 'shadow-[0_0_15px_#00d4ff]', 'animate-pulse');
-                    bolinha.style.left = '-37px';
-                    bolinha.style.width = '24px';
-                    bolinha.style.height = '24px';
-                    bolinha.style.top = '0px';
-                    titulo.classList.remove('text-white', 'text-base');
-                    titulo.classList.add('text-[#00d4ff]', 'text-xl');
-                } else {
-                    elemento.classList.add('opacity-40');
-                    bolinha.classList.add('bg-gray-600');
-                    bolinha.style.left = '-33px';
-                }
-            }
-        }
+const btn =
+document
+.getElementById("authBtn");
 
-        function logout() {
-            document.getElementById('auth-section').classList.remove('hidden');
-            document.getElementById('logged-in-section').classList.add('hidden');
-            document.getElementById('logged-in-section').classList.remove('flex');
-            closeRepairModal();
-        }
+btn.disabled=true;
+btn.innerHTML="A procurar...";
 
-        function openAuthModal() {
-            const modal = document.getElementById('authModal');
-            const content = document.getElementById('authContent');
-            modal.classList.remove('hidden');
-            setTimeout(() => { modal.classList.remove('opacity-0'); content.classList.remove('scale-95'); }, 10);
-        }
+try{
 
-        function closeAuthModal() {
-            const modal = document.getElementById('authModal');
-            const content = document.getElementById('authContent');
-            modal.classList.add('opacity-0'); content.classList.add('scale-95');
-            setTimeout(() => { modal.classList.add('hidden'); }, 300);
-        }
+const {data,error}=await
+supabaseClient
+.from("reparacoes")
+.select("*")
+.eq("email_cliente",email)
+.single();
 
-        function openRepairModal() {
-            const modal = document.getElementById('repairModal');
-            const content = document.getElementById('repairContent');
-            modal.classList.remove('hidden');
-            setTimeout(() => { modal.classList.remove('opacity-0'); content.classList.remove('scale-95'); }, 10);
-        }
+if(error){
 
-        function closeRepairModal() {
-            const modal = document.getElementById('repairModal');
-            const content = document.getElementById('repairContent');
-            modal.classList.add('opacity-0'); content.classList.add('scale-95');
-            setTimeout(() => { modal.classList.add('hidden'); }, 300);
-        }
-    </script>
+console.log(error);
+
+alert(
+"Erro: "+
+error.message
+);
+
+return;
+
+}
+
+if(!data){
+
+alert(
+"Nenhuma reparação encontrada."
+);
+
+return;
+
+}
+
+document
+.getElementById(
+"db_equipamento"
+)
+.innerText=
+data.equipamento||"-";
+
+document
+.getElementById(
+"db_servico"
+)
+.innerText=
+data.servico||"-";
+
+atualizarTimeline(
+data.passo_atual||1
+);
+
+closeAuthModal();
+
+setTimeout(()=>{
+
+openRepairModal();
+
+},300);
+
+}
+
+catch(err){
+
+console.log(err);
+
+alert(
+"Erro inesperado."
+);
+
+}
+
+finally{
+
+btn.disabled=false;
+
+btn.innerHTML=
+"Ver Estado";
+
+}
+
+}
+
+function atualizarTimeline(
+passoAtual
+){
+
+const passos=
+document
+.getElementById(
+"timeline-container"
+)
+.children;
+
+for(
+let i=0;
+i<passos.length;
+i++
+){
+
+const passo=
+passos[i];
+
+const bola=
+passo.querySelector(
+".bolinha-estado"
+);
+
+passo.classList.add(
+"opacity-40"
+);
+
+bola.className=
+"bolinha-estado absolute -left-[33px] top-1 w-4 h-4 rounded-full bg-gray-600";
+
+if(
+i+1<=passoAtual
+){
+
+passo.classList.remove(
+"opacity-40"
+);
+
+bola.classList.add(
+"bg-[#00d4ff]"
+);
+
+}
+
+}
+
+}
+
+function logout(){
+
+document
+.getElementById(
+"logged-in-section"
+)
+.classList
+.add(
+"hidden"
+);
+
+document
+.getElementById(
+"auth-section"
+)
+.classList
+.remove(
+"hidden"
+);
+
+closeRepairModal();
+
+}
+
+function openAuthModal(){
+
+const modal=
+document
+.getElementById(
+"authModal"
+);
+
+modal
+.classList
+.remove(
+"hidden"
+);
+
+setTimeout(()=>{
+
+modal
+.classList
+.remove(
+"opacity-0"
+);
+
+},10);
+
+}
+
+function closeAuthModal(){
+
+const modal=
+document
+.getElementById(
+"authModal"
+);
+
+modal
+.classList
+.add(
+"opacity-0"
+);
+
+setTimeout(()=>{
+
+modal
+.classList
+.add(
+"hidden"
+);
+
+},300);
+
+}
+
+function openRepairModal(){
+
+const modal=
+document
+.getElementById(
+"repairModal"
+);
+
+modal
+.classList
+.remove(
+"hidden"
+);
+
+setTimeout(()=>{
+
+modal
+.classList
+.remove(
+"opacity-0"
+);
+
+},10);
+
+}
+
+function closeRepairModal(){
+
+const modal=
+document
+.getElementById(
+"repairModal"
+);
+
+modal
+.classList
+.add(
+"opacity-0"
+);
+
+setTimeout(()=>{
+
+modal
+.classList
+.add(
+"hidden"
+);
+
+},300);
+
+}
+
+</script>
 </body>
 </html>
