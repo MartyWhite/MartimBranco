@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="pt-pt" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>White Repairs | Elite iPhone Service</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap');
+        body { font-family: 'Inter', sans-serif; background: #050714; color: #fff; overflow-x: hidden; }
+        .glass-nav { background: rgba(10, 14, 39, 0.85); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .gradient-text { background: linear-gradient(135deg, #00d4ff, #8a2be2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        /* Cores base */
+        .card-bg { background-color: #0c122e; }
+        .price-color { color: #ff5500; }
+        .icon-color { color: #00d4ff; }
+        
+        /* Dropdown style fix */
+        select {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23ffffff' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+            background-position: right 1rem center;
+            background-repeat: no-repeat;
+            background-size: 1.5em 1.5em;
+        }
+
+        /* Estilo para as categorias dos modelos de iPhone */
+        optgroup {
+            color: #00d4ff;
+            font-weight: 700;
+            background: #080d20;
+        }
+        option {
+            color: #fff;
+            background: #050714;
+        }
+
+        /* Ocultar barra de scroll no carrossel */
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body>
+
+    <header class="fixed w-full z-50 glass-nav">
+        <div class="max-w-6xl mx-auto flex justify-between items-center px-6 py-4">
+            <!-- Logo com Glow e Redes Sociais -->
+            <div class="flex items-center gap-4">
+                <div class="text-2xl font-black tracking-tighter drop-shadow-[0_0_12px_rgba(0,212,255,0.6)]">
+                    WHITE<span class="text-[#00d4ff]">REPAIRS</span>
+                </div>
+                <div class="flex items-center gap-3 border-l border-white/20 pl-4">
+                    <a href="https://instagram.com/whiterepairs" target="_blank" class="text-white hover:text-pink-500 text-xl transition drop-shadow-[0_0_8px_rgba(255,255,255,0.2)]" title="Instagram">
+                        <i class="ri-instagram-line"></i>
+                    </a>
+                    <a href="https://wa.me/351928119001" target="_blank" class="text-white hover:text-green-500 text-xl transition drop-shadow-[0_0_8px_rgba(255,255,255,0.2)]" title="WhatsApp">
+                        <i class="ri-whatsapp-line"></i>
+                    </a>
+                </div>
+            </div>
+
+            <nav class="hidden md:flex gap-8 text-sm uppercase tracking-widest font-bold opacity-70">
+                <a href="#servicos" class="hover:text-[#00d4ff] transition">Serviços</a>
+                <a href="#porque" class="hover:text-[#00d4ff] transition">Vantagens</a>
+                <a href="#cobertura" class="hover:text-[#00d4ff] transition">Cobertura</a>
+            </nav>
+            <a href="#contato" class="hidden md:block px-6 py-2 border border-[#00d4ff]/30 rounded-full text-xs font-bold hover:bg-[#00d4ff] hover:text-black transition">ORÇAMENTO</a>
+        </div>
+    </header>
+
+    <main class="pt-32">
+        <!-- Hero Section -->
+        <section class="max-w-6xl mx-auto px-6 mb-24 text-center md:text-left grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <span class="text-[#00d4ff] font-bold tracking-[0.2em] text-sm uppercase">Excelência Apple no Alentejo</span>
+                <h1 class="text-6xl md:text-7xl font-black mt-4 mb-6 leading-[0.9]">O TEU IPHONE <br><span class="gradient-text">DE VOLTA À VIDA</span></h1>
+                <div class="flex flex-wrap gap-4 justify-center md:justify-start">
+                    <a href="#contato" class="bg-[#00d4ff] text-black px-8 py-4 rounded-2xl font-bold hover:scale-105 transition">PEDIR ORÇAMENTO</a>
+                    <a href="https://wa.me/351928119001" class="border border-white/10 px-8 py-4 rounded-2xl font-bold hover:bg-white/5 transition">WHATSAPP</a>
+                </div>
+            </div>
+            
+            <div class="flex justify-center md:justify-end items-center h-full">
+                <!-- Contador animado estilo pílula horizontal (Sem o +) -->
+                <div class="inline-flex flex-col justify-center bg-[#080d20] border border-white/5 rounded-[2rem] px-10 py-6 shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
+                    <div class="text-[4rem] font-black text-[#00d4ff] drop-shadow-[0_0_15px_rgba(0,212,255,0.4)] leading-tight flex items-baseline justify-center">
+                        <span id="repair-counter">0</span>
+                    </div>
+                    <div class="text-xs font-bold text-gray-400 uppercase tracking-widest mt-1 text-center max-w-[200px]">Equipamentos Recuperados Até Agora</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Serviços Section (Interativo) -->
+        <section id="servicos" class="max-w-6xl mx-auto px-6 py-12 mb-10">
+            <h2 class="text-3xl font-bold mb-12 text-center">Os Nossos Serviços</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Card 1 -->
+                <div onclick="selecionarServico('Substituição de Ecrã')" class="p-8 card-bg rounded-2xl flex flex-col items-center justify-center text-center border border-transparent hover:border-white/10 transition duration-300 cursor-pointer shadow-lg hover:shadow-[#00d4ff]/10">
+                    <i class="ri-smartphone-line text-4xl icon-color mb-3"></i>
+                    <h3 class="font-bold text-lg mb-1 text-white">Substituição de Ecrã</h3>
+                    <p class="text-gray-400 text-sm mb-4">Todos os modelos</p>
+                    <span class="price-color font-bold text-sm">desde 89€</span>
+                </div>
+                
+                <!-- Card 2 -->
+                <div onclick="selecionarServico('Substituição de Bateria')" class="p-8 card-bg rounded-2xl flex flex-col items-center justify-center text-center border border-transparent hover:border-white/10 transition duration-300 cursor-pointer shadow-lg hover:shadow-[#00d4ff]/10">
+                    <i class="ri-battery-2-charge-line text-4xl icon-color mb-3"></i>
+                    <h3 class="font-bold text-lg mb-1 text-white">Substituição de Bateria</h3>
+                    <p class="text-gray-400 text-sm mb-4">Recupera a autonomia</p>
+                    <span class="price-color font-bold text-sm">desde 39€</span>
+                </div>
+                
+                <!-- Card 3 -->
+                <div onclick="selecionarServico('Reparação de Câmara')" class="p-8 card-bg rounded-2xl flex flex-col items-center justify-center text-center border border-transparent hover:border-white/10 transition duration-300 cursor-pointer shadow-lg hover:shadow-[#00d4ff]/10">
+                    <i class="ri-camera-lens-line text-4xl icon-color mb-3"></i>
+                    <h3 class="font-bold text-lg mb-1 text-white">Reparação de Câmara</h3>
+                    <p class="text-gray-400 text-sm mb-4">Fotos nítidas novamente</p>
+                    <span class="price-color font-bold text-sm">desde 59€</span>
+                </div>
+
+                <!-- Card 4 -->
+                <div onclick="selecionarServico('Conector de Carga')" class="p-8 card-bg rounded-2xl flex flex-col items-center justify-center text-center border border-transparent hover:border-white/10 transition duration-300 cursor-pointer shadow-lg hover:shadow-[#00d4ff]/10">
+                    <i class="ri-plug-line text-4xl icon-color mb-3"></i>
+                    <h3 class="font-bold text-lg mb-1 text-white">Conector de Carga</h3>
+                    <p class="text-gray-400 text-sm mb-4">Problemas ao carregar?</p>
+                    <span class="price-color font-bold text-sm">desde 45€</span>
+                </div>
+
+                <!-- Card 5 -->
+                <div onclick="selecionarServico('Problemas de Software')" class="p-8 card-bg rounded-2xl flex flex-col items-center justify-center text-center border border-transparent hover:border-white/10 transition duration-300 cursor-pointer shadow-lg hover:shadow-[#00d4ff]/10">
+                    <i class="ri-bug-line text-4xl icon-color mb-3"></i>
+                    <h3 class="font-bold text-lg mb-1 text-white">Problemas de Software</h3>
+                    <p class="text-gray-400 text-sm mb-4">Atualizações e erros</p>
+                    <span class="price-color font-bold text-sm">desde 25€</span>
+                </div>
+
+                <!-- Card 6 (Especial) -->
+                <div onclick="selecionarServico('Outro')" class="p-8 card-bg rounded-2xl flex flex-col items-center justify-center text-center border border-[#00d4ff]/50 relative overflow-hidden shadow-[0_0_20px_rgba(0,212,255,0.05)] cursor-pointer hover:border-[#00d4ff] transition">
+                    <div class="absolute inset-0 bg-gradient-to-br from-[#00d4ff]/10 to-transparent pointer-events-none"></div>
+                    <h3 class="font-bold text-lg mb-3 icon-color relative z-10">E MUITO MAIS →</h3>
+                    <p class="text-gray-400 text-xs md:text-sm mb-6 relative z-10 px-2 pointer-events-none">Não encontras o que precisas? Contacta-me e fazemos um orçamento à medida.</p>
+                    <span class="bg-[#008cff] text-white px-5 py-2.5 rounded-lg font-bold text-sm shadow-lg shadow-blue-500/20 relative z-10">Pedir Orçamento Personalizado</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Porquê Escolher a White Repairs Section -->
+        <section id="porque" class="py-16">
+            <div class="max-w-5xl mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold mb-10 text-center md:text-left">Porquê escolher a <span class="text-[#00d4ff]">White Repairs?</span></h2>
+                <ul class="space-y-5 text-gray-200">
+                    <li class="flex items-center gap-4 text-base md:text-lg">
+                        <i class="ri-tools-line text-2xl text-[#00d4ff]"></i> Técnico certificado com anos de experiência
+                    </li>
+                    <li class="flex items-center gap-4 text-base md:text-lg">
+                        <i class="ri-checkbox-circle-line text-2xl text-[#00d4ff]"></i> Trabalho com peças PREMIUM e originais
+                    </li>
+                    <li class="flex items-center gap-4 text-base md:text-lg">
+                        <i class="ri-shield-check-line text-2xl text-[#00d4ff]"></i> Garantia de 3 meses em todas as reparações
+                    </li>
+                    <li class="flex items-center gap-4 text-base md:text-lg">
+                        <i class="ri-money-euro-circle-line text-2xl text-[#00d4ff]"></i> Preços justos e transparentes
+                    </li>
+                    <li class="flex items-center gap-4 text-base md:text-lg">
+                        <i class="ri-user-smile-line text-2xl text-[#00d4ff]"></i> Atendimento personalizado em todo o Alentejo
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Testemunhos Section (Carrossel) -->
+        <section id="testemunhos" class="py-16 overflow-hidden">
+            <div class="max-w-6xl mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">O que dizem os nossos <span class="text-[#008cff]">Clientes</span></h2>
+                
+                <!-- Container do Carrossel (Scroll horizontal) -->
+                <div class="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-8 hide-scrollbar cursor-grab">
+                    
+                    <!-- Testemunho 1 -->
+                    <div class="min-w-[320px] md:min-w-[350px] snap-center card-bg p-6 rounded-2xl border border-white/5">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-10 h-10 rounded-full bg-[#008cff] flex items-center justify-center font-bold text-white shadow-[0_0_15px_rgba(0,140,255,0.4)]">R</div>
+                            <div>
+                                <div class="font-bold text-white text-sm">Rui M.</div>
+                                <div class="text-xs text-gray-400">Portalegre</div>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 text-sm leading-relaxed">"Ecrã do iPhone 14 partido, reparado em 24h. Recomendo imenso o serviço!"</p>
+                    </div>
+
+                    <!-- Testemunho 2 -->
+                    <div class="min-w-[320px] md:min-w-[350px] snap-center card-bg p-6 rounded-2xl border border-white/5">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-10 h-10 rounded-full bg-[#008cff] flex items-center justify-center font-bold text-white shadow-[0_0_15px_rgba(0,140,255,0.4)]">C</div>
+                            <div>
+                                <div class="font-bold text-white text-sm">Carla S.</div>
+                                <div class="text-xs text-gray-400">Évora</div>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 text-sm leading-relaxed">"Bateria substituída, ficou como novo. Preço justo e muito profissional."</p>
+                    </div>
+
+                    <!-- Testemunho 3 -->
+                    <div class="min-w-[320px] md:min-w-[350px] snap-center card-bg p-6 rounded-2xl border border-white/5">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-10 h-10 rounded-full bg-[#008cff] flex items-center justify-center font-bold text-white shadow-[0_0_15px_rgba(0,140,255,0.4)]">T</div>
+                            <div>
+                                <div class="font-bold text-white text-sm">Tiago R.</div>
+                                <div class="text-xs text-gray-400">Estremoz</div>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 text-sm leading-relaxed">"Vieram buscar o telemóvel a casa e no dia seguinte estava arranjado. Top!"</p>
+                    </div>
+                    
+                    <!-- Testemunho 4 -->
+                    <div class="min-w-[320px] md:min-w-[350px] snap-center card-bg p-6 rounded-2xl border border-white/5">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-10 h-10 rounded-full bg-[#008cff] flex items-center justify-center font-bold text-white shadow-[0_0_15px_rgba(0,140,255,0.4)]">M</div>
+                            <div>
+                                <div class="font-bold text-white text-sm">Maria F.</div>
+                                <div class="text-xs text-gray-400">Beja</div>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 text-sm leading-relaxed">"A câmara do meu iPhone 13 Pro Max estava com manchas, resolveram o problema super rápido. Obrigada!"</p>
+                    </div>
+                    
+                    <!-- Testemunho 5 -->
+                    <div class="min-w-[320px] md:min-w-[350px] snap-center card-bg p-6 rounded-2xl border border-white/5">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-10 h-10 rounded-full bg-[#008cff] flex items-center justify-center font-bold text-white shadow-[0_0_15px_rgba(0,140,255,0.4)]">J</div>
+                            <div>
+                                <div class="font-bold text-white text-sm">João P.</div>
+                                <div class="text-xs text-gray-400">Elvas</div>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 text-sm leading-relaxed">"Achei fantástico não ter de sair de casa para reparar o telefone. Serviço 5 estrelas."</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Zona de Cobertura Section -->
+        <section id="cobertura" class="py-16">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="text-center mb-10">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-2">Zona de <span class="text-[#00d4ff]">Cobertura</span></h2>
+                    <p class="text-gray-400 text-sm md:text-base">Onde quer que estejas, nós resolvemos.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Alentejo Card -->
+                    <div class="card-bg border border-white/5 rounded-[1.5rem] p-8 md:p-10 hover:border-white/10 transition relative overflow-hidden">
+                        <h3 class="text-lg md:text-xl font-bold mb-4 flex items-center gap-2"><i class="ri-map-pin-line text-[#00d4ff]"></i> No Alentejo, desloco-me até ti!</h3>
+                        <p class="text-gray-300 text-sm md:text-base mb-6">Sede em <strong>Fronteira, Portalegre</strong> — zona base com deslocação rápida.</p>
+                        <p class="text-gray-300 text-sm md:text-base"><strong>Custo extra de deslocação:</strong> a partir de 10€.</p>
+                    </div>
+                    
+                    <!-- Fora do Alentejo Card -->
+                    <div class="card-bg border border-white/5 rounded-[1.5rem] p-8 md:p-10 hover:border-white/10 transition">
+                        <h3 class="text-lg md:text-xl font-bold mb-6 flex items-center gap-2"><i class="ri-truck-line text-[#00d4ff]"></i> Fora do Alentejo?</h3>
+                        <ul class="space-y-5 text-gray-300 text-sm md:text-base">
+                            <li class="flex items-center gap-3"><i class="ri-box-3-line text-[#00d4ff] text-xl"></i> Envio por CTT Expresso (portes a cargo do cliente)</li>
+                            <li class="flex items-center gap-3"><i class="ri-home-4-line text-[#00d4ff] text-xl"></i> Recebemos o equipamento e reenviamos para ti</li>
+                            <li class="flex items-center gap-3"><i class="ri-shield-check-line text-[#00d4ff] text-xl"></i> Embalagem protetora profissional no regresso</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contato Form com integração Formspree via AJAX -->
+        <section id="contato" class="py-20 px-6">
+            <!-- Mensagem de Sucesso (Oculta por defeito, ativada pelo Formspree) -->
+            <div data-fs-success style="display: none;" class="max-w-4xl mx-auto card-bg p-8 md:p-12 rounded-[2rem] border border-green-500/30 text-center text-green-400 font-bold text-xl mb-8 shadow-[0_0_20px_rgba(34,197,94,0.1)]">
+                <i class="ri-checkbox-circle-line text-5xl mb-4 block text-green-500"></i>
+                Pedido de Orçamento enviado com sucesso!<br>
+                <span class="text-base font-normal text-gray-300 mt-3 block">Vamos entrar em contacto o mais brevemente possível para recuperar o teu iPhone.</span>
+            </div>
+
+            <form id="contato-form" class="max-w-4xl mx-auto card-bg p-8 md:p-12 rounded-[2rem] border border-white/10">
+                <!-- Mensagem de Erro Geral -->
+                <div data-fs-error style="display: none;" class="mb-6 p-4 bg-red-500/10 border border-red-500/30 text-red-400 rounded-xl text-center text-sm font-medium">
+                    Ocorreu um erro ao enviar. Verifica os teus dados e tenta novamente.
+                </div>
+                
+                <div class="text-center mb-10">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-3">Pedir <span class="text-[#008cff]">Orçamento</span> Grátis</h2>
+                    <p class="text-gray-400">Preenche o formulário e respondemos em menos de 24h.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <input name="nome" placeholder="Nome Completo" required data-fs-field class="w-full bg-[#050714] p-4 rounded-xl border border-white/10 focus:border-[#008cff] outline-none transition text-sm" />
+                        <span data-fs-error="nome" class="text-red-400 text-xs mt-1 block"></span>
+                    </div>
+                    
+                    <div>
+                        <input name="telefone" type="tel" placeholder="Telemóvel" required data-fs-field class="w-full bg-[#050714] p-4 rounded-xl border border-white/10 focus:border-[#008cff] outline-none transition text-sm" />
+                        <span data-fs-error="telefone" class="text-red-400 text-xs mt-1 block"></span>
+                    </div>
+                    
+                    <div>
+                        <input name="email" type="email" placeholder="Email" required data-fs-field class="w-full bg-[#050714] p-4 rounded-xl border border-white/10 focus:border-[#008cff] outline-none transition text-sm" />
+                        <span data-fs-error="email" class="text-red-400 text-xs mt-1 block"></span>
+                    </div>
+                    
+                    <div>
+                        <input name="localidade" placeholder="Localidade (Ex: Portalegre)" required data-fs-field class="w-full bg-[#050714] p-4 rounded-xl border border-white/10 focus:border-[#008cff] outline-none transition text-sm" />
+                        <span data-fs-error="localidade" class="text-red-400 text-xs mt-1 block"></span>
+                    </div>
+                    
+                    <div>
+                        <select name="modelo" required data-fs-field class="w-full bg-[#050714] text-gray-400 p-4 rounded-xl border border-white/10 focus:border-[#008cff] outline-none transition text-sm appearance-none">
+                            <option value="" disabled selected>Modelo do iPhone</option>
+                            <optgroup label="iPhone 17 Series">
+                                <option value="iPhone 17">iPhone 17</option>
+                                <option value="iPhone 17 e">iPhone 17 e</option>
+                                <option value="iPhone 17 Pro">iPhone 17 Pro</option>
+                                <option value="iPhone 17 Pro Max">iPhone 17 Pro Max</option>
+                                <option value="iPhone Air">iPhone Air</option>
+                            </optgroup>
+                            <optgroup label="iPhone 16 Series">
+                                <option value="iPhone 16">iPhone 16</option>
+                                <option value="iPhone 16 e">iPhone 16 e</option>
+                                <option value="iPhone 16 Plus">iPhone 16 Plus</option>
+                                <option value="iPhone 16 Pro">iPhone 16 Pro</option>
+                                <option value="iPhone 16 Pro Max">iPhone 16 Pro Max</option>
+                            </optgroup>
+                            <optgroup label="iPhone 15 Series">
+                                <option value="iPhone 15">iPhone 15</option>
+                                <option value="iPhone 15 Plus">iPhone 15 Plus</option>
+                                <option value="iPhone 15 Pro">iPhone 15 Pro</option>
+                                <option value="iPhone 15 Pro Max">iPhone 15 Pro Max</option>
+                            </optgroup>
+                            <optgroup label="iPhone 14 Series">
+                                <option value="iPhone 14">iPhone 14</option>
+                                <option value="iPhone 14 Plus">iPhone 14 Plus</option>
+                                <option value="iPhone 14 Pro">iPhone 14 Pro</option>
+                                <option value="iPhone 14 Pro Max">iPhone 14 Pro Max</option>
+                            </optgroup>
+                            <optgroup label="iPhone 13 Series">
+                                <option value="iPhone 13">iPhone 13</option>
+                                <option value="iPhone 13 mini">iPhone 13 mini</option>
+                                <option value="iPhone 13 Pro">iPhone 13 Pro</option>
+                                <option value="iPhone 13 Pro Max">iPhone 13 Pro Max</option>
+                            </optgroup>
+                            <optgroup label="iPhone 12 Series">
+                                <option value="iPhone 12">iPhone 12</option>
+                                <option value="iPhone 12 mini">iPhone 12 mini</option>
+                                <option value="iPhone 12 Pro">iPhone 12 Pro</option>
+                                <option value="iPhone 12 Pro Max">iPhone 12 Pro Max</option>
+                            </optgroup>
+                            <option value="Outro Modelo">Outro Modelo</option>
+                        </select>
+                        <span data-fs-error="modelo" class="text-red-400 text-xs mt-1 block"></span>
+                    </div>
+
+                    <div>
+                        <select id="tipo_reparacao" name="tipo_reparacao" required data-fs-field class="w-full bg-[#050714] text-gray-400 p-4 rounded-xl border border-white/10 focus:border-[#008cff] outline-none transition text-sm appearance-none">
+                            <option value="" disabled selected>Tipo de Reparação</option>
+                            <option value="Substituição de Ecrã">Substituição de Ecrã</option>
+                            <option value="Substituição de Bateria">Substituição de Bateria</option>
+                            <option value="Reparação de Câmara">Reparação de Câmara</option>
+                            <option value="Conector de Carga">Conector de Carga</option>
+                            <option value="Problemas de Software">Problemas de Software</option>
+                            <option value="Outro">Outro (Especificar na mensagem)</option>
+                        </select>
+                        <span data-fs-error="tipo_reparacao" class="text-red-400 text-xs mt-1 block"></span>
+                    </div>
+                </div>
+                
+                <div class="mb-6">
+                    <textarea name="mensagem" placeholder="Descreve o problema do teu iPhone..." required data-fs-field class="w-full bg-[#050714] p-4 rounded-xl border border-white/10 h-32 outline-none transition text-sm resize-none"></textarea>
+                    <span data-fs-error="mensagem" class="text-red-400 text-xs mt-1 block"></span>
+                </div>
+                
+                <div class="flex items-center gap-3 mb-8 px-2">
+                    <input type="checkbox" id="alentejo" name="alentejo" value="Sim" data-fs-field class="w-5 h-5 accent-[#008cff] bg-[#050714] border-white/10 rounded cursor-pointer" />
+                    <label for="alentejo" class="text-sm font-medium cursor-pointer text-white">Estou no Alentejo (deslocação possível)</label>
+                </div>
+                
+                <button type="submit" data-fs-submit-btn class="w-full bg-[#00b3ff] text-white font-bold p-4 rounded-xl hover:bg-[#0099e6] transition shadow-[0_0_15px_rgba(0,179,255,0.2)] disabled:opacity-50 disabled:cursor-not-allowed">Enviar Pedido de Orçamento</button>
+            </form>
+        </section>
+    </main>
+
+    <footer class="text-center py-10 text-sm flex flex-col items-center gap-4">
+        <div class="flex items-center gap-6">
+            <a href="https://instagram.com/whiterepairs" target="_blank" class="text-gray-400 hover:text-pink-500 text-2xl transition drop-shadow-[0_0_8px_rgba(255,255,255,0.1)]" title="Instagram">
+                <i class="ri-instagram-line"></i>
+            </a>
+            <a href="https://wa.me/351928119001" target="_blank" class="text-gray-400 hover:text-green-500 text-2xl transition drop-shadow-[0_0_8px_rgba(255,255,255,0.1)]" title="WhatsApp">
+                <i class="ri-whatsapp-line"></i>
+            </a>
+        </div>
+        <p class="font-bold text-gray-400 mb-1">&copy; 2026 WHITE REPAIRS. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- Script Geral e Animação do Contador -->
+    <script>
+        // Função para os botões de Serviço interagirem com o Formulário
+        function selecionarServico(servicoSelecionado) {
+            const selectReparacao = document.getElementById('tipo_reparacao');
+            if (selectReparacao) {
+                selectReparacao.value = servicoSelecionado;
+            }
+            // Rolar a página suavemente até ao formulário
+            document.getElementById('contato').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Animação do Contador de Reparações
+        document.addEventListener("DOMContentLoaded", () => {
+            const counterElement = document.getElementById("repair-counter");
+            const finalValue = 134;
+            const duration = 2500; // tempo da animação em milissegundos
+            let startTimestamp = null;
+
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                
+                // Aplica função de curva para abrandar no fim (Ease-out)
+                const easeOutQuad = progress * (2 - progress);
+                counterElement.innerHTML = Math.floor(easeOutQuad * finalValue);
+                
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                } else {
+                    counterElement.innerHTML = finalValue;
+                }
+            };
+            window.requestAnimationFrame(step);
+        });
+    </script>
+
+    <!-- Integração do Formspree SDK via CDN -->
+    <script>
+        window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+        formspree('initForm', { formElement: '#contato-form', formId: 'xaqzpobv' });
+    </script>
+    <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
+</body>
+</html>
