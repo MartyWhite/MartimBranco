@@ -14,6 +14,14 @@
     <script>
         tailwind.config = {
             theme: {
+                screens: {
+                    'xs': '375px',
+                    'sm': '640px',
+                    'md': '768px',
+                    'lg': '1024px',
+                    'xl': '1280px',
+                    '2xl': '1536px',
+                },
                 extend: {
                     colors: {
                         gold: {
@@ -127,7 +135,7 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+    <section class="relative min-h-screen flex items-center justify-center pt-24 pb-16 sm:pb-24 overflow-hidden">
         <div class="absolute inset-0 z-0">
             <!-- ========================================================================= -->
             <!-- 📸 IMAGEM DE FUNDO DO HERO (ECRÃ PRINCIPAL)                               -->
@@ -142,18 +150,19 @@
             <div class="absolute inset-0 bg-radial-gradient from-transparent to-dark-900/90"></div>
         </div>
 
-        <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-12 pb-24">
-            <span class="inline-flex items-center gap-2 text-gold-400 text-xs sm:text-sm font-bold tracking-[0.3em] uppercase mb-4 bg-gold-950/40 border border-gold-800/50 px-4 py-1.5 rounded-full">
-                <i class="fa-solid fa-star text-[10px]"></i> Restaurante de Excelência <i class="fa-solid fa-star text-[10px]"></i>
+        <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-8 pb-16">
+            <span class="inline-flex items-center gap-2 text-gold-400 text-[10px] sm:text-xs font-bold tracking-wider sm:tracking-[0.3em] uppercase mb-4 bg-gold-950/40 border border-gold-800/50 px-4 py-1.5 rounded-full">
+                <i class="fa-solid fa-star text-[8px]"></i> Restaurante de Excelência <i class="fa-solid fa-star text-[8px]"></i>
             </span>
-            <h1 class="font-serif text-5xl sm:text-7xl lg:text-8xl font-black text-white tracking-tight mb-6">
+            <!-- Corrigido tamanho no mobile para não transbordar e quebrar a linha de forma incorreta -->
+            <h1 class="font-serif text-[2.2rem] xs:text-4xl sm:text-7xl lg:text-8xl font-black text-white tracking-tight mb-6 break-words">
                 Prov@velmente<span class="text-gold-500">.</span>com
             </h1>
-            <p class="text-lg sm:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed mb-10 font-light">
+            <p class="text-base sm:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed mb-10 font-light px-2 sm:px-0">
                 Onde a <span class="text-white font-semibold underline decoration-gold-500 decoration-2 underline-offset-4">comida caseira</span>, o sabor autêntico e uma <span class="text-white font-semibold underline decoration-gold-500 decoration-2 underline-offset-4">decoração de excelência</span> se encontram para uma experiência inesquecível.
             </p>
 
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-12">
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 max-w-md sm:max-w-none mx-auto">
                 <a href="#reservar" class="w-full sm:w-auto bg-gradient-to-r from-gold-600 via-gold-500 to-gold-400 text-dark-900 font-bold px-8 py-4 rounded-full text-base uppercase tracking-wider transition-all duration-300 shadow-xl shadow-gold-500/20 hover:shadow-gold-500/40 transform hover:-translate-y-1 flex items-center justify-center gap-2 group">
                     Reservar Mesa <i class="fa-solid fa-arrow-right transition-transform group-hover:translate-x-1"></i>
                 </a>
@@ -163,17 +172,17 @@
             </div>
         </div>
 
-        <!-- Scroll Indicator (Corrigido e ancorado firmemente ao fundo da viewport) -->
-        <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-20 flex flex-col items-center gap-1.5 text-gray-500 hover:text-gold-400 transition-colors duration-300 cursor-pointer animate-bounce" onclick="document.getElementById('sobre').scrollIntoView({behavior: 'smooth'})">
+        <!-- Scroll Indicator (Visível apenas em Desktop para evitar colisão com botões flutuantes no mobile) -->
+        <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-20 hidden sm:flex flex-col items-center gap-1.5 text-gray-500 hover:text-gold-400 transition-colors duration-300 cursor-pointer animate-bounce" onclick="document.getElementById('sobre').scrollIntoView({behavior: 'smooth'})">
             <span class="text-xs uppercase tracking-[0.2em] font-bold">Scroll</span>
             <i class="fa-solid fa-chevron-down text-sm"></i>
         </div>
     </section>
 
     <!-- About Us Section (Sobre Nós) -->
-    <section id="sobre" class="py-24 relative overflow-hidden bg-dark-900 border-t border-dark-800">
+    <section id="sobre" class="py-16 sm:py-24 relative overflow-hidden bg-dark-900 border-t border-dark-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-16 items-center">
                 
                 <!-- Left Column: Visual Showcase -->
                 <div class="lg:col-span-5 space-y-6">
@@ -185,19 +194,19 @@
                         <!-- ========================================================================= -->
                         <img src="https://i.imgur.com/jRN4uEN.png" 
                              alt="Interior Decor" 
-                             class="w-full h-[700px] object-cover object-center transform transition duration-700 group-hover:scale-105"
+                             class="w-full h-[320px] sm:h-[500px] lg:h-[700px] object-cover object-center transform transition duration-700 group-hover:scale-105"
                              onerror="this.src='https://placehold.co/600x700/222/c5a85c?text=Decoração+de+Excelência'">
                         
                         <!-- Mini badge inside image -->
-                        <div class="absolute bottom-6 left-6 z-20 bg-dark-900/90 border border-gold-700/30 px-5 py-4 rounded-2xl backdrop-blur-md">
-                            <span class="block text-2xl font-serif font-bold text-gold-400">O Nosso Cheff</span>
-                            <span class="block text-xs uppercase text-gray-400 font-semibold tracking-wider">Aqui o nome</span>
+                        <div class="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 z-20 bg-dark-900/90 border border-gold-700/30 px-4 py-3 sm:px-5 sm:py-4 rounded-2xl backdrop-blur-md">
+                            <span class="block text-lg sm:text-2xl font-serif font-bold text-gold-400">O Nosso Chefe</span>
+                            <span class="block text-[10px] sm:text-xs uppercase text-gray-400 font-semibold tracking-wider">Prov@velmente.com</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Right Column: Content and Bullet Checklist -->
-                <div class="lg:col-span-7 space-y-8">
+                <div class="lg:col-span-7 space-y-6 sm:space-y-8">
                     <div class="space-y-4">
                         <span class="text-gold-500 text-xs sm:text-sm font-bold tracking-[0.3em] uppercase block">Sobre Nós</span>
                         <h2 class="font-serif text-3xl sm:text-5xl font-extrabold text-white leading-tight">
@@ -206,7 +215,7 @@
                         <div class="h-1 w-20 bg-gold-500 rounded-full"></div>
                     </div>
 
-                    <div class="space-y-6 text-gray-300 leading-relaxed text-base sm:text-lg">
+                    <div class="space-y-4 sm:space-y-6 text-gray-300 leading-relaxed text-sm sm:text-lg">
                         <p>
                             O <strong class="text-white">Prov@velmente.com</strong> passou recentemente por uma <span class="text-gold-400 font-medium">nova gerência</span> que elevou a experiência culinária, sem perder o ambiente familiar e reconfortante que sempre nos distinguiu.
                         </p>
@@ -216,42 +225,42 @@
                     </div>
 
                     <!-- Highlight Grid with Checkmarks -->
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-dark-800">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 pt-4 border-t border-dark-800">
                         <div class="flex items-center gap-3 text-gray-200">
                             <span class="flex-shrink-0 w-8 h-8 rounded-full bg-gold-500/10 border border-gold-500/20 flex items-center justify-center text-gold-400">
-                                <i class="fa-solid fa-check text-sm"></i>
+                                <i class="fa-solid fa-check text-xs"></i>
                             </span>
-                            <span class="font-medium text-base">Comida caseira tradicional</span>
+                            <span class="font-medium text-sm sm:text-base">Comida caseira tradicional</span>
                         </div>
                         <div class="flex items-center gap-3 text-gray-200">
                             <span class="flex-shrink-0 w-8 h-8 rounded-full bg-gold-500/10 border border-gold-500/20 flex items-center justify-center text-gold-400">
-                                <i class="fa-solid fa-check text-sm"></i>
+                                <i class="fa-solid fa-check text-xs"></i>
                             </span>
-                            <span class="font-medium text-base">Decoração de excelência</span>
+                            <span class="font-medium text-sm sm:text-base">Decoração de excelência</span>
                         </div>
                         <div class="flex items-center gap-3 text-gray-200">
                             <span class="flex-shrink-0 w-8 h-8 rounded-full bg-gold-500/10 border border-gold-500/20 flex items-center justify-center text-gold-400">
-                                <i class="fa-solid fa-check text-sm"></i>
+                                <i class="fa-solid fa-check text-xs"></i>
                             </span>
-                            <span class="font-medium text-base">Atendimento personalizado</span>
+                            <span class="font-medium text-sm sm:text-base">Atendimento personalizado</span>
                         </div>
                         <div class="flex items-center gap-3 text-gray-200">
                             <span class="flex-shrink-0 w-8 h-8 rounded-full bg-gold-500/10 border border-gold-500/20 flex items-center justify-center text-gold-400">
-                                <i class="fa-solid fa-check text-sm"></i>
+                                <i class="fa-solid fa-check text-xs"></i>
                             </span>
-                            <span class="font-medium text-base">Ingredientes frescos & locais</span>
+                            <span class="font-medium text-sm sm:text-base">Ingredientes frescos & locais</span>
                         </div>
                         <div class="flex items-center gap-3 text-gray-200">
                             <span class="flex-shrink-0 w-8 h-8 rounded-full bg-gold-500/10 border border-gold-500/20 flex items-center justify-center text-gold-400">
-                                <i class="fa-solid fa-check text-sm"></i>
+                                <i class="fa-solid fa-check text-xs"></i>
                             </span>
-                            <span class="font-medium text-base">Ambiente acolhedor</span>
+                            <span class="font-medium text-sm sm:text-base">Ambiente acolhedor</span>
                         </div>
                         <div class="flex items-center gap-3 text-gray-200">
                             <span class="flex-shrink-0 w-8 h-8 rounded-full bg-gold-500/10 border border-gold-500/20 flex items-center justify-center text-gold-400">
-                                <i class="fa-solid fa-check text-sm"></i>
+                                <i class="fa-solid fa-check text-xs"></i>
                             </span>
-                            <span class="font-medium text-base">Excelente qualidade/preço</span>
+                            <span class="font-medium text-sm sm:text-base">Excelente qualidade/preço</span>
                         </div>
                     </div>
                 </div>
@@ -261,16 +270,16 @@
     </section>
 
     <!-- Atmosphere Section (Ambiente) -->
-    <section id="ambiente" class="py-24 relative overflow-hidden bg-dark-800">
+    <section id="ambiente" class="py-16 sm:py-24 relative overflow-hidden bg-dark-800">
         <!-- Background accents -->
         <div class="absolute -top-40 -right-40 w-96 h-96 bg-gold-900/10 rounded-full blur-3xl"></div>
         <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-gold-950/10 rounded-full blur-3xl"></div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-16 items-center">
                 
                 <!-- Left Column: Context Content -->
-                <div class="lg:col-span-6 space-y-8 lg:order-1 order-2">
+                <div class="lg:col-span-6 space-y-6 sm:space-y-8 lg:order-1 order-2">
                     <div class="space-y-4">
                         <span class="text-gold-500 text-xs sm:text-sm font-bold tracking-[0.3em] uppercase block">Ambiente</span>
                         <h2 class="font-serif text-3xl sm:text-5xl font-extrabold text-white leading-tight">
@@ -279,7 +288,7 @@
                         <div class="h-1 w-20 bg-gold-500 rounded-full"></div>
                     </div>
 
-                    <div class="space-y-6 text-gray-300 leading-relaxed text-base sm:text-lg">
+                    <div class="space-y-4 sm:space-y-6 text-gray-300 leading-relaxed text-sm sm:text-lg">
                         <p>
                             Um dos aspetos mais elogiados e marcantes para quem nos visita é a nossa <strong class="text-white text-gold-400">decoração cuidada de excelência</strong>. O ambiente do Prov@velmente.com foi conceptualizado ao pormenor para proporcionar conforto absoluto e bem-estar.
                         </p>
@@ -322,11 +331,11 @@
                         <img id="atmosphereImg" 
                              src="https://scontent.flis3-1.fna.fbcdn.net/v/t39.30808-6/556097041_122095813851055315_1069856063687109313_n.jpg?stp=dst-jpg_tt6&cstp=mx2000x1128&ctp=s2000x1128&_nc_cat=107&ccb=1-7&_nc_sid=f727a1&_nc_ohc=5yQ031jhsK0Q7kNvwHoJbO_&_nc_oc=AdqDxod14XyifN0YCvYIMrQTOg_uV1fvtPLEAh9vzFO4tB1o1E4_GOBfC5cp2FJDt3o&_nc_zt=23&_nc_ht=scontent.flis3-1.fna&_nc_gid=HeM3FCs9tabd0-xqThgRVw&_nc_ss=7b2a8&oh=00_AQC1gM-4Ff-NprcoOe0rXZehc39DCf6vk_VCPv2f_5m2mw&oe=6A539C3A" 
                              alt="Interior do Restaurante Prov@velmente" 
-                             class="w-full h-[450px] object-cover object-center transform transition duration-500 group-hover:scale-105"
+                             class="w-full h-[240px] xs:h-[280px] sm:h-[450px] object-cover object-center transform transition duration-500 group-hover:scale-105"
                              onerror="this.src='https://placehold.co/800x600/111/e9dab1?text=Ambiente+De+Excelência'">
                         
-                        <div class="absolute top-6 left-6 z-20">
-                            <span class="bg-gradient-to-r from-gold-600 to-gold-400 text-dark-900 font-bold px-4 py-1.5 rounded-full text-xs uppercase tracking-wider shadow-lg">
+                        <div class="absolute top-4 left-4 sm:top-6 sm:left-6 z-20">
+                            <span class="bg-gradient-to-r from-gold-600 to-gold-400 text-dark-900 font-bold px-3 py-1 sm:px-4 sm:py-1.5 rounded-full text-[10px] sm:text-xs uppercase tracking-wider shadow-lg">
                                 Sala de Jantar Principal
                             </span>
                         </div>
@@ -338,20 +347,20 @@
     </section>
 
     <!-- Key Strengths Section (Pontos Fortes) -->
-    <section id="pontos-fortes" class="py-24 relative overflow-hidden bg-dark-900">
+    <section id="pontos-fortes" class="py-16 sm:py-24 relative overflow-hidden bg-dark-900">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+            <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16 space-y-4">
                 <span class="text-gold-500 text-xs sm:text-sm font-bold tracking-[0.3em] uppercase block">Pontos Fortes</span>
                 <h2 class="font-serif text-3xl sm:text-5xl font-extrabold text-white">O que nos distingue</h2>
                 <div class="h-1 w-20 bg-gold-500 mx-auto rounded-full"></div>
-                <p class="text-gray-400 text-base sm:text-lg">
+                <p class="text-gray-400 text-sm sm:text-lg">
                     Conheça os pilares fundamentais que sustentam a excelência da nossa casa e as opiniões brilhantes que recebemos diariamente.
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
                 <!-- Strength 01 -->
-                <div class="group relative bg-dark-800 border border-dark-700 rounded-3xl p-8 hover:border-gold-500/40 transition-all duration-300 hover:shadow-2xl hover:shadow-gold-500/5 transform hover:-translate-y-2 flex flex-col justify-between">
+                <div class="group relative bg-dark-800 border border-dark-700 rounded-3xl p-6 sm:p-8 hover:border-gold-500/40 transition-all duration-300 hover:shadow-2xl hover:shadow-gold-500/5 transform hover:-translate-y-2 flex flex-col justify-between">
                     <div>
                         <div class="flex items-center justify-between mb-6">
                             <span class="text-4xl font-serif font-extrabold text-gold-500/20 group-hover:text-gold-500/40 transition-colors duration-300">01</span>
@@ -359,15 +368,15 @@
                                 <i class="fa-solid fa-users-gear text-xl"></i>
                             </span>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-4 group-hover:text-gold-400 transition-colors duration-300">Nova Gerência Dinamizadora</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">
+                        <h3 class="text-lg sm:text-xl font-bold text-white mb-4 group-hover:text-gold-400 transition-colors duration-300">Nova Gerência Dinamizadora</h3>
+                        <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">
                             A mudança de direção trouxe dinamismo, profissionalismo e uma nova visão de sofisticação culinária. As avaliações mais recentes destacam um serviço totalmente revitalizado.
                         </p>
                     </div>
                 </div>
 
                 <!-- Strength 02 -->
-                <div class="group relative bg-dark-800 border border-dark-700 rounded-3xl p-8 hover:border-gold-500/40 transition-all duration-300 hover:shadow-2xl hover:shadow-gold-500/5 transform hover:-translate-y-2 flex flex-col justify-between">
+                <div class="group relative bg-dark-800 border border-dark-700 rounded-3xl p-6 sm:p-8 hover:border-gold-500/40 transition-all duration-300 hover:shadow-2xl hover:shadow-gold-500/5 transform hover:-translate-y-2 flex flex-col justify-between">
                     <div>
                         <div class="flex items-center justify-between mb-6">
                             <span class="text-4xl font-serif font-extrabold text-gold-500/20 group-hover:text-gold-500/40 transition-colors duration-300">02</span>
@@ -375,15 +384,15 @@
                                 <i class="fa-solid fa-drumstick-bite text-xl"></i>
                             </span>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-4 group-hover:text-gold-400 transition-colors duration-300">Qualidade Superior da Comida</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">
+                        <h3 class="text-lg sm:text-xl font-bold text-white mb-4 group-hover:text-gold-400 transition-colors duration-300">Qualidade Superior da Comida</h3>
+                        <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">
                             O consenso dos nossos clientes é geral: a excelência dos ingredientes é a nossa marca. A aposta constante em carne de qualidade superior e a nossa picanha são irresistíveis.
                         </p>
                     </div>
                 </div>
 
                 <!-- Strength 03 -->
-                <div class="group relative bg-dark-800 border border-dark-700 rounded-3xl p-8 hover:border-gold-500/40 transition-all duration-300 hover:shadow-2xl hover:shadow-gold-500/5 transform hover:-translate-y-2 flex flex-col justify-between">
+                <div class="group relative bg-dark-800 border border-dark-700 rounded-3xl p-6 sm:p-8 hover:border-gold-500/40 transition-all duration-300 hover:shadow-2xl hover:shadow-gold-500/5 transform hover:-translate-y-2 flex flex-col justify-between">
                     <div>
                         <div class="flex items-center justify-between mb-6">
                             <span class="text-4xl font-serif font-extrabold text-gold-500/20 group-hover:text-gold-500/40 transition-colors duration-300">03</span>
@@ -391,15 +400,15 @@
                                 <i class="fa-solid fa-heart text-xl"></i>
                             </span>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-4 group-hover:text-gold-400 transition-colors duration-300">Atendimento Simpático e Profissional</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">
+                        <h3 class="text-lg sm:text-xl font-bold text-white mb-4 group-hover:text-gold-400 transition-colors duration-300">Atendimento Simpático e Profissional</h3>
+                        <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">
                             A nossa equipa e staff são descritos como extremamente simpáticos, dedicados e atenciosos, criando uma experiência calorosa que o fará sentir-se em casa.
                         </p>
                     </div>
                 </div>
 
                 <!-- Strength 04 -->
-                <div class="group relative bg-dark-800 border border-dark-700 rounded-3xl p-8 hover:border-gold-500/40 transition-all duration-300 hover:shadow-2xl hover:shadow-gold-500/5 transform hover:-translate-y-2 flex flex-col justify-between">
+                <div class="group relative bg-dark-800 border border-dark-700 rounded-3xl p-6 sm:p-8 hover:border-gold-500/40 transition-all duration-300 hover:shadow-2xl hover:shadow-gold-500/5 transform hover:-translate-y-2 flex flex-col justify-between">
                     <div>
                         <div class="flex items-center justify-between mb-6">
                             <span class="text-4xl font-serif font-extrabold text-gold-500/20 group-hover:text-gold-500/40 transition-colors duration-300">04</span>
@@ -407,8 +416,8 @@
                                 <i class="fa-solid fa-chair text-xl"></i>
                             </span>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-4 group-hover:text-gold-400 transition-colors duration-300">Ambiente e Decoração</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">
+                        <h3 class="text-lg sm:text-xl font-bold text-white mb-4 group-hover:text-gold-400 transition-colors duration-300">Ambiente e Decoração</h3>
+                        <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">
                             O espaço físico é um dos grandes atrativos. A decoração sofisticada, a iluminação suave e o ambiente acolhedor proporcionam o espaço perfeito para desfrutar e socializar.
                         </p>
                     </div>
@@ -418,9 +427,9 @@
     </section>
 
     <!-- Specialities Section (Especialidades) -->
-    <section id="especialidades" class="py-24 relative overflow-hidden bg-dark-800">
+    <section id="especialidades" class="py-16 sm:py-24 relative overflow-hidden bg-dark-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-16">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 items-center mb-12 sm:mb-16">
                 <!-- Header part -->
                 <div class="lg:col-span-8 space-y-4">
                     <span class="text-gold-500 text-xs sm:text-sm font-bold tracking-[0.3em] uppercase block">Experiência Gastronómica</span>
@@ -436,10 +445,10 @@
             </div>
 
             <!-- Specialties Grid Showcase -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                 <!-- Specialty 1: Picanha -->
                 <div class="bg-dark-900 border border-dark-700 rounded-3xl overflow-hidden group hover:border-gold-500/30 transition duration-300 flex flex-col h-full shadow-lg">
-                    <div class="relative overflow-hidden h-64">
+                    <div class="relative overflow-hidden h-48 xs:h-56 sm:h-64">
                         <!-- ========================================================================= -->
                         <!-- 📸 IMAGEM DA PICANHA                                                      -->
                         <!-- ========================================================================= -->
@@ -450,10 +459,10 @@
                         
                         <span class="absolute top-4 right-4 bg-gold-500 text-dark-900 font-bold px-3 py-1 rounded-full text-xs uppercase tracking-wider">A Estrela</span>
                     </div>
-                    <div class="p-8 flex-grow flex flex-col justify-between">
+                    <div class="p-6 sm:p-8 flex-grow flex flex-col justify-between">
                         <div class="space-y-3">
-                            <h3 class="text-2xl font-bold text-white group-hover:text-gold-400 transition-colors">Picanha Grelhada</h3>
-                            <p class="text-gray-400 text-sm leading-relaxed">
+                            <h3 class="text-xl sm:text-2xl font-bold text-white group-hover:text-gold-400 transition-colors">Picanha Grelhada</h3>
+                            <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">
                                 A estrela absoluta da casa: grelhada no ponto certo, suculenta, saborosa e de comer e chorar por mais. Servida com acompanhamentos tradicionais à escolha.
                             </p>
                         </div>
@@ -462,7 +471,7 @@
 
                 <!-- Specialty 2: Hambúrguer Artesanal -->
                 <div class="bg-dark-900 border border-dark-700 rounded-3xl overflow-hidden group hover:border-gold-500/30 transition duration-300 flex flex-col h-full shadow-lg">
-                    <div class="relative overflow-hidden h-64">
+                    <div class="relative overflow-hidden h-48 xs:h-56 sm:h-64">
                         <!-- ========================================================================= -->
                         <!-- 📸 IMAGEM DO HAMBÚRGUER ARTESANAL                                         -->
                         <!-- ========================================================================= -->
@@ -473,10 +482,10 @@
                         
                         <span class="absolute top-4 right-4 bg-dark-800 text-gold-400 border border-gold-500/20 font-bold px-3 py-1 rounded-full text-xs uppercase tracking-wider">Artesanal</span>
                     </div>
-                    <div class="p-8 flex-grow flex flex-col justify-between">
+                    <div class="p-6 sm:p-8 flex-grow flex flex-col justify-between">
                         <div class="space-y-3">
-                            <h3 class="text-2xl font-bold text-white group-hover:text-gold-400 transition-colors">Hambúrguer Artesanal</h3>
-                            <p class="text-gray-400 text-sm leading-relaxed">
+                            <h3 class="text-xl sm:text-2xl font-bold text-white group-hover:text-gold-400 transition-colors">Hambúrguer Artesanal</h3>
+                            <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">
                                 Hambúrguer confecionado na casa com carne 100% fresca selecionada, servido em pão brioche macio com queijo derretido e molho secreto artesanal.
                             </p>
                         </div>
@@ -485,7 +494,7 @@
 
                 <!-- Specialty 3: Sobremesas Caseiras -->
                 <div class="bg-dark-900 border border-dark-700 rounded-3xl overflow-hidden group hover:border-gold-500/30 transition duration-300 flex flex-col h-full shadow-lg">
-                    <div class="relative overflow-hidden h-64">
+                    <div class="relative overflow-hidden h-48 xs:h-56 sm:h-64">
                         <!-- ========================================================================= -->
                         <!-- 📸 IMAGEM DAS SOBREMESAS CASEIRAS                                         -->
                         <!-- ========================================================================= -->
@@ -496,10 +505,10 @@
                         
                         <span class="absolute top-4 right-4 bg-gold-500 text-dark-900 font-bold px-3 py-1 rounded-full text-xs uppercase tracking-wider">Feito com Amor</span>
                     </div>
-                    <div class="p-8 flex-grow flex flex-col justify-between">
+                    <div class="p-6 sm:p-8 flex-grow flex flex-col justify-between">
                         <div class="space-y-3">
-                            <h3 class="text-2xl font-bold text-white group-hover:text-gold-400 transition-colors">Sobremesas Caseiras</h3>
-                            <p class="text-gray-400 text-sm leading-relaxed">
+                            <h3 class="text-xl sm:text-2xl font-bold text-white group-hover:text-gold-400 transition-colors">Sobremesas Caseiras</h3>
+                            <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">
                                 Doces e sobremesas conventuais tradicionais feitos inteiramente por nós com o máximo carinho, perfeitos para finalizar a sua refeição com chave de ouro.
                             </p>
                         </div>
@@ -508,28 +517,28 @@
             </div>
 
             <!-- Secondary specialties & Buffet bar -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mt-10">
                 <!-- Buffet Option -->
-                <div class="bg-gradient-to-r from-dark-900 to-dark-800 border border-dark-700 rounded-3xl p-8 flex flex-col sm:flex-row items-center gap-6 hover:border-gold-500/20 transition duration-300">
+                <div class="bg-gradient-to-r from-dark-900 to-dark-800 border border-dark-700 rounded-3xl p-6 sm:p-8 flex flex-col sm:flex-row items-center gap-6 hover:border-gold-500/20 transition duration-300">
                     <span class="w-16 h-16 rounded-2xl bg-gold-500/10 border border-gold-500/20 flex items-center justify-center text-gold-400 text-2xl flex-shrink-0">
                         <i class="fa-solid fa-plate-wheat"></i>
                     </span>
-                    <div>
-                        <h4 class="text-xl font-bold text-white mb-2">Buffet Variado & Generoso</h4>
-                        <p class="text-gray-400 text-sm leading-relaxed">
+                    <div class="text-center sm:text-left">
+                        <h4 class="text-lg sm:text-xl font-bold text-white mb-2">Buffet Variado & Generoso</h4>
+                        <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">
                             Uma variedade generosa de iguarias, frias e quentes, sempre frescas e cuidadosamente preparadas para uma refeição diversificada.
                         </p>
                     </div>
                 </div>
 
                 <!-- Traditional Dishes -->
-                <div class="bg-gradient-to-r from-dark-900 to-dark-800 border border-dark-700 rounded-3xl p-8 flex flex-col sm:flex-row items-center gap-6 hover:border-gold-500/20 transition duration-300">
+                <div class="bg-gradient-to-r from-dark-900 to-dark-800 border border-dark-700 rounded-3xl p-6 sm:p-8 flex flex-col sm:flex-row items-center gap-6 hover:border-gold-500/20 transition duration-300">
                     <span class="w-16 h-16 rounded-2xl bg-gold-500/10 border border-gold-500/20 flex items-center justify-center text-gold-400 text-2xl flex-shrink-0">
                         <i class="fa-solid fa-kitchen-set"></i>
                     </span>
-                    <div>
-                        <h4 class="text-xl font-bold text-white mb-2">Pratos Tradicionais Portugueses</h4>
-                        <p class="text-gray-400 text-sm leading-relaxed">
+                    <div class="text-center sm:text-left">
+                        <h4 class="text-lg sm:text-xl font-bold text-white mb-2">Pratos Tradicionais Portugueses</h4>
+                        <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">
                             Sabores autênticos de sempre, confecionados como manda a tradição alentejana, proporcionando uma experiência culinária surpreendente.
                         </p>
                     </div>
@@ -538,7 +547,7 @@
 
             <!-- Call to action regarding food menu -->
             <div class="text-center mt-12">
-                <button onclick="openMenuModal()" class="inline-flex items-center gap-2 bg-gradient-to-r from-gold-600 to-gold-500 hover:from-gold-500 hover:to-gold-400 text-dark-900 font-bold px-8 py-3.5 rounded-full text-sm uppercase tracking-wider transition-all duration-300 shadow-lg shadow-gold-500/10">
+                <button onclick="openMenuModal()" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-gold-600 to-gold-500 hover:from-gold-500 hover:to-gold-400 text-dark-900 font-bold px-8 py-3.5 rounded-full text-xs sm:text-sm uppercase tracking-wider transition-all duration-300 shadow-lg shadow-gold-500/10">
                     <i class="fa-solid fa-book-open"></i> Explorar Menu Completo e Vinhos
                 </button>
             </div>
@@ -546,16 +555,16 @@
     </section>
 
     <!-- Image Gallery (Galeria) -->
-    <section id="galeria" class="py-24 relative overflow-hidden bg-dark-900">
+    <section id="galeria" class="py-16 sm:py-24 relative overflow-hidden bg-dark-900">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+            <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16 space-y-4">
                 <span class="text-gold-500 text-xs sm:text-sm font-bold tracking-[0.3em] uppercase block">Galeria</span>
                 <h2 class="font-serif text-3xl sm:text-5xl font-extrabold text-white">Momentos, sabores e atmosfera</h2>
                 <div class="h-1 w-20 bg-gold-500 mx-auto rounded-full"></div>
             </div>
 
-            <!-- Responsive Gallery Grid layout (Clean, Zoom Only, No Magnifying Glass, No Click) -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            <!-- Responsive Gallery Grid layout -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
                 
                 <!-- GALERIA ITEM 1 -->
                 <div class="relative group rounded-2xl overflow-hidden shadow-lg aspect-square border border-dark-700">
@@ -591,149 +600,149 @@
     </section>
 
     <!-- Testimonials / Reviews Section (Avaliações / Testemunhos) -->
-    <section id="avaliacoes" class="py-24 relative overflow-hidden bg-dark-800">
+    <section id="avaliacoes" class="py-16 sm:py-24 relative overflow-hidden bg-dark-800">
         <!-- Floating details -->
         <div class="absolute top-1/2 left-10 w-72 h-72 bg-gold-950/5 rounded-full blur-3xl"></div>
         
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+            <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16 space-y-4">
                 <span class="text-gold-500 text-xs sm:text-sm font-bold tracking-[0.3em] uppercase block">Testemunhos</span>
                 <h2 class="font-serif text-3xl sm:text-5xl font-extrabold text-white">O que dizem os nossos clientes</h2>
                 <div class="h-1 w-20 bg-gold-500 mx-auto rounded-full"></div>
                 
                 <!-- Rating Summary block -->
-                <div class="flex items-center justify-center gap-4 mt-6 bg-dark-900/80 px-6 py-4 rounded-3xl border border-dark-700 inline-flex shadow-inner">
+                <div class="flex items-center justify-center gap-4 mt-6 bg-dark-900/80 px-5 py-3 sm:px-6 sm:py-4 rounded-3xl border border-dark-700 inline-flex shadow-inner">
                     <div class="text-left">
-                        <span class="text-3xl font-extrabold text-white block">4.6<span class="text-gold-500 text-2xl">/5</span></span>
-                        <span class="text-[10px] text-gray-400 uppercase font-bold tracking-wider">Mais de 40 avaliações</span>
+                        <span class="text-2xl sm:text-3xl font-extrabold text-white block">4.6<span class="text-gold-500 text-xl sm:text-2xl">/5</span></span>
+                        <span class="text-[9px] sm:text-[10px] text-gray-400 uppercase font-bold tracking-wider">Mais de 40 avaliações</span>
                     </div>
                     <div class="h-10 w-px bg-dark-700"></div>
                     <div class="flex flex-col items-start">
-                        <div class="flex text-gold-500 text-sm gap-0.5">
+                        <div class="flex text-gold-500 text-xs sm:text-sm gap-0.5">
                             <i class="fa-solid fa-star"></i>
                             <i class="fa-solid fa-star"></i>
                             <i class="fa-solid fa-star"></i>
                             <i class="fa-solid fa-star"></i>
                             <i class="fa-solid fa-star-half-stroke"></i>
                         </div>
-                        <span class="text-xs text-gray-400 font-semibold mt-1">Google Reviews</span>
+                        <span class="text-[10px] sm:text-xs text-gray-400 font-semibold mt-1">Google Reviews</span>
                     </div>
                 </div>
             </div>
 
             <!-- Review Cards Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                 <!-- Review 1 -->
-                <div class="bg-dark-900 border border-dark-700 rounded-3xl p-8 flex flex-col justify-between hover:border-gold-500/20 duration-300">
+                <div class="bg-dark-900 border border-dark-700 rounded-3xl p-6 sm:p-8 flex flex-col justify-between hover:border-gold-500/20 duration-300">
                     <div class="space-y-4">
                         <div class="flex text-gold-500 gap-1 text-xs">
                             <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                         </div>
-                        <p class="text-gray-300 text-sm italic leading-relaxed">
+                        <p class="text-gray-300 text-xs sm:text-sm italic leading-relaxed">
                             "Excelente, comida muito saborosa, staff simpático e uma decoração de excelência."
                         </p>
                     </div>
                     <div class="mt-6 pt-4 border-t border-dark-800 flex items-center justify-between">
                         <div>
-                            <h4 class="text-white font-bold text-sm">Cliente Google</h4>
-                            <span class="text-[10px] text-gray-500 uppercase tracking-widest">Utilizador Verificado</span>
+                            <h4 class="text-white font-bold text-xs sm:text-sm">Cliente Google</h4>
+                            <span class="text-[9px] sm:text-[10px] text-gray-500 uppercase tracking-widest">Utilizador Verificado</span>
                         </div>
-                        <span class="text-gold-500 text-lg"><i class="fa-brands fa-google"></i></span>
+                        <span class="text-gold-500 text-base sm:text-lg"><i class="fa-brands fa-google"></i></span>
                     </div>
                 </div>
 
                 <!-- Review 2 -->
-                <div class="bg-dark-900 border border-dark-700 rounded-3xl p-8 flex flex-col justify-between hover:border-gold-500/20 duration-300">
+                <div class="bg-dark-900 border border-dark-700 rounded-3xl p-6 sm:p-8 flex flex-col justify-between hover:border-gold-500/20 duration-300">
                     <div class="space-y-4">
                         <div class="flex text-gold-500 gap-1 text-xs">
                             <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                         </div>
-                        <p class="text-gray-300 text-sm italic leading-relaxed">
+                        <p class="text-gray-300 text-xs sm:text-sm italic leading-relaxed">
                             "A picanha é de comer e chorar por mais. Sem dúvida um dos melhores restaurantes da zona."
                         </p>
                     </div>
                     <div class="mt-6 pt-4 border-t border-dark-800 flex items-center justify-between">
                         <div>
-                            <h4 class="text-white font-bold text-sm">Cliente Google</h4>
-                            <span class="text-[10px] text-gray-500 uppercase tracking-widest">Utilizador Verificado</span>
+                            <h4 class="text-white font-bold text-xs sm:text-sm">Cliente Google</h4>
+                            <span class="text-[9px] sm:text-[10px] text-gray-500 uppercase tracking-widest">Utilizador Verificado</span>
                         </div>
-                        <span class="text-gold-500 text-lg"><i class="fa-brands fa-google"></i></span>
+                        <span class="text-gold-500 text-base sm:text-lg"><i class="fa-brands fa-google"></i></span>
                     </div>
                 </div>
 
                 <!-- Review 3 -->
-                <div class="bg-dark-900 border border-dark-700 rounded-3xl p-8 flex flex-col justify-between hover:border-gold-500/20 duration-300">
+                <div class="bg-dark-900 border border-dark-700 rounded-3xl p-6 sm:p-8 flex flex-col justify-between hover:border-gold-500/20 duration-300">
                     <div class="space-y-4">
                         <div class="flex text-gold-500 gap-1 text-xs">
                             <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                         </div>
-                        <p class="text-gray-300 text-sm italic leading-relaxed">
+                        <p class="text-gray-300 text-xs sm:text-sm italic leading-relaxed">
                             "Restaurante com nova gerência e com um serviço fenomenal."
                         </p>
                     </div>
                     <div class="mt-6 pt-4 border-t border-dark-800 flex items-center justify-between">
                         <div>
-                            <h4 class="text-white font-bold text-sm">Cliente Google</h4>
-                            <span class="text-[10px] text-gray-500 uppercase tracking-widest">Utilizador Verificado</span>
+                            <h4 class="text-white font-bold text-xs sm:text-sm">Cliente Google</h4>
+                            <span class="text-[9px] sm:text-[10px] text-gray-500 uppercase tracking-widest">Utilizador Verificado</span>
                         </div>
-                        <span class="text-gold-500 text-lg"><i class="fa-brands fa-google"></i></span>
+                        <span class="text-gold-500 text-base sm:text-lg"><i class="fa-brands fa-google"></i></span>
                     </div>
                 </div>
 
                 <!-- Review 4 -->
-                <div class="bg-dark-900 border border-dark-700 rounded-3xl p-8 flex flex-col justify-between hover:border-gold-500/20 duration-300">
+                <div class="bg-dark-900 border border-dark-700 rounded-3xl p-6 sm:p-8 flex flex-col justify-between hover:border-gold-500/20 duration-300">
                     <div class="space-y-4">
                         <div class="flex text-gold-500 gap-1 text-xs">
                             <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                         </div>
-                        <p class="text-gray-300 text-sm italic leading-relaxed">
+                        <p class="text-gray-300 text-xs sm:text-sm italic leading-relaxed">
                             "Ambiente sossegado e a simpatia é o prato principal da casa."
                         </p>
                     </div>
                     <div class="mt-6 pt-4 border-t border-dark-800 flex items-center justify-between">
                         <div>
-                            <h4 class="text-white font-bold text-sm">Cliente Google</h4>
-                            <span class="text-[10px] text-gray-500 uppercase tracking-widest">Utilizador Verificado</span>
+                            <h4 class="text-white font-bold text-xs sm:text-sm">Cliente Google</h4>
+                            <span class="text-[9px] sm:text-[10px] text-gray-500 uppercase tracking-widest">Utilizador Verificado</span>
                         </div>
-                        <span class="text-gold-500 text-lg"><i class="fa-brands fa-google"></i></span>
+                        <span class="text-gold-500 text-base sm:text-lg"><i class="fa-brands fa-google"></i></span>
                     </div>
                 </div>
 
                 <!-- Review 5 -->
-                <div class="bg-dark-900 border border-dark-700 rounded-3xl p-8 flex flex-col justify-between hover:border-gold-500/20 duration-300">
+                <div class="bg-dark-900 border border-dark-700 rounded-3xl p-6 sm:p-8 flex flex-col justify-between hover:border-gold-500/20 duration-300">
                     <div class="space-y-4">
                         <div class="flex text-gold-500 gap-1 text-xs">
                             <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                         </div>
-                        <p class="text-gray-300 text-sm italic leading-relaxed">
+                        <p class="text-gray-300 text-xs sm:text-sm italic leading-relaxed">
                             "Excelente atendimento e ambiente. Come-se muito bem."
                         </p>
                     </div>
                     <div class="mt-6 pt-4 border-t border-dark-800 flex items-center justify-between">
                         <div>
-                            <h4 class="text-white font-bold text-sm">Cliente Google</h4>
-                            <span class="text-[10px] text-gray-500 uppercase tracking-widest">Utilizador Verificado</span>
+                            <h4 class="text-white font-bold text-xs sm:text-sm">Cliente Google</h4>
+                            <span class="text-[9px] sm:text-[10px] text-gray-500 uppercase tracking-widest">Utilizador Verificado</span>
                         </div>
-                        <span class="text-gold-500 text-lg"><i class="fa-brands fa-google"></i></span>
+                        <span class="text-gold-500 text-base sm:text-lg"><i class="fa-brands fa-google"></i></span>
                     </div>
                 </div>
 
                 <!-- Review 6 -->
-                <div class="bg-dark-900 border border-dark-700 rounded-3xl p-8 flex flex-col justify-between hover:border-gold-500/20 duration-300">
+                <div class="bg-dark-900 border border-dark-700 rounded-3xl p-6 sm:p-8 flex flex-col justify-between hover:border-gold-500/20 duration-300">
                     <div class="space-y-4">
                         <div class="flex text-gold-500 gap-1 text-xs">
                             <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                         </div>
-                        <p class="text-gray-300 text-sm italic leading-relaxed">
+                        <p class="text-gray-300 text-xs sm:text-sm italic leading-relaxed">
                             "Adorámos o espaço - sentimo-nos em casa desde o primeiro momento de acolhimento."
                         </p>
                     </div>
                     <div class="mt-6 pt-4 border-t border-dark-800 flex items-center justify-between">
                         <div>
-                            <h4 class="text-white font-bold text-sm">Cliente Google</h4>
-                            <span class="text-[10px] text-gray-500 uppercase tracking-widest">Utilizador Verificado</span>
+                            <h4 class="text-white font-bold text-xs sm:text-sm">Cliente Google</h4>
+                            <span class="text-[9px] sm:text-[10px] text-gray-500 uppercase tracking-widest">Utilizador Verificado</span>
                         </div>
-                        <span class="text-gold-500 text-lg"><i class="fa-brands fa-google"></i></span>
+                        <span class="text-gold-500 text-base sm:text-lg"><i class="fa-brands fa-google"></i></span>
                     </div>
                 </div>
             </div>
@@ -741,17 +750,17 @@
     </section>
 
     <!-- Info & Contact Details Section -->
-    <section id="contactos" class="py-24 relative overflow-hidden bg-dark-900">
+    <section id="contactos" class="py-16 sm:py-24 relative overflow-hidden bg-dark-900">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+            <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16 space-y-4">
                 <span class="text-gold-500 text-xs sm:text-sm font-bold tracking-[0.3em] uppercase block">Informações</span>
                 <h2 class="font-serif text-3xl sm:text-5xl font-extrabold text-white">Tudo o que precisa saber</h2>
                 <div class="h-1 w-20 bg-gold-500 mx-auto rounded-full"></div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-12 sm:mb-16">
                 <!-- Info 1: Address -->
-                <div class="bg-dark-800 border border-dark-700 rounded-3xl p-8 text-center hover:border-gold-500/20 duration-300 flex flex-col justify-between h-full">
+                <div class="bg-dark-800 border border-dark-700 rounded-3xl p-6 sm:p-8 text-center hover:border-gold-500/20 duration-300 flex flex-col justify-between h-full">
                     <div class="flex justify-center mb-6">
                         <span class="w-14 h-14 rounded-full bg-gold-500/10 border border-gold-500/20 flex items-center justify-center text-gold-400 text-xl">
                             <i class="fa-solid fa-map-location-dot"></i>
@@ -759,14 +768,14 @@
                     </div>
                     <div>
                         <h4 class="text-gray-400 text-xs uppercase tracking-widest font-bold mb-2">Morada</h4>
-                        <p class="text-white font-semibold text-sm leading-relaxed">
+                        <p class="text-white font-semibold text-xs sm:text-sm leading-relaxed">
                             Av. Heróis dos Atoleiros, 104<br>7460-104 Fronteira, Portugal
                         </p>
                     </div>
                 </div>
 
                 <!-- Info 2: Contact -->
-                <div class="bg-dark-800 border border-dark-700 rounded-3xl p-8 text-center hover:border-gold-500/20 duration-300 flex flex-col justify-between h-full">
+                <div class="bg-dark-800 border border-dark-700 rounded-3xl p-6 sm:p-8 text-center hover:border-gold-500/20 duration-300 flex flex-col justify-between h-full">
                     <div class="flex justify-center mb-6">
                         <span class="w-14 h-14 rounded-full bg-gold-500/10 border border-gold-500/20 flex items-center justify-center text-gold-400 text-xl">
                             <i class="fa-solid fa-phone-volume"></i>
@@ -774,14 +783,14 @@
                     </div>
                     <div>
                         <h4 class="text-gray-400 text-xs uppercase tracking-widest font-bold mb-2">Contacto</h4>
-                        <a href="tel:967355770" class="text-gold-400 font-extrabold text-lg tracking-wide hover:underline hover:text-gold-300">
+                        <a href="tel:967355770" class="text-gold-400 font-extrabold text-base sm:text-lg tracking-wide hover:underline hover:text-gold-300">
                             967 355 770
                         </a>
                     </div>
                 </div>
 
                 <!-- Info 3: Average Price -->
-                <div class="bg-dark-800 border border-dark-700 rounded-3xl p-8 text-center hover:border-gold-500/20 duration-300 flex flex-col justify-between h-full">
+                <div class="bg-dark-800 border border-dark-700 rounded-3xl p-6 sm:p-8 text-center hover:border-gold-500/20 duration-300 flex flex-col justify-between h-full">
                     <div class="flex justify-center mb-6">
                         <span class="w-14 h-14 rounded-full bg-gold-500/10 border border-gold-500/20 flex items-center justify-center text-gold-400 text-xl">
                             <i class="fa-solid fa-coins"></i>
@@ -789,14 +798,14 @@
                     </div>
                     <div>
                         <h4 class="text-gray-400 text-xs uppercase tracking-widest font-bold mb-2">Preço Médio</h4>
-                        <p class="text-white font-extrabold text-lg">
+                        <p class="text-white font-extrabold text-base sm:text-lg">
                             10€ - 20€ <span class="text-xs text-gray-400 font-normal">/ pessoa</span>
                         </p>
                     </div>
                 </div>
 
                 <!-- Info 4: Schedule -->
-                <div class="bg-dark-800 border border-dark-700 rounded-3xl p-8 text-center hover:border-gold-500/20 duration-300 flex flex-col justify-between h-full">
+                <div class="bg-dark-800 border border-dark-700 rounded-3xl p-6 sm:p-8 text-center hover:border-gold-500/20 duration-300 flex flex-col justify-between h-full">
                     <div class="flex justify-center mb-6">
                         <span class="w-14 h-14 rounded-full bg-gold-500/10 border border-gold-500/20 flex items-center justify-center text-gold-400 text-xl">
                             <i class="fa-solid fa-clock"></i>
@@ -804,7 +813,7 @@
                     </div>
                     <div>
                         <h4 class="text-gray-400 text-xs uppercase tracking-widest font-bold mb-2">Horário</h4>
-                        <p class="text-white text-sm leading-relaxed font-semibold">
+                        <p class="text-white text-xs sm:text-sm leading-relaxed font-semibold">
                             Almoço: 12h - 15h<br>Jantar: 19h - 22h<br>
                             <span class="text-red-400 text-xs font-semibold">Fechado à Quarta-feira</span>
                         </p>
@@ -820,7 +829,7 @@
                 </div>
                 
                 <!-- Google Maps iframe for Fronteira, Portugal location -->
-                <div class="h-96 rounded-2xl overflow-hidden border border-dark-700 relative">
+                <div class="h-80 sm:h-96 rounded-2xl overflow-hidden border border-dark-700 relative">
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3099.6457193231454!2d-7.6521945!3d39.0461111!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd19f39000000000%3s0xd19f395f12df6b15!2sAv.%20Her%C3%B3is%20dos%20Atoleiros%2C%207460-104%20Fronteira%2C%20Portugal!5e0!3m2!1spt!2spt!4v1715421596541!5m2!1spt!2spt" 
                             class="absolute inset-0 w-full h-full border-0 grayscale invert opacity-80 hover:opacity-100 transition-opacity duration-300" 
                             allowfullscreen="" 
@@ -833,12 +842,13 @@
     </section>
 
     <!-- Booking Section (Reservas) -->
-    <section id="reservar" class="py-24 relative overflow-hidden bg-gradient-to-b from-dark-900 to-dark-950">
+    <!-- Adicionada margem de segurança no fundo (pb-28 em mobile) para o botão nunca ser tapado pela barra de navegação móvel -->
+    <section id="reservar" class="py-16 sm:py-24 pb-28 sm:pb-24 relative overflow-hidden bg-gradient-to-b from-dark-900 to-dark-950">
         <!-- Golden mesh background lines -->
         <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: radial-gradient(#c5a85c 1px, transparent 1px); background-size: 24px 24px;"></div>
         
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="bg-dark-800 border border-gold-500/20 rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden">
+            <div class="bg-dark-800 border border-gold-500/20 rounded-3xl p-5 sm:p-12 shadow-2xl relative overflow-hidden">
                 <!-- Light glow -->
                 <div class="absolute -top-32 -left-32 w-64 h-64 bg-gold-500/5 rounded-full blur-3xl"></div>
                 
@@ -852,7 +862,7 @@
 
                 <!-- Live Booking Form (Configurado para Formspree com suporte a AJAX) -->
                 <form id="bookingForm" onsubmit="handleBooking(event)" class="space-y-6">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                         <!-- Full Name input -->
                         <div class="space-y-2">
                             <label for="bookName" class="block text-xs font-bold uppercase tracking-wider text-gray-400">Nome Completo *</label>
@@ -959,8 +969,8 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
                 <!-- Branding column -->
-                <div class="space-y-4 lg:col-span-1">
-                    <a href="#" class="flex flex-col">
+                <div class="space-y-4 lg:col-span-1 text-center sm:text-left">
+                    <a href="#" class="flex flex-col items-center sm:items-start">
                         <span class="font-serif text-2xl font-bold tracking-wide text-white">Prov@velmente<span class="text-gold-500">.</span>com</span>
                         <span class="text-[10px] tracking-[0.3em] uppercase text-gold-400 font-semibold">Restaurante Familiar</span>
                     </a>
@@ -968,7 +978,8 @@
                         Um ponto de encontro de hospitalidade e comida caseira de excelência no coração de Fronteira, Portalegre.
                     </p>
                     <!-- Social icons -->
-                    <div class="flex items-center gap-3 pt-2">
+                    <div class="flex items-center justify-center sm:justify-start gap-3 pt-2">
+                        <!-- Facebook Oficial Linkado -->
                         <a href="https://www.facebook.com/profile.php?id=61581659460342" target="_blank" class="w-10 h-10 rounded-full bg-dark-800 border border-dark-700 hover:border-gold-500/50 hover:text-gold-400 flex items-center justify-center transition duration-200">
                             <i class="fa-brands fa-facebook-f"></i>
                         </a>
@@ -982,7 +993,7 @@
                 </div>
 
                 <!-- Quick links -->
-                <div>
+                <div class="text-center sm:text-left">
                     <h4 class="text-white font-bold text-sm uppercase tracking-wider mb-6 border-b border-dark-700 pb-2">Links Rápidos</h4>
                     <ul class="space-y-3 text-sm">
                         <li><a href="#sobre" class="hover:text-gold-400 transition-colors">Sobre Nós</a></li>
@@ -994,7 +1005,7 @@
                 </div>
 
                 <!-- Highlight Specialties -->
-                <div>
+                <div class="text-center sm:text-left">
                     <h4 class="text-white font-bold text-sm uppercase tracking-wider mb-6 border-b border-dark-700 pb-2">Especialidades</h4>
                     <ul class="space-y-3 text-sm">
                         <li><span class="text-gray-300">Picanha Grelhada Suprema</span></li>
@@ -1006,9 +1017,9 @@
                 </div>
 
                 <!-- Essential Contacts details -->
-                <div>
+                <div class="text-center sm:text-left">
                     <h4 class="text-white font-bold text-sm uppercase tracking-wider mb-6 border-b border-dark-700 pb-2">Contactos</h4>
-                    <ul class="space-y-4 text-sm">
+                    <ul class="space-y-4 text-sm flex flex-col items-center sm:items-start">
                         <li class="flex items-start gap-3">
                             <i class="fa-solid fa-map-pin text-gold-500 mt-1 flex-shrink-0"></i>
                             <span>Av. Heróis dos Atoleiros, 104<br>7460-104 Fronteira, Portugal</span>
@@ -1022,7 +1033,7 @@
             </div>
 
             <!-- Copyright bar -->
-            <div class="border-t border-dark-800 pt-8 mt-12 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 gap-4">
+            <div class="border-t border-dark-800 pt-8 mt-12 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 gap-4 text-center">
                 <p>&copy; 2026 Prov@velmente.com - Todos os direitos reservados.</p>
                 <p>Criado com requinte para a melhor experiência gastronómica de Fronteira.</p>
             </div>
@@ -1030,14 +1041,15 @@
     </footer>
 
     <!-- Floating Quick Buttons (WhatsApp & Direct Call) -->
-    <div class="fixed bottom-6 right-6 z-50 flex flex-col gap-3">
+    <!-- Reduzido tamanho para mobile (w-12 h-12) para não sobrepor de forma abusiva em ecrãs pequenos -->
+    <div class="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 flex flex-col gap-3">
         <!-- Phone call direct shortcut (Golden) -->
-        <a href="tel:967355770" title="Ligar Direto" class="w-14 h-14 rounded-full bg-gold-600 hover:bg-gold-500 text-dark-900 flex items-center justify-center shadow-2xl shadow-gold-600/40 transform hover:-translate-y-1 hover:scale-110 duration-200">
-            <i class="fa-solid fa-phone text-xl animate-pulse"></i>
+        <a href="tel:967355770" title="Ligar Direto" class="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-gold-600 hover:bg-gold-500 text-dark-900 flex items-center justify-center shadow-2xl shadow-gold-600/40 transform hover:-translate-y-1 hover:scale-110 duration-200">
+            <i class="fa-solid fa-phone text-lg sm:text-xl animate-pulse"></i>
         </a>
         <!-- Whatsapp direct shortcut (Green) -->
-        <a href="https://wa.me/351967355770" target="_blank" title="Falar no WhatsApp" class="w-14 h-14 rounded-full bg-[#25D366] hover:bg-[#20ba5a] text-white flex items-center justify-center shadow-2xl shadow-green-500/40 transform hover:-translate-y-1 hover:scale-110 duration-200">
-            <i class="fa-brands fa-whatsapp text-2xl"></i>
+        <a href="https://wa.me/351967355770" target="_blank" title="Falar no WhatsApp" class="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#25D366] hover:bg-[#20ba5a] text-white flex items-center justify-center shadow-2xl shadow-green-500/40 transform hover:-translate-y-1 hover:scale-110 duration-200">
+            <i class="fa-brands fa-whatsapp text-xl sm:text-2xl"></i>
         </a>
     </div>
 
@@ -1168,7 +1180,7 @@
 
             <!-- Footer block of modal with CTA -->
             <div class="p-6 bg-dark-900 border-t border-dark-700 flex flex-col sm:flex-row items-center justify-between gap-4">
-                <span class="text-sm text-gray-400 font-medium">Os preços listados incluem todas as taxas em vigor.</span>
+                <span class="text-sm text-gray-400 font-medium text-center sm:text-left">Os preços listados incluem todas as taxas em vigor.</span>
                 <a href="#reservar" onclick="closeMenuModal()" class="w-full sm:w-auto bg-gradient-to-r from-gold-600 to-gold-500 hover:from-gold-500 hover:to-gold-400 text-dark-900 text-center font-bold px-8 py-3 rounded-full uppercase tracking-wider text-sm shadow-md">
                     Reservar Mesa para Comer Isto
                 </a>
@@ -1178,13 +1190,13 @@
 
     <!-- Live Reservation Confirmation Modal -->
     <div id="bookingConfirmModal" class="fixed inset-0 z-[110] hidden bg-dark-900/98 backdrop-blur-md flex items-center justify-center p-4">
-        <div class="bg-dark-800 border border-gold-500/30 max-w-md w-full rounded-3xl p-8 text-center space-y-6 shadow-2xl">
-            <div id="confirmIcon" class="w-20 h-20 bg-gold-500/10 border border-gold-500/30 rounded-full flex items-center justify-center text-gold-400 text-4xl mx-auto">
+        <div class="bg-dark-800 border border-gold-500/30 max-w-md w-full rounded-3xl p-6 sm:p-8 text-center space-y-6 shadow-2xl">
+            <div id="confirmIcon" class="w-16 h-16 sm:w-20 sm:h-20 bg-gold-500/10 border border-gold-500/30 rounded-full flex items-center justify-center text-gold-400 text-3xl sm:text-4xl mx-auto">
                 <i class="fa-solid fa-paper-plane animate-pulse text-gold-500"></i>
             </div>
             <div class="space-y-2">
-                <h3 id="confirmTitle" class="text-2xl font-serif font-extrabold text-white">A enviar reserva...</h3>
-                <p id="confirmDesc" class="text-gray-300 text-sm">
+                <h3 id="confirmTitle" class="text-xl sm:text-2xl font-serif font-extrabold text-white">A enviar reserva...</h3>
+                <p id="confirmDesc" class="text-xs sm:text-sm text-gray-300">
                     Por favor, aguarde um momento enquanto processamos o seu pedido de reserva.
                 </p>
             </div>
@@ -1196,8 +1208,8 @@
                 <div class="flex justify-between"><span class="text-gray-500">Hora:</span> <span class="text-white font-bold" id="confTime">-</span></div>
                 <div class="flex justify-between"><span class="text-gray-500">Pessoas:</span> <span class="text-white font-bold" id="confGuests">-</span></div>
             </div>
-            <p class="text-xs text-gold-400 italic">Entraremos em contacto muito em breve para a confirmação final da mesa.</p>
-            <button onclick="closeConfirmation()" id="confirmCloseBtn" disabled class="w-full bg-dark-700 text-gray-500 font-extrabold py-3 rounded-xl uppercase tracking-wider text-sm opacity-50 cursor-not-allowed">
+            <p class="text-[10px] sm:text-xs text-gold-400 italic">Entraremos em contacto muito em breve para a confirmação final da mesa.</p>
+            <button onclick="closeConfirmation()" id="confirmCloseBtn" disabled class="w-full bg-dark-700 text-gray-500 font-extrabold py-3 rounded-xl uppercase tracking-wider text-xs sm:text-sm opacity-50 cursor-not-allowed">
                 A processar...
             </button>
         </div>
@@ -1301,7 +1313,7 @@
             
             const closeBtn = document.getElementById('confirmCloseBtn');
             closeBtn.disabled = true;
-            closeBtn.className = "w-full bg-dark-700 text-gray-500 font-extrabold py-3 rounded-xl uppercase tracking-wider text-sm opacity-50 cursor-not-allowed";
+            closeBtn.className = "w-full bg-dark-700 text-gray-500 font-extrabold py-3 rounded-xl uppercase tracking-wider text-xs sm:text-sm opacity-50 cursor-not-allowed";
             closeBtn.textContent = "A processar...";
 
             // 3. Abre o modal para bloquear interações extras
@@ -1333,7 +1345,7 @@
                     document.getElementById('confirmIcon').innerHTML = '<i class="fa-solid fa-calendar-check text-gold-400"></i>';
                     
                     closeBtn.disabled = false;
-                    closeBtn.className = "w-full bg-gradient-to-r from-gold-600 to-gold-400 text-dark-900 font-extrabold py-3 rounded-xl uppercase tracking-wider text-sm shadow-lg shadow-gold-500/20 hover:shadow-gold-500/35 transition-all cursor-pointer";
+                    closeBtn.className = "w-full bg-gradient-to-r from-gold-600 to-gold-400 text-dark-900 font-extrabold py-3 rounded-xl uppercase tracking-wider text-xs sm:text-sm shadow-lg shadow-gold-500/20 hover:shadow-gold-500/35 transition-all cursor-pointer";
                     closeBtn.textContent = "Excelente, Obrigado!";
                     
                     // Limpa o formulário após o sucesso
@@ -1348,7 +1360,7 @@
                 document.getElementById('confirmIcon').innerHTML = '<i class="fa-solid fa-circle-exclamation text-amber-500"></i>';
                 
                 closeBtn.disabled = false;
-                closeBtn.className = "w-full bg-gradient-to-r from-gold-600 to-gold-400 text-dark-900 font-extrabold py-3 rounded-xl uppercase tracking-wider text-sm cursor-pointer";
+                closeBtn.className = "w-full bg-gradient-to-r from-gold-600 to-gold-400 text-dark-900 font-extrabold py-3 rounded-xl uppercase tracking-wider text-xs sm:text-sm cursor-pointer";
                 closeBtn.textContent = "Entendido";
             }
         }
