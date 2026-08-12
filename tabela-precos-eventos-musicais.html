@@ -5,13 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
   <title>Tabela de Preços de Eventos Musicais | White Pictures</title>
+
   <link rel="icon" type="image/png" href="https://i.imgur.com/RkQdNsn.png" />
+
   <script src="https://cdn.tailwindcss.com"></script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
 
   <style>
+
     body {
       font-family: 'Inter', sans-serif;
       background-color: #121212;
@@ -19,30 +23,58 @@
       overflow-x: hidden;
     }
 
+    /* Gradiente */
     @keyframes gradient-shift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
     }
 
     .gradient-text {
-      background: linear-gradient(90deg, #8b5cf6, #ec4899, #d4af37, #8b5cf6);
+      background: linear-gradient(
+        90deg,
+        #8b5cf6,
+        #ec4899,
+        #d4af37,
+        #8b5cf6
+      );
+
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
+
       background-size: 300% 100%;
+
       animation: gradient-shift 6s ease infinite;
     }
+
+
+    /* Botões */
 
     .btn-primary {
       background-color: #d4af37;
       color: #121212;
+
       padding: 12px 24px;
+
       border-radius: 8px;
+
       font-weight: 700;
+
       text-transform: uppercase;
+
       transition: all 0.3s ease;
+
       display: inline-block;
+
       border: 2px solid #d4af37;
     }
 
@@ -51,13 +83,25 @@
       color: #d4af37;
     }
 
+
+    /* Cartões */
+
     .pricing-card {
       background-color: #1a1a1a;
+
       border: 1px solid #333;
+
       border-radius: 16px;
-      transition: transform 0.5s ease, opacity 0.5s ease, box-shadow 0.3s ease;
+
+      transition:
+        transform 0.5s ease,
+        opacity 0.5s ease,
+        box-shadow 0.3s ease;
+
       opacity: 0;
+
       transform: translateY(40px);
+
       position: relative;
     }
 
@@ -68,157 +112,655 @@
 
     .pricing-card:hover {
       transform: translateY(-8px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+
+      box-shadow:
+        0 20px 40px rgba(0,0,0,0.3);
     }
 
+
+    /* Badge Mais Popular */
+
     .popular-badge {
-      background: linear-gradient(90deg, #8b5cf6, #ec4899, #d4af37, #8b5cf6);
+      background:
+        linear-gradient(
+          90deg,
+          #8b5cf6,
+          #ec4899,
+          #d4af37,
+          #8b5cf6
+        );
+
       background-size: 300% 100%;
+
       animation: gradient-shift 6s ease infinite;
+
       color: #fff;
+
       font-weight: 700;
+
       font-size: 0.875rem;
+
       padding: 6px 18px;
+
       border-radius: 9999px;
+
       position: absolute;
+
       top: -14px;
+
       left: 50%;
+
       transform: translateX(-50%);
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+
+      box-shadow:
+        0 4px 10px rgba(0, 0, 0, 0.3);
+
       text-transform: uppercase;
+
       letter-spacing: 0.5px;
     }
 
+
+    /* Glow do preço */
+
     @keyframes glow-fade {
-      0% { opacity: 0.7; text-shadow: 0 0 5px #d4af37, 0 0 10px #d4af37; }
-      50% { opacity: 1; text-shadow: 0 0 20px #ffd700, 0 0 30px #d4af37; }
-      100% { opacity: 0.7; text-shadow: 0 0 5px #d4af37, 0 0 10px #d4af37; }
+
+      0% {
+        opacity: 0.7;
+
+        text-shadow:
+          0 0 5px #d4af37,
+          0 0 10px #d4af37;
+      }
+
+      50% {
+        opacity: 1;
+
+        text-shadow:
+          0 0 20px #ffd700,
+          0 0 30px #d4af37;
+      }
+
+      100% {
+        opacity: 0.7;
+
+        text-shadow:
+          0 0 5px #d4af37,
+          0 0 10px #d4af37;
+      }
+
     }
 
     .glow-effect {
-      animation: glow-fade 2.5s ease-in-out infinite;
+      animation:
+        glow-fade 2.5s ease-in-out infinite;
     }
 
+
+    /* Glow do botão */
+
     @keyframes button-glow {
-      0% { box-shadow: 0 0 5px #d4af37, inset 0 0 10px #d4af37; opacity: 0.8; }
-      50% { box-shadow: 0 0 20px #ffd700, inset 0 0 15px #d4af37; opacity: 1; }
-      100% { box-shadow: 0 0 5px #d4af37, inset 0 0 10px #d4af37; opacity: 0.8; }
+
+      0% {
+        box-shadow:
+          0 0 5px #d4af37,
+          inset 0 0 10px #d4af37;
+
+        opacity: 0.8;
+      }
+
+      50% {
+        box-shadow:
+          0 0 20px #ffd700,
+          inset 0 0 15px #d4af37;
+
+        opacity: 1;
+      }
+
+      100% {
+        box-shadow:
+          0 0 5px #d4af37,
+          inset 0 0 10px #d4af37;
+
+        opacity: 0.8;
+      }
+
     }
 
     .btn-glow {
-      animation: button-glow 2.5s ease-in-out infinite;
+      animation:
+        button-glow 2.5s ease-in-out infinite;
     }
+
   </style>
+
 </head>
 
+
 <body class="antialiased">
+
+
+  <!-- HEADER -->
+
   <header class="bg-[#1a1a1a] sticky top-0 z-50 shadow-md">
-    <div class="container mx-auto flex justify-between items-center p-4">
-      <a href="index.html" class="text-2xl font-black tracking-wider gradient-text">WHITEPICTURES</a>
+
+    <div
+      class="container mx-auto flex justify-between items-center p-4"
+    >
+
+      <a
+        href="index.html"
+        class="text-2xl font-black tracking-wider gradient-text"
+      >
+        WHITEPICTURES
+      </a>
+
+
       <nav class="hidden md:flex items-center space-x-8">
-        <a href="index.html#sobre" class="nav-link">Sobre</a>
-        <a href="index.html#servicos" class="nav-link">Serviços</a>
-        <a href="index.html#portfolio" class="nav-link">Portfólio</a>
-        <a href="index.html#apoio" class="nav-link">Apoio</a>
-        <a href="index.html#contacto" class="nav-link">Contacto</a>
+
+        <a
+          href="index.html#sobre"
+          class="nav-link"
+        >
+          Sobre
+        </a>
+
+        <a
+          href="index.html#servicos"
+          class="nav-link"
+        >
+          Serviços
+        </a>
+
+        <a
+          href="index.html#portfolio"
+          class="nav-link"
+        >
+          Portfólio
+        </a>
+
+        <a
+          href="index.html#apoio"
+          class="nav-link"
+        >
+          Apoio
+        </a>
+
+        <a
+          href="index.html#contacto"
+          class="nav-link"
+        >
+          Contacto
+        </a>
+
       </nav>
+
     </div>
+
   </header>
 
-  <main class="w-full max-w-6xl mx-auto px-6 text-center py-20">
-    <h1 class="text-4xl md:text-5xl font-bold gradient-text mb-4">Tabela de Preços</h1>
-    <p class="text-lg text-gray-300 mb-12">Cobertura fotográfica de eventos musicais e concertos</p>
 
-    <div class="grid md:grid-cols-3 gap-8">
-      <!-- LIVE -->
-      <div class="pricing-card p-8 flex flex-col items-center">
-        <h3 class="text-2xl font-bold mb-3 gradient-text">Pack LIVE</h3>
-        <p class="text-5xl font-bold mb-6">120€</p>
-        <ul class="text-left text-gray-400 mb-8 space-y-3">
-          <li>✅ Cobertura completa do concerto</li>
-          <li>✅ Galeria completa (sem edição)</li>
-          <li>✅ Entrega digital ate 1 semana</li>
-          <li>✅ Impressões 10×15 cm a 3€</li>
+
+  <!-- CONTEÚDO -->
+
+  <main
+    class="w-full max-w-6xl mx-auto px-6 text-center py-20"
+  >
+
+
+    <h1
+      class="text-4xl md:text-5xl font-bold gradient-text mb-4"
+    >
+      Tabela de Preços
+    </h1>
+
+
+    <p
+      class="text-lg text-gray-300 mb-12"
+    >
+      Cobertura fotográfica de eventos musicais e concertos
+    </p>
+
+
+
+    <div
+      class="grid md:grid-cols-3 gap-8"
+    >
+
+
+      <!-- ========================= -->
+      <!-- PACK LIVE -->
+      <!-- ========================= -->
+
+      <div
+        class="pricing-card p-8 flex flex-col items-center"
+      >
+
+        <h3
+          class="text-2xl font-bold mb-3 gradient-text"
+        >
+          Pack LIVE
+        </h3>
+
+
+        <p
+          class="text-5xl font-bold mb-6"
+        >
+          120€
+        </p>
+
+
+        <ul
+          class="text-left text-gray-400 mb-8 space-y-3"
+        >
+
+          <li>
+            <span class="text-[#d4af37] mr-2">•</span>
+            Cobertura fotográfica completa do concerto
+          </li>
+
+          <li>
+            <span class="text-[#d4af37] mr-2">•</span>
+            Registo dos principais momentos e ambiente
+          </li>
+
+          <li>
+            <span class="text-[#d4af37] mr-2">•</span>
+            Galeria digital com todas as fotografias selecionadas
+          </li>
+
+          <li>
+            <span class="text-[#d4af37] mr-2">•</span>
+            Fotografias com edição básica
+          </li>
+
+          <li>
+            <span class="text-[#d4af37] mr-2">•</span>
+            Entrega digital até 7 dias
+          </li>
+
+          <li>
+            <span class="text-[#d4af37] mr-2">•</span>
+            Fotografias impressas 10×15 cm disponíveis por 3€
+          </li>
+
         </ul>
-        <a href="formulario.html?pacote=LIVE" class="btn-primary">Escolher Pacote</a>
+
+
+        <a
+          href="formulario.html?pacote=LIVE"
+          class="btn-primary mt-auto"
+        >
+          Escolher Pacote
+        </a>
+
       </div>
 
-      <!-- STAGE -->
-      <div class="pricing-card p-8 flex flex-col items-center border-2 border-[#8b5cf6] relative">
-        <div class="popular-badge">Mais Popular</div>
-        <h3 class="text-2xl font-bold mb-3 gradient-text mt-2">Pack STAGE</h3>
-        <p class="text-5xl font-bold mb-6 text-[#d4af37] glow-effect">150€</p>
-        <ul class="text-left text-gray-400 mb-8 space-y-3">
-          <li>✅ Cobertura completa do concerto</li>
-          <li>✅ Fotos em alta resolução com ajustes básicos</li>
-          <li>✅ Galeria online para download</li>
-          <li>✅ Entrega até 5 dias uteis</li>
-          <li>✅ Impressões 10×15 cm a 3€</li>
+
+
+      <!-- ========================= -->
+      <!-- PACK STAGE -->
+      <!-- ========================= -->
+
+      <div
+        class="pricing-card p-8 flex flex-col items-center border-2 border-[#8b5cf6] relative"
+      >
+
+
+        <div class="popular-badge">
+          Mais Popular
+        </div>
+
+
+        <h3
+          class="text-2xl font-bold mb-3 gradient-text mt-2"
+        >
+          Pack STAGE
+        </h3>
+
+
+        <p
+          class="text-5xl font-bold mb-6 text-[#d4af37] glow-effect"
+        >
+          150€
+        </p>
+
+
+        <ul
+          class="text-left text-gray-400 mb-8 space-y-3"
+        >
+
+          <li>
+            <span class="text-[#d4af37] mr-2">•</span>
+            Cobertura fotográfica completa do concerto
+          </li>
+
+          <li>
+            <span class="text-[#d4af37] mr-2">•</span>
+            Fotografias editadas em alta resolução
+          </li>
+
+          <li>
+            <span class="text-[#d4af37] mr-2">•</span>
+            Seleção cuidada das melhores imagens
+          </li>
+
+          <li>
+            <span class="text-[#d4af37] mr-2">•</span>
+            Galeria online privada para visualização e download
+          </li>
+
+          <li>
+            <span class="text-[#d4af37] mr-2">•</span>
+            Fotografias preparadas para redes sociais
+          </li>
+
+          <li>
+            <span class="text-[#d4af37] mr-2">•</span>
+            Entrega até 5 dias úteis
+          </li>
+
+          <li>
+            <span class="text-[#d4af37] mr-2">•</span>
+            Fotografias impressas 10×15 cm disponíveis por 3€
+          </li>
+
         </ul>
-        <a href="formulario.html?pacote=STAGE" class="btn-primary btn-glow">Escolher Pacote</a>
+
+
+        <a
+          href="formulario.html?pacote=STAGE"
+          class="btn-primary btn-glow mt-auto"
+        >
+          Escolher Pacote
+        </a>
+
       </div>
 
-      <!-- TOUR -->
-      <div class="pricing-card p-8 flex flex-col items-center">
-        <h3 class="text-2xl font-bold mb-3 gradient-text">Pack TOUR</h3>
-        <p class="text-5xl font-bold mb-6">220€</p>
-        <ul class="text-left text-gray-400 mb-8 space-y-3">
-          <li>✅ Cobertura completa do concerto</li>
-          <li>✅ Fotos editadas em alta resolução</li>
-          <li>✅ 3 fotos de banda/artista gratis</li>
-          <li>✅ Restantes fotos impressas a 3€</li>
-          <li>✅ Entrega digital até 72h</li>
+
+
+      <!-- ========================= -->
+      <!-- PACK TOUR -->
+      <!-- ========================= -->
+
+      <div
+        class="pricing-card p-8 flex flex-col items-center"
+      >
+
+
+        <h3
+          class="text-2xl font-bold mb-3 gradient-text"
+        >
+          Pack TOUR
+        </h3>
+
+
+        <p
+          class="text-5xl font-bold mb-6"
+        >
+          220€
+        </p>
+
+
+        <ul
+          class="text-left text-gray-400 mb-8 space-y-3"
+        >
+
+          <li>
+            <span class="text-[#d4af37] mr-2">•</span>
+            Cobertura fotográfica completa do concerto
+          </li>
+
+          <li>
+            <span class="text-[#d4af37] mr-2">•</span>
+            Fotografias profissionais editadas em alta resolução
+          </li>
+
+          <li>
+            <span class="text-[#d4af37] mr-2">•</span>
+            Maior variedade de momentos, público e bastidores
+          </li>
+
+          <li>
+            <span class="text-[#d4af37] mr-2">•</span>
+            3 fotografias da banda/artista incluídas
+          </li>
+
+          <li>
+            <span class="text-[#d4af37] mr-2">•</span>
+            Galeria online privada para download
+          </li>
+
+          <li>
+            <span class="text-[#d4af37] mr-2">•</span>
+            Fotografias otimizadas para redes sociais e divulgação
+          </li>
+
+          <li>
+            <span class="text-[#d4af37] mr-2">•</span>
+            Entrega prioritária até 72h
+          </li>
+
+          <li>
+            <span class="text-[#d4af37] mr-2">•</span>
+            Fotografias impressas 10×15 cm disponíveis por 3€
+          </li>
+
         </ul>
-        <a href="formulario.html?pacote=TOUR" class="btn-primary">Escolher Pacote</a>
+
+
+        <a
+          href="formulario.html?pacote=TOUR"
+          class="btn-primary mt-auto"
+        >
+          Escolher Pacote
+        </a>
+
       </div>
+
+
     </div>
-        <div class="mt-12 max-w-3xl mx-auto">
-      <p class="text-sm text-gray-400 italic">
-        Nota: Os valores apresentados são válidos para eventos com uma duração máxima de 3 horas.
+
+
+
+    <!-- NOTA -->
+
+    <div
+      class="mt-12 max-w-3xl mx-auto"
+    >
+
+      <p
+        class="text-sm text-gray-400 italic"
+      >
+        Nota: Os valores apresentados são válidos para eventos com uma duração máxima de 2:30 horas.
         Para coberturas que excedam este período, será aplicado um acréscimo proporcional ao tempo adicional.
       </p>
+
     </div>
+
+
   </main>
 
-  <footer class="bg-[#1a1a1a] border-t border-gray-800">
-    <div class="container mx-auto text-center p-6">
-      <div class="flex justify-center space-x-6 mb-4">
-        <a href="https://www.instagram.com/whitepicturesoficial" target="_blank" class="text-gray-400 hover:opacity-80 transition-opacity">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/1200px-Instagram_icon.png" alt="Instagram" class="w-7 h-7" />
+
+
+  <!-- FOOTER -->
+
+  <footer
+    class="bg-[#1a1a1a] border-t border-gray-800"
+  >
+
+    <div
+      class="container mx-auto text-center p-6"
+    >
+
+
+      <div
+        class="flex justify-center space-x-6 mb-4"
+      >
+
+
+        <!-- INSTAGRAM -->
+
+        <a
+          href="https://www.instagram.com/whitepicturesoficial"
+          target="_blank"
+          class="text-gray-400 hover:opacity-80 transition-opacity"
+        >
+
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/1200px-Instagram_icon.png"
+            alt="Instagram"
+            class="w-7 h-7"
+          />
+
         </a>
-        <a href="https://wa.link/su3o2p" target="_blank" class="text-gray-400 hover:opacity-80 transition-opacity">
-          <img src="https://png.pngtree.com/png-vector/20221018/ourmid/pngtree-whatsapp-mobile-software-icon-png-image_6315991.png" alt="WhatsApp" class="w-7 h-7" />
+
+
+        <!-- WHATSAPP -->
+
+        <a
+          href="https://wa.link/su3o2p"
+          target="_blank"
+          class="text-gray-400 hover:opacity-80 transition-opacity"
+        >
+
+          <img
+            src="https://png.pngtree.com/png-vector/20221018/ourmid/pngtree-whatsapp-mobile-software-icon-png-image_6315991.png"
+            alt="WhatsApp"
+            class="w-7 h-7"
+          />
+
         </a>
+
+
       </div>
-      <p class="text-gray-400">&copy; <span id="year"></span> White Pictures. Todos os direitos reservados.</p>
+
+
+      <p
+        class="text-gray-400"
+      >
+        &copy;
+        <span id="year"></span>
+        White Pictures. Todos os direitos reservados.
+      </p>
+
+
     </div>
+
   </footer>
 
-  <a href="#" id="back-to-top-btn" class="fixed bottom-5 right-5 bg-[#d4af37] text-[#121212] p-3 rounded-full shadow-lg opacity-0 pointer-events-none z-50">
-    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+
+
+  <!-- BOTÃO VOLTAR AO TOPO -->
+
+  <a
+    href="#"
+    id="back-to-top-btn"
+    class="fixed bottom-5 right-5 bg-[#d4af37] text-[#121212] p-3 rounded-full shadow-lg opacity-0 pointer-events-none z-50"
+  >
+
+    <svg
+      class="w-6 h-6"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M5 15l7-7 7 7"
+      />
+
     </svg>
+
   </a>
 
+
+
+  <!-- JAVASCRIPT -->
+
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
 
-    const cards = document.querySelectorAll('.pricing-card');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
-      });
-    }, { threshold: 0.3 });
-    cards.forEach(card => observer.observe(card));
 
-    const backToTopBtn = document.getElementById('back-to-top-btn');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 300) {
-        backToTopBtn.classList.remove('opacity-0', 'pointer-events-none');
-      } else {
-        backToTopBtn.classList.add('opacity-0', 'pointer-events-none');
+    // Ano automático
+
+    document.getElementById('year').textContent =
+      new Date().getFullYear();
+
+
+
+    // Animação dos cartões
+
+    const cards =
+      document.querySelectorAll('.pricing-card');
+
+
+    const observer =
+      new IntersectionObserver(
+
+        entries => {
+
+          entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+
+              entry.target.classList.add('visible');
+
+            }
+
+          });
+
+        },
+
+        {
+          threshold: 0.3
+        }
+
+      );
+
+
+    cards.forEach(card =>
+      observer.observe(card)
+    );
+
+
+
+    // Botão voltar ao topo
+
+    const backToTopBtn =
+      document.getElementById(
+        'back-to-top-btn'
+      );
+
+
+    window.addEventListener(
+      'scroll',
+      () => {
+
+        if (window.scrollY > 300) {
+
+          backToTopBtn.classList.remove(
+            'opacity-0',
+            'pointer-events-none'
+          );
+
+        } else {
+
+          backToTopBtn.classList.add(
+            'opacity-0',
+            'pointer-events-none'
+          );
+
+        }
+
       }
-    });
+    );
+
+
   </script>
+
+
 </body>
 </html>
