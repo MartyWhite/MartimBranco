@@ -1,20 +1,39 @@
 <!DOCTYPE html>
 <html lang="pt" class="scroll-smooth">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
+
   <title>Tabela de Preços de Eventos Musicais | White Pictures</title>
 
-  <link rel="icon" type="image/png" href="https://i.imgur.com/RkQdNsn.png" />
+  <link rel="icon" type="image/png" href="https://i.imgur.com/RkQdNsn.png">
 
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  >
+
 
   <style>
+
+    /* ============================= */
+    /* BASE */
+    /* ============================= */
 
     body {
       font-family: 'Inter', sans-serif;
@@ -23,8 +42,13 @@
       overflow-x: hidden;
     }
 
-    /* Gradiente */
+
+    /* ============================= */
+    /* GRADIENTE */
+    /* ============================= */
+
     @keyframes gradient-shift {
+
       0% {
         background-position: 0% 50%;
       }
@@ -36,31 +60,42 @@
       100% {
         background-position: 0% 50%;
       }
+
     }
 
+
     .gradient-text {
-      background: linear-gradient(
-        90deg,
-        #8b5cf6,
-        #ec4899,
-        #d4af37,
-        #8b5cf6
-      );
+
+      background:
+        linear-gradient(
+          90deg,
+          #8b5cf6,
+          #ec4899,
+          #d4af37,
+          #8b5cf6
+        );
 
       -webkit-background-clip: text;
       background-clip: text;
+
       color: transparent;
 
       background-size: 300% 100%;
 
-      animation: gradient-shift 6s ease infinite;
+      animation:
+        gradient-shift 6s ease infinite;
+
     }
 
 
-    /* Botões */
+    /* ============================= */
+    /* BOTÕES */
+    /* ============================= */
 
     .btn-primary {
+
       background-color: #d4af37;
+
       color: #121212;
 
       padding: 12px 24px;
@@ -76,17 +111,25 @@
       display: inline-block;
 
       border: 2px solid #d4af37;
+
     }
+
 
     .btn-primary:hover {
+
       background-color: transparent;
+
       color: #d4af37;
+
     }
 
 
-    /* Cartões */
+    /* ============================= */
+    /* CARTÕES */
+    /* ============================= */
 
     .pricing-card {
+
       background-color: #1a1a1a;
 
       border: 1px solid #333;
@@ -103,24 +146,35 @@
       transform: translateY(40px);
 
       position: relative;
+
     }
+
 
     .pricing-card.visible {
+
       opacity: 1;
+
       transform: translateY(0);
+
     }
 
+
     .pricing-card:hover {
+
       transform: translateY(-8px);
 
       box-shadow:
-        0 20px 40px rgba(0,0,0,0.3);
+        0 20px 40px rgba(0, 0, 0, 0.3);
+
     }
 
 
-    /* Badge Mais Popular */
+    /* ============================= */
+    /* BADGE */
+    /* ============================= */
 
     .popular-badge {
+
       background:
         linear-gradient(
           90deg,
@@ -132,7 +186,8 @@
 
       background-size: 300% 100%;
 
-      animation: gradient-shift 6s ease infinite;
+      animation:
+        gradient-shift 6s ease infinite;
 
       color: #fff;
 
@@ -158,78 +213,127 @@
       text-transform: uppercase;
 
       letter-spacing: 0.5px;
+
     }
 
 
-    /* Glow do preço */
+    /* ============================= */
+    /* GLOW DO PREÇO */
+    /* ============================= */
 
     @keyframes glow-fade {
 
       0% {
+
         opacity: 0.7;
 
         text-shadow:
           0 0 5px #d4af37,
           0 0 10px #d4af37;
+
       }
 
       50% {
+
         opacity: 1;
 
         text-shadow:
           0 0 20px #ffd700,
           0 0 30px #d4af37;
+
       }
 
       100% {
+
         opacity: 0.7;
 
         text-shadow:
           0 0 5px #d4af37,
           0 0 10px #d4af37;
+
       }
 
     }
 
+
     .glow-effect {
+
       animation:
         glow-fade 2.5s ease-in-out infinite;
+
     }
 
 
-    /* Glow do botão */
+    /* ============================= */
+    /* GLOW DO BOTÃO */
+    /* ============================= */
 
     @keyframes button-glow {
 
       0% {
+
         box-shadow:
           0 0 5px #d4af37,
           inset 0 0 10px #d4af37;
 
         opacity: 0.8;
+
       }
 
       50% {
+
         box-shadow:
           0 0 20px #ffd700,
           inset 0 0 15px #d4af37;
 
         opacity: 1;
+
       }
 
       100% {
+
         box-shadow:
           0 0 5px #d4af37,
           inset 0 0 10px #d4af37;
 
         opacity: 0.8;
+
       }
 
     }
 
+
     .btn-glow {
+
       animation:
         button-glow 2.5s ease-in-out infinite;
+
+    }
+
+
+    /* ============================= */
+    /* ÍCONES SOCIAIS */
+    /* ============================= */
+
+    .social-icon {
+
+      color: #9ca3af;
+
+      font-size: 1.6rem;
+
+      transition:
+        color 0.3s ease,
+        transform 0.3s ease;
+
+    }
+
+
+    .social-icon:hover {
+
+      color: #d4af37;
+
+      transform: translateY(-3px);
+
     }
 
   </style>
@@ -240,7 +344,9 @@
 <body class="antialiased">
 
 
+  <!-- ============================= -->
   <!-- HEADER -->
+  <!-- ============================= -->
 
   <header class="bg-[#1a1a1a] sticky top-0 z-50 shadow-md">
 
@@ -301,7 +407,9 @@
 
 
 
-  <!-- CONTEÚDO -->
+  <!-- ============================= -->
+  <!-- CONTEÚDO PRINCIPAL -->
+  <!-- ============================= -->
 
   <main
     class="w-full max-w-6xl mx-auto px-6 text-center py-20"
@@ -323,14 +431,18 @@
 
 
 
+    <!-- ============================= -->
+    <!-- PACKS -->
+    <!-- ============================= -->
+
     <div
       class="grid md:grid-cols-3 gap-8"
     >
 
 
-      <!-- ========================= -->
+      <!-- ============================= -->
       <!-- PACK LIVE -->
-      <!-- ========================= -->
+      <!-- ============================= -->
 
       <div
         class="pricing-card p-8 flex flex-col items-center"
@@ -398,9 +510,9 @@
 
 
 
-      <!-- ========================= -->
+      <!-- ============================= -->
       <!-- PACK STAGE -->
-      <!-- ========================= -->
+      <!-- ============================= -->
 
       <div
         class="pricing-card p-8 flex flex-col items-center border-2 border-[#8b5cf6] relative"
@@ -479,14 +591,13 @@
 
 
 
-      <!-- ========================= -->
+      <!-- ============================= -->
       <!-- PACK TOUR -->
-      <!-- ========================= -->
+      <!-- ============================= -->
 
       <div
         class="pricing-card p-8 flex flex-col items-center"
       >
-
 
         <h3
           class="text-2xl font-bold mb-3 gradient-text"
@@ -563,7 +674,9 @@
 
 
 
+    <!-- ============================= -->
     <!-- NOTA -->
+    <!-- ============================= -->
 
     <div
       class="mt-12 max-w-3xl mx-auto"
@@ -583,7 +696,9 @@
 
 
 
+  <!-- ============================= -->
   <!-- FOOTER -->
+  <!-- ============================= -->
 
   <footer
     class="bg-[#1a1a1a] border-t border-gray-800"
@@ -594,8 +709,10 @@
     >
 
 
+      <!-- REDES SOCIAIS -->
+
       <div
-        class="flex justify-center space-x-6 mb-4"
+        class="flex justify-center items-center space-x-6 mb-4"
       >
 
 
@@ -604,16 +721,15 @@
         <a
           href="https://www.instagram.com/whitepicturesoficial"
           target="_blank"
-          class="text-gray-400 hover:opacity-80 transition-opacity"
+          rel="noopener noreferrer"
+          aria-label="Instagram WhitePictures"
+          class="social-icon"
         >
 
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/1200px-Instagram_icon.png"
-            alt="Instagram"
-            class="w-7 h-7"
-          />
+          <i class="fa-brands fa-instagram"></i>
 
         </a>
+
 
 
         <!-- WHATSAPP -->
@@ -621,14 +737,12 @@
         <a
           href="https://wa.link/su3o2p"
           target="_blank"
-          class="text-gray-400 hover:opacity-80 transition-opacity"
+          rel="noopener noreferrer"
+          aria-label="WhatsApp WhitePictures"
+          class="social-icon"
         >
 
-          <img
-            src="https://png.pngtree.com/png-vector/20221018/ourmid/pngtree-whatsapp-mobile-software-icon-png-image_6315991.png"
-            alt="WhatsApp"
-            class="w-7 h-7"
-          />
+          <i class="fa-brands fa-whatsapp"></i>
 
         </a>
 
@@ -636,12 +750,20 @@
       </div>
 
 
+
+      <!-- COPYRIGHT -->
+
       <p
         class="text-gray-400"
       >
+
         &copy;
+
         <span id="year"></span>
-        White Pictures. Todos os direitos reservados.
+
+        White Pictures.
+        Todos os direitos reservados.
+
       </p>
 
 
@@ -651,12 +773,15 @@
 
 
 
+  <!-- ============================= -->
   <!-- BOTÃO VOLTAR AO TOPO -->
+  <!-- ============================= -->
 
   <a
     href="#"
     id="back-to-top-btn"
-    class="fixed bottom-5 right-5 bg-[#d4af37] text-[#121212] p-3 rounded-full shadow-lg opacity-0 pointer-events-none z-50"
+    aria-label="Voltar ao topo"
+    class="fixed bottom-5 right-5 bg-[#d4af37] text-[#121212] p-3 rounded-full shadow-lg opacity-0 pointer-events-none z-50 transition-opacity duration-300"
   >
 
     <svg
@@ -679,19 +804,25 @@
 
 
 
+  <!-- ============================= -->
   <!-- JAVASCRIPT -->
+  <!-- ============================= -->
 
   <script>
 
 
-    // Ano automático
+    /* ============================= */
+    /* ANO AUTOMÁTICO */
+    /* ============================= */
 
     document.getElementById('year').textContent =
       new Date().getFullYear();
 
 
 
-    // Animação dos cartões
+    /* ============================= */
+    /* ANIMAÇÃO DOS PACKS */
+    /* ============================= */
 
     const cards =
       document.querySelectorAll('.pricing-card');
@@ -721,13 +852,17 @@
       );
 
 
-    cards.forEach(card =>
-      observer.observe(card)
-    );
+    cards.forEach(card => {
+
+      observer.observe(card);
+
+    });
 
 
 
-    // Botão voltar ao topo
+    /* ============================= */
+    /* BOTÃO VOLTAR AO TOPO */
+    /* ============================= */
 
     const backToTopBtn =
       document.getElementById(
@@ -763,4 +898,5 @@
 
 
 </body>
+
 </html>
